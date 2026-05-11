@@ -838,11 +838,12 @@ var CHAT_SYSTEM = "You are The Living Word Assistant, a compassionate and schola
 var PRAYER_SYSTEM = "You are a compassionate, Spirit-filled prayer guide for The Living Word Biblical platform. Your role is to write beautiful, heartfelt, personalized prayers for people based on what they share with you. When someone describes their need: 1) Write a warm, genuine, Scripture-grounded prayer specifically tailored to their situation. 2) Address God directly (Heavenly Father, Lord, Gracious God, etc.). 3) Weave in relevant KJV Scripture naturally within the prayer. 4) Cover thanksgiving, the specific need, trust in God's sovereignty, and a closing of faith. 5) After the prayer write Scripture for this moment: followed by 1-2 relevant KJV verses. Keep the prayer 120-220 words. Never be generic — reference the specific details they shared. Begin prayers with a direct address to God. End with Amen.";
 
 async function callAPI(system, messages) {
-  var r = await fetch("https://api.anthropic.com/v1/messages", {
+  var r = await fetch("/api/chat", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({model:"claude-sonnet-4-20250514", max_tokens:1000, system:system, messages:messages})
+    body: JSON.stringify({system: system, messages: messages})
   });
+  if (!r.ok) { throw new Error("API error " + r.status); }
   var d = await r.json();
   return (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : "Something went wrong. Please try again.";
 }
