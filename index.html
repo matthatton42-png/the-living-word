@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Living Word</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#8B6914;--parchment:#F5EDD6;--parchment-dark:#E8D9B0;--ink:#1A1208;--crimson:#7B1D1D;--crimson-light:#A52828;--deep-blue:#0D1B3E;--stone:#8A7D6B;--stone-light:#B5A88A;--white:#FDFAF3;--green:#2D6A4F;--green-light:#52B788;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'EB Garamond',serif;background:var(--ink);color:var(--parchment);overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--ink);}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px;}
+.page{display:none;}.page.active{display:block;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;background:rgba(8,6,2,0.97);border-bottom:1px solid rgba(201,168,76,0.25);backdrop-filter:blur(12px);}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1rem;color:var(--gold);letter-spacing:0.05em;text-decoration:none;cursor:pointer;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.08em;color:var(--stone-light);text-decoration:none;text-transform:uppercase;padding:0.4rem 0.85rem;transition:color 0.3s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-right{display:flex;align-items:center;gap:0.7rem;}
+.nav-search-btn{background:none;border:none;color:var(--stone);cursor:pointer;font-size:1.1rem;padding:0.3rem;transition:color 0.3s;}
+.nav-search-btn:hover{color:var(--gold);}
+.nav-cta{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.08em;padding:0.4rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.nav-prayer-btn{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.08em;padding:0.4rem 1rem;border:1px solid var(--crimson-light);color:var(--crimson-light);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.3s;}
+.nav-prayer-btn:hover{background:var(--crimson);color:var(--parchment);}
+.nav-menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-menu-btn span{display:block;width:22px;height:2px;background:var(--gold);}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,6,2,0.98);border-bottom:1px solid rgba(201,168,76,0.2);backdrop-filter:blur(10px);z-index:199;padding:1.2rem 2rem;flex-direction:column;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.1em;color:var(--stone-light);text-decoration:none;text-transform:uppercase;padding:0.9rem 0;border-bottom:1px solid rgba(201,168,76,0.08);transition:color 0.3s;cursor:pointer;}
+.mobile-nav a:hover{color:var(--gold);}
+.search-overlay{display:none;position:fixed;inset:0;background:rgba(5,4,1,0.96);z-index:500;padding:8rem 2rem 2rem;backdrop-filter:blur(10px);}
+.search-overlay.open{display:flex;flex-direction:column;align-items:center;}
+.search-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--stone);font-size:1.8rem;cursor:pointer;}
+.search-input{width:100%;max-width:700px;font-family:'EB Garamond',serif;font-size:1.5rem;background:transparent;border:none;border-bottom:2px solid var(--gold);color:var(--white);padding:0.8rem 0.5rem;outline:none;margin-bottom:2rem;}
+.search-input::placeholder{color:var(--stone);}
+.search-results{width:100%;max-width:700px;display:flex;flex-direction:column;gap:0.8rem;max-height:60vh;overflow-y:auto;}
+.search-result{padding:1rem 1.2rem;border:1px solid rgba(201,168,76,0.15);cursor:pointer;transition:all 0.25s;}
+.search-result:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.05);}
+.search-result-ref{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--gold);margin-bottom:0.4rem;}
+.search-result-body{font-size:0.95rem;color:var(--parchment-dark);}
+.pt-nav{padding-top:68px;}
+section{padding:5rem 2rem;}
+.container{max-width:1180px;margin:0 auto;}
+.section-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;text-align:center;}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2;text-align:center;margin-bottom:1rem;color:var(--white);}
+.section-desc{font-size:1.1rem;line-height:1.8;color:var(--stone-light);text-align:center;max-width:660px;margin:0 auto 3.5rem;}
+.gold-line{width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.5rem auto;}
+.btn-primary{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.12em;padding:0.9rem 2rem;background:var(--gold);color:var(--ink);border:none;cursor:pointer;text-transform:uppercase;transition:all 0.3s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-secondary{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.12em;padding:0.9rem 2rem;background:transparent;color:var(--parchment);border:1px solid var(--stone);cursor:pointer;text-transform:uppercase;transition:all 0.3s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.btn-ghost{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;padding:0.6rem 1.4rem;background:transparent;color:var(--gold);border:1px solid rgba(201,168,76,0.35);cursor:pointer;text-transform:uppercase;transition:all 0.3s;}
+.btn-ghost:hover{background:rgba(201,168,76,0.08);}
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(139,105,20,0.12) 0%,transparent 70%),linear-gradient(180deg,#0A0802 0%,#120D04 50%,#0A0802 100%);}
+.hero-texture{position:absolute;inset:0;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.hero-content{position:relative;z-index:2;max-width:860px;}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease 0.3s forwards;}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2.5rem,7vw,5.5rem);line-height:1.1;color:var(--white);margin-bottom:0.4rem;opacity:0;animation:fadeUp 1s ease 0.5s forwards;}
+.hero-title span{color:var(--gold);display:block;}
+.hero-subtitle{font-family:'Cinzel',serif;font-size:clamp(0.8rem,2vw,1rem);letter-spacing:0.22em;color:var(--stone-light);text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s ease 0.7s forwards;}
+.hero-verse{font-size:clamp(1.05rem,2.5vw,1.4rem);font-style:italic;color:var(--parchment-dark);line-height:1.75;max-width:640px;margin:0 auto 0.8rem;opacity:0;animation:fadeUp 1s ease 0.9s forwards;}
+.hero-verse-ref{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--gold);letter-spacing:0.1em;opacity:0;animation:fadeUp 1s ease 1.1s forwards;}
+.hero-divider{width:180px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.2rem auto;opacity:0;animation:fadeIn 1.5s ease 1.2s forwards;}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;opacity:0;animation:fadeUp 1s ease 1.3s forwards;}
+.features-bar{background:linear-gradient(135deg,#0E0A03,#1A1005,#0E0A03);border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2);}
+.features-grid{display:grid;grid-template-columns:repeat(5,1fr);max-width:1200px;margin:0 auto;}
+.feature-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(201,168,76,0.12);transition:background 0.3s;cursor:pointer;}
+.feature-item:last-child{border-right:none;}
+.feature-item:hover{background:rgba(201,168,76,0.05);}
+.feature-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.feature-title{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.5rem;text-transform:uppercase;}
+.feature-desc{font-size:0.85rem;color:var(--stone-light);line-height:1.55;}
+.votd-section{background:linear-gradient(135deg,#0D0A02,#1A1005,#0D0A02);text-align:center;}
+.votd-inner{max-width:780px;margin:0 auto;}
+.votd-text{font-size:clamp(1.2rem,3vw,1.9rem);font-style:italic;line-height:1.75;color:var(--parchment);margin-bottom:0.8rem;}
+.votd-ref{font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:2rem;}
+.votd-modern{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.18);padding:1.5rem 2rem;text-align:left;margin-top:1.5rem;}
+.votd-modern-label{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.7rem;}
+.votd-modern-text{font-size:1rem;color:var(--stone-light);line-height:1.75;}
+.votd-nav{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;}
+.explore-section{background:#0C0802;}
+.explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1180px;margin:0 auto;}
+.explore-card{position:relative;overflow:hidden;border:1px solid rgba(201,168,76,0.18);background:linear-gradient(135deg,#120D04,#0A0802);padding:2.2rem 1.8rem;transition:all 0.4s;cursor:pointer;}
+.explore-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.4s;}
+.explore-card:hover{border-color:rgba(201,168,76,0.45);transform:translateY(-3px);}
+.explore-card:hover::before{transform:scaleX(1);}
+.explore-card.featured{grid-column:span 2;grid-row:span 2;background:linear-gradient(135deg,#1A1005,#0E0802);}
+.card-tag{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block;padding:0.25rem 0.7rem;border:1px solid rgba(201,168,76,0.28);}
+.card-title{font-family:'Cinzel',serif;font-size:clamp(1rem,2vw,1.4rem);color:var(--white);margin-bottom:0.9rem;line-height:1.3;}
+.card-body{font-size:0.95rem;color:var(--stone-light);line-height:1.7;margin-bottom:1.3rem;}
+.card-link{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:0.4rem;background:none;border:none;cursor:pointer;padding:0;}
+.card-verse{font-size:1rem;font-style:italic;color:var(--parchment-dark);line-height:1.7;border-left:2px solid var(--gold-dark);padding-left:1rem;margin:1.2rem 0;}
+.card-verse-ref{font-size:0.78rem;font-style:normal;color:var(--stone);}
+.chatbot-ui{background:linear-gradient(135deg,#0F0C04,#14100A);border:1px solid rgba(201,168,76,0.22);}
+.chatbot-header{background:linear-gradient(90deg,#1A1205,#110D04);border-bottom:1px solid rgba(201,168,76,0.18);padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;}
+.chatbot-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.chatbot-name{font-family:'Cinzel',serif;font-size:0.88rem;color:var(--gold);}
+.chatbot-status{font-size:0.72rem;color:var(--stone);}
+.chatbot-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#4CAF50;margin-right:4px;animation:pulse 2s ease infinite;}
+.chatbot-messages{height:440px;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;scroll-behavior:smooth;}
+.chatbot-messages::-webkit-scrollbar{width:3px;}
+.chatbot-messages::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+.msg{display:flex;gap:0.8rem;max-width:88%;}
+.msg.user{align-self:flex-end;flex-direction:row-reverse;}
+.msg-avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.85rem;}
+.msg-avatar.bot{background:linear-gradient(135deg,var(--gold-dark),var(--gold));}
+.msg-avatar.user{background:linear-gradient(135deg,var(--crimson),var(--crimson-light));}
+.msg-bubble{padding:0.85rem 1.1rem;font-size:0.93rem;line-height:1.65;}
+.msg.bot .msg-bubble{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.14);color:var(--parchment);border-radius:0 8px 8px 8px;}
+.msg.user .msg-bubble{background:rgba(123,29,29,0.22);border:1px solid rgba(123,29,29,0.38);color:var(--parchment);border-radius:8px 0 8px 8px;}
+.msg-verse{font-style:italic;color:var(--gold-light);border-left:2px solid var(--gold-dark);padding-left:0.7rem;margin:0.6rem 0;font-size:0.88rem;}
+.msg-source{font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);margin-top:0.5rem;}
+.msg-source::before{content:'Sources: ';}
+.typing-indicator{display:flex;gap:4px;padding:0.4rem 0;}
+.typing-indicator span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:typing 1.2s ease infinite;}
+.typing-indicator span:nth-child(2){animation-delay:0.2s;}
+.typing-indicator span:nth-child(3){animation-delay:0.4s;}
+.chatbot-suggested{padding:0.7rem 1.4rem;border-top:1px solid rgba(201,168,76,0.1);display:flex;gap:0.4rem;flex-wrap:wrap;}
+.suggested-chip{font-family:'Lato',sans-serif;font-size:0.7rem;padding:0.3rem 0.75rem;border:1px solid rgba(201,168,76,0.22);color:var(--stone-light);background:transparent;cursor:pointer;border-radius:20px;transition:all 0.25s;white-space:nowrap;}
+.suggested-chip:hover{border-color:var(--gold);color:var(--gold);}
+.chatbot-input-area{padding:0.9rem 1.4rem;border-top:1px solid rgba(201,168,76,0.12);display:flex;gap:0.7rem;align-items:flex-end;}
+.chatbot-input{flex:1;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);color:var(--parchment);font-family:'EB Garamond',serif;font-size:1rem;padding:0.7rem 1rem;resize:none;outline:none;min-height:42px;max-height:110px;border-radius:3px;transition:border-color 0.3s;}
+.chatbot-input:focus{border-color:var(--gold-dark);}
+.chatbot-input::placeholder{color:var(--stone);}
+.chatbot-send{width:42px;height:42px;border:none;cursor:pointer;background:var(--gold);color:var(--ink);font-size:1rem;border-radius:3px;transition:all 0.25s;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chatbot-send:hover{background:var(--gold-light);}
+.chatbot-disclaimer{margin-top:0.8rem;text-align:center;font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);line-height:1.5;}
+.chat-topics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.8rem;margin-top:2.5rem;}
+.chat-topic{border:1px solid rgba(201,168,76,0.15);padding:1.1rem 1.3rem;cursor:pointer;transition:all 0.3s;background:rgba(201,168,76,0.02);}
+.chat-topic:hover{border-color:rgba(201,168,76,0.38);}
+.chat-topic-icon{font-size:1.3rem;margin-bottom:0.4rem;}
+.chat-topic-name{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--gold);margin-bottom:0.25rem;}
+.chat-topic-desc{font-size:0.82rem;color:var(--stone-light);line-height:1.5;}
+.testament-tabs{display:flex;max-width:1100px;margin:0 auto 2.5rem;border-bottom:1px solid rgba(201,168,76,0.2);}
+.tab-btn{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;padding:0.75rem 2rem;background:transparent;border:none;cursor:pointer;color:var(--stone);text-transform:uppercase;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.3s;}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:0.5rem;max-width:1100px;margin:0 auto;}
+.book-chip{font-family:'Cinzel',serif;font-size:0.68rem;padding:0.6rem;border:1px solid rgba(201,168,76,0.15);color:var(--stone-light);background:transparent;cursor:pointer;transition:all 0.25s;text-align:center;}
+.book-chip:hover,.book-chip.featured{border-color:rgba(201,168,76,0.4);color:var(--gold);}
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto;}
+.source-card{border:1px solid rgba(201,168,76,0.12);padding:1.8rem;transition:all 0.3s;}
+.source-card:hover{border-color:rgba(201,168,76,0.3);}
+.source-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;padding:0.2rem 0.6rem;margin-bottom:0.8rem;border:1px solid var(--gold-dark);color:var(--gold);}
+.source-name{font-family:'Cinzel',serif;font-size:0.92rem;color:var(--white);margin-bottom:0.5rem;}
+.source-desc{font-size:0.88rem;color:var(--stone-light);line-height:1.65;}
+.partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+.partner-card{border:1px solid rgba(201,168,76,0.2);padding:2rem;background:linear-gradient(135deg,#0F0C04,#0A0802);text-align:center;}
+.partner-icon-lg{font-size:2.8rem;margin-bottom:1rem;}
+.partner-name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;}
+.partner-status{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.partner-desc{font-size:0.9rem;color:var(--stone-light);line-height:1.65;margin-bottom:1.5rem;}
+.partner-slot-card{border:1px dashed rgba(201,168,76,0.2);padding:2rem;text-align:center;}
+.devotional-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto;}
+.devotional-card{border:1px solid rgba(201,168,76,0.18);padding:2rem;background:linear-gradient(135deg,#0F0C04,#0A0802);cursor:pointer;transition:all 0.35s;}
+.devotional-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px);}
+.dev-day{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.25em;color:var(--stone);text-transform:uppercase;margin-bottom:0.8rem;}
+.dev-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--white);margin-bottom:0.8rem;line-height:1.3;}
+.dev-verse{font-size:0.9rem;font-style:italic;color:var(--parchment-dark);line-height:1.6;margin-bottom:0.5rem;}
+.dev-ref{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--gold);}
+.dev-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:1rem;}
+.dev-tag{font-family:'Lato',sans-serif;font-size:0.65rem;padding:0.2rem 0.5rem;border:1px solid rgba(201,168,76,0.2);color:var(--stone);border-radius:2px;}
+.reader-back{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.12em;color:var(--stone);text-transform:uppercase;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:0.4rem;margin-bottom:2rem;transition:color 0.3s;}
+.reader-back:hover{color:var(--gold);}
+.key-verse-block{border-left:3px solid var(--gold);padding:1.2rem 1.5rem;background:rgba(201,168,76,0.04);margin:1.5rem 0;}
+.key-verse-text{font-size:1.1rem;font-style:italic;color:var(--parchment);line-height:1.7;margin-bottom:0.4rem;}
+.key-verse-ref{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--gold);}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto;}
+.topic-card{border:1px solid rgba(201,168,76,0.18);padding:2rem;cursor:pointer;transition:all 0.35s;}
+.topic-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px);}
+.topic-icon-lg{font-size:2.5rem;margin-bottom:1rem;}
+.topic-name-lg{font-family:'Cinzel',serif;font-size:1rem;color:var(--white);margin-bottom:0.5rem;}
+.topic-count{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.topic-desc-lg{font-size:0.88rem;color:var(--stone-light);line-height:1.6;}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+.plan-card{border:1px solid rgba(201,168,76,0.2);padding:2rem;background:linear-gradient(135deg,#0F0C04,#0A0802);position:relative;overflow:hidden;}
+.plan-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--gold-dark));}
+.plan-badge{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;display:inline-block;border:1px solid rgba(201,168,76,0.25);padding:0.2rem 0.6rem;}
+.plan-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.6rem;}
+.plan-desc{font-size:0.9rem;color:var(--stone-light);line-height:1.65;margin-bottom:1.2rem;}
+.plan-stats{display:flex;gap:1.5rem;margin-bottom:1.5rem;}
+.plan-stat-num{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold);display:block;}
+.plan-stat-label{font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);text-transform:uppercase;letter-spacing:0.08em;}
+.plan-progress{height:4px;background:rgba(201,168,76,0.12);margin-bottom:1.2rem;border-radius:2px;overflow:hidden;}
+.plan-progress-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));border-radius:2px;}
+.plan-day-card{border:1px solid rgba(201,168,76,0.15);padding:1.2rem 1.5rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:1.2rem;cursor:pointer;transition:all 0.3s;}
+.plan-day-card:hover{border-color:rgba(201,168,76,0.35);}
+.plan-day-card.completed{border-color:rgba(82,183,136,0.3);background:rgba(82,183,136,0.04);}
+.plan-day-num{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);min-width:40px;}
+.plan-day-reading{font-family:'Cinzel',serif;font-size:0.85rem;color:var(--white);margin-bottom:0.2rem;}
+.plan-day-theme{font-size:0.82rem;color:var(--stone-light);}
+.plan-day-check{margin-left:auto;width:24px;height:24px;border:1px solid rgba(201,168,76,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:transparent;flex-shrink:0;}
+.plan-day-card.completed .plan-day-check{color:var(--green-light);border-color:var(--green-light);}
+.book-page-hero{background:linear-gradient(135deg,#0F0C04,#1A1205,#0F0C04);padding:5rem 2rem 2rem;text-align:center;}
+.book-page-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,5vw,4rem);color:var(--gold);margin-bottom:0.5rem;}
+.book-meta{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
+.book-meta-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;color:var(--stone);text-transform:uppercase;margin-bottom:0.3rem;}
+.book-meta-val{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold);}
+.book-nav-tabs{display:flex;justify-content:center;border-bottom:1px solid rgba(201,168,76,0.2);max-width:700px;margin:0 auto;}
+.book-tab{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;padding:0.8rem 1.5rem;background:transparent;border:none;cursor:pointer;color:var(--stone);text-transform:uppercase;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.3s;white-space:nowrap;}
+.book-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.book-content{max-width:900px;margin:0 auto;padding:2.5rem 2rem;}
+.book-info-card{border:1px solid rgba(201,168,76,0.15);padding:1.5rem;background:rgba(201,168,76,0.02);margin-bottom:1rem;}
+.book-info-title{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.book-info-body{font-size:0.95rem;color:var(--stone-light);line-height:1.7;}
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(60px,1fr));gap:0.5rem;margin-top:1.5rem;}
+.chapter-chip{font-family:'Cinzel',serif;font-size:0.72rem;padding:0.5rem;border:1px solid rgba(201,168,76,0.18);color:var(--stone-light);background:transparent;cursor:pointer;transition:all 0.25s;text-align:center;}
+.chapter-chip:hover{border-color:var(--gold);color:var(--gold);}
+.prayer-page-hero{background:linear-gradient(135deg,#0A0804,#160F05,#0A0804);padding:5rem 2rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.prayer-page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(123,29,29,0.08) 0%,transparent 70%);}
+.prayer-hero-content{position:relative;z-index:1;}
+.prayer-hero-icon{font-size:3.5rem;margin-bottom:1.2rem;display:block;}
+.prayer-intro{font-size:1.05rem;font-style:italic;color:var(--stone-light);max-width:620px;margin:0 auto 2.5rem;line-height:1.85;}
+.prayer-cats{display:flex;gap:0.7rem;flex-wrap:wrap;justify-content:center;max-width:860px;margin:0 auto 2rem;}
+.prayer-cat-btn{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;padding:0.5rem 1rem;border:1px solid rgba(201,168,76,0.22);color:var(--stone-light);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.3s;border-radius:2px;}
+.prayer-cat-btn:hover,.prayer-cat-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.07);}
+.prayer-ui-wrap{max-width:860px;margin:0 auto;}
+.prayer-ui{background:linear-gradient(135deg,#0F0C04,#14100A);border:1px solid rgba(201,168,76,0.22);overflow:hidden;}
+.prayer-ui-header{background:linear-gradient(90deg,#1A1205,#110D04);border-bottom:1px solid rgba(201,168,76,0.18);padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;}
+.prayer-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--crimson),#5C1010);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.prayer-name{font-family:'Cinzel',serif;font-size:0.88rem;color:var(--gold);}
+.prayer-status{font-size:0.72rem;color:var(--stone);}
+.prayer-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#C9A84C;margin-right:4px;animation:pulse 2.5s ease infinite;}
+.prayer-messages{height:420px;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;scroll-behavior:smooth;}
+.prayer-messages::-webkit-scrollbar{width:3px;}
+.prayer-messages::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+.pmsg{display:flex;gap:0.8rem;max-width:90%;}
+.pmsg.user{align-self:flex-end;flex-direction:row-reverse;}
+.pmsg-avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.85rem;}
+.pmsg-avatar.guide{background:linear-gradient(135deg,var(--crimson),#5C1010);}
+.pmsg-avatar.user{background:linear-gradient(135deg,var(--deep-blue),#1A3A7E);}
+.pmsg-bubble{padding:0.85rem 1.1rem;font-size:0.93rem;line-height:1.7;}
+.pmsg.guide .pmsg-bubble{background:rgba(123,29,29,0.1);border:1px solid rgba(123,29,29,0.25);color:var(--parchment);border-radius:0 8px 8px 8px;}
+.pmsg.user .pmsg-bubble{background:rgba(13,27,62,0.3);border:1px solid rgba(13,27,62,0.5);color:var(--parchment);border-radius:8px 0 8px 8px;}
+.prayer-output{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);padding:1.2rem 1.5rem;margin:0.5rem 0;font-style:italic;line-height:1.9;color:var(--parchment);font-size:0.95rem;border-radius:4px;}
+.prayer-scripture-tag{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--gold);letter-spacing:0.1em;margin-top:0.8rem;display:block;font-style:normal;}
+.prayer-source{font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);margin-top:0.5rem;}
+.prayer-quick{padding:0.7rem 1.4rem;border-top:1px solid rgba(201,168,76,0.1);display:flex;gap:0.4rem;flex-wrap:wrap;}
+.prayer-chip{font-family:'Lato',sans-serif;font-size:0.68rem;padding:0.28rem 0.7rem;border:1px solid rgba(201,168,76,0.2);color:var(--stone-light);background:transparent;cursor:pointer;border-radius:20px;transition:all 0.25s;white-space:nowrap;}
+.prayer-chip:hover{border-color:var(--gold);color:var(--gold);}
+.prayer-input-area{padding:0.9rem 1.4rem;border-top:1px solid rgba(201,168,76,0.12);display:flex;gap:0.7rem;align-items:flex-end;}
+.prayer-input{flex:1;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);color:var(--parchment);font-family:'EB Garamond',serif;font-size:1rem;padding:0.7rem 1rem;resize:none;outline:none;min-height:42px;max-height:110px;border-radius:3px;transition:border-color 0.3s;}
+.prayer-input:focus{border-color:rgba(123,29,29,0.6);}
+.prayer-input::placeholder{color:var(--stone);}
+.prayer-send{width:42px;height:42px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--crimson),#5C1010);color:var(--parchment);font-size:1rem;border-radius:3px;transition:all 0.25s;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prayer-send:hover{background:var(--crimson-light);}
+.prayer-disclaimer{margin-top:0.8rem;text-align:center;font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);line-height:1.5;}
+.prayer-categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;max-width:860px;margin:2.5rem auto 0;}
+.prayer-category-card{border:1px solid rgba(201,168,76,0.15);padding:1.3rem 1.2rem;cursor:pointer;transition:all 0.3s;text-align:center;}
+.prayer-category-card:hover{border-color:rgba(201,168,76,0.38);transform:translateY(-2px);}
+.pcat-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.pcat-name{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--gold);margin-bottom:0.3rem;text-transform:uppercase;letter-spacing:0.08em;}
+.pcat-desc{font-size:0.82rem;color:var(--stone-light);line-height:1.5;}
+.saved-prayers{max-width:860px;margin:2.5rem auto 0;}
+.saved-prayers-title{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.saved-prayer-item{border:1px solid rgba(201,168,76,0.12);padding:1rem 1.3rem;margin-bottom:0.6rem;display:flex;gap:1rem;align-items:flex-start;}
+.saved-prayer-text{font-style:italic;font-size:0.88rem;color:var(--stone-light);line-height:1.6;flex:1;}
+.saved-prayer-del{background:none;border:none;color:var(--stone);cursor:pointer;font-size:0.9rem;transition:color 0.3s;padding:0.2rem;flex-shrink:0;}
+.saved-prayer-del:hover{color:var(--crimson-light);}
+.prayer-copy-btn{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.1em;padding:0.3rem 0.8rem;border:1px solid rgba(201,168,76,0.25);color:var(--stone-light);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.25s;margin-top:0.5rem;margin-right:0.4rem;}
+.prayer-copy-btn:hover{border-color:var(--gold);color:var(--gold);}
+footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3rem 2rem 1.5rem;}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.footer-tagline{font-size:0.9rem;color:var(--stone);line-height:1.7;margin-top:0.8rem;}
+.footer-heading{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1.1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.footer-links a{font-size:0.88rem;color:var(--stone);text-decoration:none;cursor:pointer;transition:color 0.3s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.1);display:flex;justify-content:space-between;align-items:center;font-family:'Lato',sans-serif;font-size:0.72rem;color:var(--stone);flex-wrap:wrap;gap:0.5rem;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.3);opacity:0.6;}}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.3;}30%{transform:translateY(-6px);opacity:1;}}
+@media(max-width:900px){nav{padding:0 1.4rem;}.nav-links,.nav-cta,.nav-prayer-btn{display:none;}.nav-menu-btn{display:flex;}.hero-actions{flex-direction:column;align-items:center;}.btn-primary,.btn-secondary{width:100%;max-width:260px;text-align:center;}.features-grid{grid-template-columns:repeat(2,1fr);}.feature-item{border-right:none;border-bottom:1px solid rgba(201,168,76,0.12);}.feature-item:nth-child(odd){border-right:1px solid rgba(201,168,76,0.12);}.feature-item:last-child{border-bottom:none;grid-column:span 2;}.explore-grid{grid-template-columns:1fr;}.explore-card.featured{grid-column:span 1;grid-row:span 1;}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.chat-topics-grid{grid-template-columns:1fr 1fr;}.book-nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}}
+@media(max-width:600px){section{padding:3.5rem 1.2rem;}.features-grid{grid-template-columns:1fr;}.feature-item{border-right:none!important;grid-column:span 1!important;}.chat-topics-grid{grid-template-columns:1fr;}.chatbot-messages,.prayer-messages{height:300px;}.books-grid{grid-template-columns:repeat(auto-fill,minmax(95px,1fr));}.footer-inner{grid-template-columns:1fr;gap:1.5rem;}.devotional-grid,.topics-grid,.plans-grid,.partners-grid,.prayer-categories-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">The Living Word</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+    <li><a onclick="showPage('devotional')" data-page="devotional">Devotionals</a></li>
+    <li><a onclick="showPage('topics')" data-page="topics">Topics</a></li>
+    <li><a onclick="showPage('plans')" data-page="plans">Reading Plans</a></li>
+    <li><a onclick="showPage('books')" data-page="books">Books</a></li>
+    <li><a onclick="showPage('sources')" data-page="sources">Sources</a></li>
+    <li><a onclick="showPage('partners')" data-page="partners">Partners</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">&#128269;</button>
+    <button class="nav-prayer-btn" onclick="showPage('prayer')">&#128591; Prayer</button>
+    <button class="nav-cta" onclick="showPage('chat')">Ask the Word</button>
+    <button class="nav-menu-btn" onclick="toggleMenu()" id="menuBtn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="showPage('home');closeMenu()">Home</a>
+  <a onclick="showPage('devotional');closeMenu()">Devotionals</a>
+  <a onclick="showPage('topics');closeMenu()">Topics</a>
+  <a onclick="showPage('plans');closeMenu()">Reading Plans</a>
+  <a onclick="showPage('books');closeMenu()">Books of the Bible</a>
+  <a onclick="showPage('sources');closeMenu()">Sources</a>
+  <a onclick="showPage('partners');closeMenu()">Partners</a>
+  <a onclick="showPage('prayer');closeMenu();" style="color:var(--crimson-light)">&#128591; Prayer Guidance</a>
+  <a onclick="showPage('chat');closeMenu();" style="color:var(--gold)">Ask the Word (Chatbot)</a>
+</div>
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" onclick="closeSearch()">&#10005;</button>
+  <input class="search-input" id="searchInput" placeholder="Search verses, books, topics, characters..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
+  <div class="search-results" id="searchResults"><div style="color:var(--stone);text-align:center;padding:2rem;font-size:0.9rem">Begin typing to search...</div></div>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div><div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">King James Bible &mdash; Ancient Wisdom for the Modern World</div>
+      <h1 class="hero-title">The Living<span>Word</span></h1>
+      <div class="hero-subtitle">Scripture &middot; Understanding &middot; Application</div>
+      <div class="hero-divider"></div>
+      <p class="hero-verse">"Thy word is a lamp unto my feet, and a light unto my path."</p>
+      <p class="hero-verse-ref">Psalms 119:105 &mdash; King James Bible</p>
+      <div class="hero-divider"></div>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('chat')">Ask the Chatbot</button>
+        <button class="btn-secondary" onclick="showPage('prayer')">&#128591; Prayer Guidance</button>
+        <button class="btn-secondary" onclick="showPage('devotional')">Today's Devotional</button>
+      </div>
+    </div>
+  </section>
+  <div class="features-bar">
+    <div class="features-grid">
+      <div class="feature-item" onclick="showPage('books')"><div class="feature-icon">&#128220;</div><div class="feature-title">KJV Scripture</div><div class="feature-desc">All 66 books with study guides and key verses</div></div>
+      <div class="feature-item" onclick="showPage('chat')"><div class="feature-icon">&#129302;</div><div class="feature-title">AI Chatbot</div><div class="feature-desc">Scholar-backed answers to any Biblical question</div></div>
+      <div class="feature-item" onclick="showPage('prayer')"><div class="feature-icon">&#128591;</div><div class="feature-title">Prayer Guidance</div><div class="feature-desc">Personalized Scripture-grounded prayers for your needs</div></div>
+      <div class="feature-item" onclick="showPage('plans')"><div class="feature-icon">&#128197;</div><div class="feature-title">Reading Plans</div><div class="feature-desc">30, 60 &amp; 90-day structured Bible journeys</div></div>
+      <div class="feature-item" onclick="showPage('devotional')"><div class="feature-icon">&#10013;</div><div class="feature-title">Devotionals</div><div class="feature-desc">Daily studies with reflection questions and prayer</div></div>
+    </div>
+  </div>
+  <section class="votd-section">
+    <div class="container">
+      <div class="section-label">Daily Scripture</div>
+      <h2 class="section-title">Verse of the Day</h2>
+      <div class="votd-inner">
+        <p class="votd-text" id="votdText"></p>
+        <div class="votd-ref" id="votdRef"></div>
+        <div class="votd-modern"><div class="votd-modern-label">Modern Understanding</div><div class="votd-modern-text" id="votdModern"></div></div>
+        <div class="votd-nav">
+          <button class="btn-ghost" onclick="cycleVOTD(-1)">&#8592; Previous</button>
+          <button class="btn-ghost" onclick="showPage('chat');setTimeout(()=>{document.getElementById('chatInput').value='Explain '+VOTD[votdIdx].ref;},300)">Ask About This Verse</button>
+          <button class="btn-ghost" onclick="cycleVOTD(1)">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="explore-section">
+    <div class="container">
+      <div class="section-label">Study Pathways</div>
+      <h2 class="section-title">Explore Scripture</h2>
+      <p class="section-desc">Whether a first-time reader or a lifelong student, find the entry point that speaks to you.</p>
+      <div class="explore-grid">
+        <div class="explore-card featured" onclick="showPage('devotional');setTimeout(()=>openDevReader(0),200)">
+          <div class="card-tag">Featured Study</div>
+          <h3 class="card-title">The Sermon on the Mount &mdash; Then &amp; Now</h3>
+          <div class="card-verse">"Blessed are the pure in heart: for they shall see God."<div class="card-verse-ref">Matthew 5:8</div></div>
+          <p class="card-body">Jesus delivered the most famous sermon in history on a hillside in Galilee, redefining righteousness as inward transformation of the heart. Today the Beatitudes challenge everything from our politics to how we treat those who wrong us.</p>
+          <button class="card-link">Begin Study</button>
+        </div>
+        <div class="explore-card" onclick="showPage('topics');setTimeout(()=>openTopicReader(1),200)">
+          <div class="card-tag">Prophecy</div>
+          <h3 class="card-title">Old Testament Prophecies Fulfilled</h3>
+          <p class="card-body">Over 300 specific prophecies fulfilled by Jesus Christ — a statistical and historical phenomenon examined by scholars worldwide.</p>
+          <button class="card-link">Explore</button>
+        </div>
+        <div class="explore-card" onclick="showPage('sources')">
+          <div class="card-tag">Archaeology</div>
+          <h3 class="card-title">What Archaeology Confirms</h3>
+          <p class="card-body">From the Dead Sea Scrolls to the Pool of Siloam — modern discoveries continue to affirm the historical accuracy of Scripture.</p>
+          <button class="card-link">Discover</button>
+        </div>
+        <div class="explore-card" onclick="showPage('topics');setTimeout(()=>openTopicReader(2),200)">
+          <div class="card-tag">Modern Life</div>
+          <h3 class="card-title">The Ten Commandments Today</h3>
+          <p class="card-body">How do God's commandments translate to modern ethics, law, and everyday decisions? A practical examination for the 21st century.</p>
+          <button class="card-link">Apply</button>
+        </div>
+        <div class="explore-card" onclick="openBookPage('Daniel')">
+          <div class="card-tag">Character Study</div>
+          <h3 class="card-title">Daniel &mdash; Faith Under Fire</h3>
+          <p class="card-body">From the lion's den to prophecies about world empires — Daniel's uncompromising faith speaks directly to believers facing cultural pressure today.</p>
+          <button class="card-link">Study</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-inner">
+      <div><a class="nav-logo" onclick="showPage('home')">The Living Word</a><p class="footer-tagline">An AI-powered Biblical study platform anchored in the King James Bible and verified by centuries of reputable scholarship — making the eternal Word accessible to every generation.</p></div>
+      <div><div class="footer-heading">Explore</div><ul class="footer-links"><li><a onclick="showPage('devotional')">Daily Devotional</a></li><li><a onclick="showPage('books')">Books of the Bible</a></li><li><a onclick="showPage('topics')">Topic Studies</a></li><li><a onclick="showPage('plans')">Reading Plans</a></li><li><a onclick="showPage('prayer')">Prayer Guidance</a></li><li><a onclick="showPage('chat')">AI Chatbot</a></li></ul></div>
+      <div><div class="footer-heading">Resources</div><ul class="footer-links"><li><a onclick="showPage('sources')">Our Sources</a></li><li><a onclick="showPage('partners')">Partners</a></li><li><a onclick="openSearch()">Search Scripture</a></li></ul></div>
+      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a>Our Mission</a></li><li><a>Statement of Faith</a></li><li><a>Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2025 The Living Word. Built on the King James Bible.</span><span style="font-style:italic;color:var(--gold-dark)">"Heaven and earth shall pass away, but my words shall not pass away." &mdash; Matthew 24:35</span></div>
+  </footer>
+</div>
+
+<!-- DEVOTIONALS -->
+<div class="page" id="page-devotional">
+  <div class="pt-nav"><div class="devotional-hero" style="background:linear-gradient(135deg,#0F0C04,#1A1205);padding:5rem 2rem 2rem;text-align:center">
+    <div class="section-label">Daily Scripture Study</div><h1 class="section-title">Devotionals</h1>
+    <p class="section-desc" style="margin-bottom:0">Start each day grounded in the Word. Each devotional includes Scripture, historical context, modern application, reflection questions, and a closing prayer.</p>
+  </div>
+  <section><div id="devGrid" class="devotional-grid"></div><div id="devReader" style="display:none;max-width:760px;margin:0 auto"></div></section>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- TOPICS -->
+<div class="page" id="page-topics">
+  <div class="pt-nav"><section>
+    <div class="section-label">Thematic Study</div><h1 class="section-title">Topical Study Guides</h1>
+    <p class="section-desc">Explore what the King James Bible says on life's most important subjects — with key verses, historical context, and modern application for each theme.</p>
+    <div id="topicsGrid" class="topics-grid"></div>
+    <div id="topicReader" style="display:none;max-width:860px;margin:2rem auto 0"></div>
+  </section>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- READING PLANS -->
+<div class="page" id="page-plans">
+  <div class="pt-nav"><section>
+    <div class="section-label">Structured Bible Reading</div><h1 class="section-title">Reading Plans</h1>
+    <p class="section-desc">Choose a plan that fits your season of life. Track progress, mark days complete, and let the Word speak to you systematically.</p>
+    <div id="plansGrid" class="plans-grid"></div>
+    <div id="activePlan" style="display:none;max-width:860px;margin:2rem auto 0"></div>
+  </section>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- CHATBOT -->
+<div class="page" id="page-chat">
+  <div class="pt-nav"><section>
+    <div class="section-label">AI-Powered Scripture Assistant</div>
+    <h1 class="section-title">Ask the Word</h1>
+    <p class="section-desc">Ask any question about the King James Bible. Our AI draws from verified scholarly sources, commentaries, and archaeological findings.</p>
+    <div style="max-width:860px;margin:0 auto">
+      <div class="chatbot-ui">
+        <div class="chatbot-header"><div class="chatbot-avatar">&#10013;</div><div><div class="chatbot-name">The Living Word Assistant</div><div class="chatbot-status"><span class="chatbot-dot"></span>Online &mdash; Drawing from verified Biblical sources</div></div></div>
+        <div class="chatbot-messages" id="chatMessages">
+          <div class="msg bot"><div class="msg-avatar bot">&#10013;</div><div><div class="msg-bubble"><strong>Welcome to The Living Word.</strong><br><br>Ask me to explain any verse, explore historical background, connect ancient Scripture to modern life, or find passages relevant to what you are going through.<br><br><em>"Thy word is a lamp unto my feet, and a light unto my path." &mdash; Psalms 119:105</em><div class="msg-source">KJV Scripture &middot; Matthew Henry &middot; Easton's Dictionary &middot; Blue Letter Bible &middot; Answers in Genesis</div></div></div></div>
+        </div>
+        <div class="chatbot-suggested">
+          <button class="suggested-chip" onclick="sendChip(this)">What does John 3:16 really mean?</button>
+          <button class="suggested-chip" onclick="sendChip(this)">Was Noah's Ark real?</button>
+          <button class="suggested-chip" onclick="sendChip(this)">How does Proverbs apply today?</button>
+          <button class="suggested-chip" onclick="sendChip(this)">Explain the Book of Revelation</button>
+          <button class="suggested-chip" onclick="sendChip(this)">Who was Mary Magdalene?</button>
+        </div>
+        <div class="chatbot-input-area">
+          <textarea class="chatbot-input" id="chatInput" placeholder="Ask about any verse, character, prophecy, or topic..." rows="1" onkeydown="handleChatKey(event)" oninput="autoResize(this)"></textarea>
+          <button class="chatbot-send" onclick="sendMessage()" id="sendBtn">&#10148;</button>
+        </div>
+      </div>
+      <div class="chatbot-disclaimer">Responses draw from KJV Scripture, Matthew Henry's Commentary, Easton's Bible Dictionary, Blue Letter Bible, Answers in Genesis, the Archaeological Study Bible, and peer-reviewed Biblical scholarship.</div>
+      <div class="chat-topics-grid">
+        <div class="chat-topic" onclick="prefill('Explain the life and significance of Jesus Christ')"><div class="chat-topic-icon">&#10013;&#65039;</div><div class="chat-topic-name">Life of Christ</div><div class="chat-topic-desc">Ministry, miracles, death, and resurrection of Jesus</div></div>
+        <div class="chat-topic" onclick="prefill('What are the major Old Testament prophecies and how were they fulfilled?')"><div class="chat-topic-icon">&#128302;</div><div class="chat-topic-name">Biblical Prophecy</div><div class="chat-topic-desc">Fulfilled and future prophecies with historical evidence</div></div>
+        <div class="chat-topic" onclick="prefill('How does Genesis compare to modern science and archaeology?')"><div class="chat-topic-icon">&#127758;</div><div class="chat-topic-name">Faith and Science</div><div class="chat-topic-desc">Creation, archaeology, and the historical record</div></div>
+        <div class="chat-topic" onclick="prefill('Give me practical wisdom from Proverbs and Psalms for modern life')"><div class="chat-topic-icon">&#128161;</div><div class="chat-topic-name">Wisdom for Today</div><div class="chat-topic-desc">Practical Biblical principles for 21st-century living</div></div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- BOOKS -->
+<div class="page" id="page-books">
+  <div class="pt-nav" style="background:#0A0802;min-height:100vh"><section>
+    <div class="section-label">Navigate the Scriptures</div>
+    <h1 class="section-title">Books of the King James Bible</h1>
+    <p class="section-desc">Explore all 66 books with study guides, key verses, historical background, and modern applications.</p>
+    <div class="testament-tabs">
+      <button class="tab-btn active" onclick="showTestament('old',this)">Old Testament (39 Books)</button>
+      <button class="tab-btn" onclick="showTestament('new',this)">New Testament (27 Books)</button>
+    </div>
+    <div class="books-grid" id="booksGrid"></div>
+  </section>
+  <div id="bookStudyArea"></div>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- BOOK STUDY -->
+<div class="page" id="page-bookstudy">
+  <div class="pt-nav" style="background:#080603;min-height:100vh">
+    <div class="book-page-hero" id="bookPageHero"></div>
+    <div class="book-content">
+      <div class="book-nav-tabs" id="bookPageTabs">
+        <button class="book-tab active" onclick="showBookTab('overview',this)">Overview</button>
+        <button class="book-tab" onclick="showBookTab('keyverses',this)">Key Verses</button>
+        <button class="book-tab" onclick="showBookTab('modern',this)">Modern Application</button>
+        <button class="book-tab" onclick="showBookTab('chapters',this)">Chapters</button>
+      </div>
+      <div id="bookStudyContent"></div>
+    </div>
+    <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer>
+  </div>
+</div>
+
+<!-- SOURCES -->
+<div class="page" id="page-sources">
+  <div class="pt-nav" style="background:linear-gradient(135deg,#0D0A02,#12100A);min-height:100vh"><section>
+    <div class="section-label">Academic and Theological Integrity</div>
+    <h1 class="section-title">Our Verified Sources</h1>
+    <p class="section-desc">Every answer, article, and explanation on this platform is grounded in reputable, peer-reviewed Biblical scholarship and verified historical research.</p>
+    <div class="sources-grid">
+      <div class="source-card"><div class="source-badge">Primary Text</div><div class="source-name">King James Bible (1611)</div><div class="source-desc">The authorized translation commissioned by King James I, drawn from the Masoretic Text (Hebrew) and Textus Receptus (Greek). The most widely read English translation in history.</div></div>
+      <div class="source-card"><div class="source-badge">Commentary</div><div class="source-name">Matthew Henry's Commentary</div><div class="source-desc">Completed 1714 — six volumes covering every chapter of Scripture, one of the most thorough devotional commentaries ever written.</div></div>
+      <div class="source-card"><div class="source-badge">Reference</div><div class="source-name">Easton's Bible Dictionary</div><div class="source-desc">M.G. Easton's scholarly 1897 dictionary provides historical, geographical, and theological context for over 4,000 Biblical terms and proper names.</div></div>
+      <div class="source-card"><div class="source-badge">Archaeology</div><div class="source-name">Archaeological Study Bible</div><div class="source-desc">Published with contributions from the American Schools of Oriental Research — 3,500 archaeological notes connected to specific Biblical texts and events.</div></div>
+      <div class="source-card"><div class="source-badge">Apologetics</div><div class="source-name">Answers in Genesis</div><div class="source-desc">World-leading creation and apologetics ministry providing research and resources that defend the historical accuracy and authority of the Bible from Genesis to Revelation.</div></div>
+      <div class="source-card"><div class="source-badge">Study Tool</div><div class="source-name">Blue Letter Bible</div><div class="source-desc">Comprehensive online resource with access to original Hebrew and Greek texts, lexicons, concordances, and scholarly commentaries aligned verse-by-verse.</div></div>
+      <div class="source-card"><div class="source-badge">Theology</div><div class="source-name">Spurgeon's Treasury of David</div><div class="source-desc">Charles Haddon Spurgeon's seven-volume commentary on the Psalms — a masterwork of devotional exposition by the Prince of Preachers.</div></div>
+      <div class="source-card"><div class="source-badge">Historical</div><div class="source-name">Josephus — Antiquities and Wars</div><div class="source-desc">First-century Jewish historian Flavius Josephus provides crucial non-Biblical corroboration of Old and New Testament people, places, and events.</div></div>
+      <div class="source-card"><div class="source-badge">Manuscripts</div><div class="source-name">Dead Sea Scrolls</div><div class="source-desc">Discovered 1947-1956 at Qumran — confirmed remarkable accuracy of Old Testament transmission over 1,000 years. The greatest manuscript discovery in history.</div></div>
+    </div>
+  </section>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- PARTNERS -->
+<div class="page" id="page-partners">
+  <div class="pt-nav" style="background:#080603;min-height:100vh"><section>
+    <div class="section-label">Ministry Partnerships</div>
+    <h1 class="section-title">Partners in the Word</h1>
+    <p class="section-desc">This platform is being developed with an open door to trusted Christian ministries, apologetics organizations, and educational institutions who share our commitment to Biblical accuracy and broad, accessible outreach.</p>
+    <div class="partners-grid">
+      <div class="partner-card"><div class="partner-icon-lg">&#9925;</div><div class="partner-name">Ark Encounter</div><div class="partner-status">Potential Partner</div><div class="partner-desc">Ken Ham's full-scale Noah's Ark replica in Williamstown, Kentucky — a world-class apologetics attraction drawing millions of visitors annually and producing extensive creation-based research and educational content.</div><button class="btn-ghost">Learn More</button></div>
+      <div class="partner-card"><div class="partner-icon-lg">&#127482;&#127480;</div><div class="partner-name">Turning Point USA</div><div class="partner-status">Potential Partner</div><div class="partner-desc">A nonprofit organization founded on Judeo-Christian values, dedicated to educating students and young Americans about free markets, limited government, and Biblical principles as foundations of liberty.</div><button class="btn-ghost">Learn More</button></div>
+      <div class="partner-card"><div class="partner-icon-lg">&#127963;&#65039;</div><div class="partner-name">Answers in Genesis</div><div class="partner-status">Potential Partner</div><div class="partner-desc">One of the world's leading apologetics ministries, providing rigorous, faith-affirming research on creation, science, and the authority of Scripture from a Biblical worldview.</div><button class="btn-ghost">Learn More</button></div>
+      <div class="partner-slot-card"><div style="font-size:2rem;color:var(--stone);margin-bottom:0.8rem">&#10010;</div><div style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--stone);letter-spacing:0.1em">Your Ministry Here</div><p style="font-size:0.8rem;color:var(--stone);margin-top:0.8rem;line-height:1.6">We are actively seeking partnerships with verified, reputable ministries who share our commitment to Biblical truth.</p></div>
+      <div class="partner-slot-card"><div style="font-size:2rem;color:var(--stone);margin-bottom:0.8rem">&#10010;</div><div style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--stone);letter-spacing:0.1em">Your Ministry Here</div><p style="font-size:0.8rem;color:var(--stone);margin-top:0.8rem;line-height:1.6">Contact us to discuss how your organization can reach new audiences through The Living Word platform.</p></div>
+    </div>
+  </section>
+  <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
+</div>
+
+<!-- PRAYER -->
+<div class="page" id="page-prayer">
+  <div class="pt-nav">
+    <div class="prayer-page-hero"><div class="prayer-hero-content">
+      <span class="prayer-hero-icon">&#128591;</span>
+      <div class="section-label">Personalized Prayer</div>
+      <h1 class="section-title">Prayer Guidance</h1>
+      <p class="prayer-intro">"The LORD is nigh unto all them that call upon him, to all that call upon him in truth." &mdash; Psalms 145:18<br><br>Share what is on your heart and receive a Scripture-grounded prayer written just for you.</p>
+    </div></div>
+    <section style="padding-top:2rem">
+      <div class="prayer-cats" id="prayerChips"></div>
+      <div class="prayer-ui-wrap">
+        <div class="prayer-ui">
+          <div class="prayer-ui-header"><div class="prayer-avatar">&#128591;</div><div><div class="prayer-name">Prayer Guide</div><div class="prayer-status"><span class="prayer-dot"></span>Ready to pray with you</div></div></div>
+          <div class="prayer-messages" id="prayerMessages">
+            <div class="pmsg guide"><div class="pmsg-avatar guide">&#128591;</div><div><div class="pmsg-bubble"><strong>Welcome, friend.</strong><br><br>This is a place to bring whatever is on your heart. Tell me what you would like prayer for, and I will write a heartfelt, Scripture-grounded prayer tailored specifically to your situation.<br><br>You can describe your situation in your own words, choose a category above, or ask for prayer for yourself or someone you love.<br><br><em>"Call unto me, and I will answer thee." &mdash; Jeremiah 33:3</em></div></div></div>
+          </div>
+          <div class="prayer-quick" id="prayerQuickChips2"></div>
+          <div class="prayer-input-area">
+            <textarea class="prayer-input" id="prayerInput" placeholder="Tell me what you would like prayer for..." rows="1" onkeydown="handlePrayerKey(event)" oninput="autoResizePrayer(this)"></textarea>
+            <button class="prayer-send" onclick="sendPrayer()" id="prayerSendBtn">&#128591;</button>
+          </div>
+        </div>
+        <div class="prayer-disclaimer">Your prayer requests are private. Responses are AI-generated and grounded in KJV Scripture and Biblical principles.<br>If you are in crisis, please contact a pastor, counselor, or call 988 (Suicide and Crisis Lifeline).</div>
+      </div>
+      <div class="prayer-categories-grid" id="prayerCategoryCards"></div>
+      <div class="saved-prayers">
+        <div class="saved-prayers-title">Your Saved Prayers</div>
+        <div id="savedPrayersList"><div style="color:var(--stone);font-size:0.9rem;font-style:italic;text-align:center;padding:1.5rem">Your saved prayers will appear here.</div></div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center;flex-direction:column;gap:0.5rem;text-align:center">
+        <span>&copy; 2025 The Living Word</span>
+        <span style="font-style:italic;color:var(--gold-dark);font-size:0.72rem">"The effectual fervent prayer of a righteous man availeth much." &mdash; James 5:16</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+var VOTD = [{"text": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.", "ref": "John 3:16", "modern": "The hinge on which all Scripture turns. God's love is not transactional. It gives everything freely, asking only belief in return. In a world of conditional love, this verse presents grace: receiving what we do not deserve because of God's nature, not our merit."}, {"text": "I can do all things through Christ which strengtheneth me.", "ref": "Philippians 4:13", "modern": "Often quoted out of context as a self-help motto, this verse was written by Paul from prison. Its power is not about personal achievement. It is about contentment in every circumstance through Christ's sustaining strength. Our sufficiency comes from God, not our own abilities."}, {"text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding.", "ref": "Proverbs 3:5", "modern": "In an age of information overload and self-reliance, this proverb cuts to the heart of faith. It does not dismiss intelligence — it subordinates our reasoning to God's wisdom. A daily challenge to surrender control and trust a perspective higher than our own."}, {"text": "The LORD is my shepherd; I shall not want.", "ref": "Psalms 23:1", "modern": "Written by David, a real shepherd who became king. The metaphor is precise: sheep are vulnerable and directionless without a shepherd. This psalm has comforted believers through war, grief, illness, and death for 3,000 years. Its peace is as available today as it was on the hills of Judea."}, {"text": "And we know that all things work together for good to them that love God.", "ref": "Romans 8:28", "modern": "Not a promise that everything will be pleasant, but that God orchestrates even hardship for ultimate good. Modern neuroscience affirms that people who find meaning in suffering cope better. This verse has been offering that framework for centuries."}, {"text": "Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.", "ref": "Joshua 1:9", "modern": "Spoken to Joshua as he was about to lead Israel into an unknown land. God's command to courage was not based on Joshua's strength, but on the promise of God's presence. The same promise holds for every believer stepping into the unknown."}];
+var DEVS = [{"day": "Day 1", "title": "The Foundation of Peace", "verse": "Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.", "ref": "Isaiah 26:3", "tags": ["Peace", "Trust", "Anxiety"], "body": ["Isaiah wrote these words to a nation under threat of Assyrian invasion — real, imminent, terrifying danger. Yet his prescription was counterintuitive: fix your mind on God, not on the threat. The Hebrew for perfect peace is shalom shalom — a doubled word indicating completeness, wholeness, and unshakeable wellbeing.", "Modern neuroscience tells us that anxiety is largely driven by where we direct our mental attention. When we rehearse fears, we amplify them. A mind anchored in God's character and faithfulness produces a peace that survives even genuine crisis.", "This is not denial of difficulty. It is a reorientation of trust that changes how we experience difficulty. The peace on offer is not the absence of storms, but an anchor that holds within them."], "questions": ["Where is your mind most naturally drawn during difficult times — toward the problem or toward God?", "What specific attribute of God can you meditate on today to anchor your thoughts?", "Can you identify a past circumstance where looking back you can see God's faithfulness?"], "prayer": "Lord, my mind so easily fills with worry. I choose today to fix my thoughts on Your faithfulness, Your power, and Your love. Be my peace. Amen."}, {"day": "Day 2", "title": "The Courage to Begin Again", "verse": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.", "ref": "Lamentations 3:22-23", "tags": ["Mercy", "Fresh Start", "Faithfulness"], "body": ["Jeremiah wrote Lamentations sitting in the rubble of Jerusalem after its destruction. He had watched everything collapse — the Temple, the city, the nation. These words of hope were written at the lowest point in Israel's national history. That context makes them extraordinary.", "New every morning is not a greeting card sentiment. It is a theological statement: God's mercies are not rationed. They do not diminish when you have failed repeatedly. They are renewable — as reliable as the sunrise — because they flow from God's unchanging nature, not your performance.", "Whatever yesterday held — failure, regret, disappointment — the sun that rises tomorrow brings a full and undiminished supply of divine compassion. This is the basis of Christian resilience: not our ability to be consistent, but God's faithfulness to us when we are not."], "questions": ["Is there something from your past you have difficulty believing God has forgiven?", "How would your mornings change if you began each one consciously receiving God's new mercies?", "What does great is thy faithfulness mean practically in your current season of life?"], "prayer": "Father, thank You that Your mercies are not exhausted by my failures. As this new day begins, I receive Your compassion afresh. Help me extend that same grace to myself and to others. Amen."}, {"day": "Day 3", "title": "Salt and Light", "verse": "Ye are the salt of the earth... Ye are the light of the world.", "ref": "Matthew 5:13-14", "tags": ["Purpose", "Witness", "Character"], "body": ["In the first century, salt was precious — used for preservation, flavoring, and even as currency. Jesus chose this metaphor deliberately: His followers are meant to preserve what is good in the world, add flavor to what is bland, and prevent the decay of moral and spiritual life in their communities.", "Light is even more straightforward. A lamp exists not for itself but for those around it. Jesus does not say be a spotlight — He says let your light shine. The implication is that the light is already there. The question is whether we are covering it with the bowl of comfort, conformity, or fear.", "In an age of social media performance, it is worth noting what Jesus says the light is: not your personality or platform. It is your good works — the lived-out reality of your faith. Character that others can see and that points them not to you, but to the Father."], "questions": ["In what environments do you find it hardest to let your light shine?", "Is there a situation right now where you are being called to be salt — to preserve what is right?", "What good work can you do today that reflects God's character to someone around you?"], "prayer": "Lord, make me useful. Not for my own glory, but that others might see something in me that makes them curious about You. Help me live so distinctively that my life points beyond itself. Amen."}, {"day": "Day 4", "title": "The Gift of Stillness", "verse": "Be still, and know that I am God.", "ref": "Psalms 46:10", "tags": ["Rest", "Presence", "Worship"], "body": ["Psalm 46 is a psalm of war. Nations are in uproar, kingdoms are falling, the earth is changing. The command to be still is not issued in a peaceful garden — it is issued in the middle of chaos. That changes everything about how we hear it.", "The Hebrew word translated be still (raphah) means to let go, to sink, to release tension. It is the opposite of white-knuckling through difficulty. God is not asking for passive resignation. He is inviting active trust — a deliberate decision to release our grip and allow God to be what He already is: sovereign.", "The knowing in this verse is experiential, not merely intellectual. It is the knowledge that comes from stillness, from pausing the noise long enough to encounter the One who is already present. In our distracted, notification-saturated age, stillness may be the most countercultural spiritual discipline available."], "questions": ["How much of your day is spent in genuine silence? What would change if you created even five minutes of stillness?", "What are you gripping right now that this verse is inviting you to release?", "What aspect of God's character most needs to become real to you today?"], "prayer": "God, I release my grip on what I cannot control. In this moment of stillness, I choose to know You — not just know about You. You are God. That is enough. Amen."}, {"day": "Day 5", "title": "Armor for the Battle", "verse": "Put on the whole armour of God, that ye may be able to stand against the wiles of the devil.", "ref": "Ephesians 6:11", "tags": ["Spiritual Warfare", "Strength", "Identity"], "body": ["Paul wrote Ephesians from a Roman prison, chained to a soldier. He had daily, close-up observation of a Roman soldier's armor — and saw in each piece a profound spiritual parallel. His metaphor was not abstract poetry; it was precision theology shaped by lived experience.", "The wiles of the devil Paul references are methodical strategies. The Greek word methodeia suggests a systematic, patient approach. This is targeted, strategic opposition to the life God has called you to. The armor Paul describes is comprehensive: truth, righteousness, readiness, faith, salvation, the Word, and prayer.", "Critically, Paul says stand — not advance, not conquer by your own strength, but stand. The armor is defensive in character. The battle has already been won at the cross. The Christian life is the outworking of a victory already secured."], "questions": ["Which piece of the armor do you most frequently neglect — truth, righteousness, peace, faith, salvation, or the Word?", "Is there an area of your life where you sense a systematic, persistent attack on your identity or calling?", "What would it mean practically to put on each piece of this armor at the start of your day?"], "prayer": "Lord, I put on Your armor today. I stand not in my own strength but in Yours. Protect my mind, my heart, and my feet. Let me hold the ground You have already won. Amen."}, {"day": "Day 6", "title": "The Weight of Worry", "verse": "Cast all your anxiety on him because he cares for you.", "ref": "1 Peter 5:7", "tags": ["Anxiety", "Prayer", "Trust"], "body": ["The word cast in the Greek (epiripsantes) is the same word used when a fisherman hurls a net. It implies force, deliberateness, and complete release. Peter is not suggesting a gentle offering of concerns to God — he is describing a forceful, decisive act of surrender.", "Peter knew worry intimately. He was the disciple who sank when he took his eyes off Jesus on the water. He denied Christ three times. His instruction on anxiety comes not from a man who never struggled, but from one who learned through failure the cost of misplaced trust.", "Because he cares for you is the theological foundation of this command. We can cast our anxiety on God not because He is powerful enough to handle it — though He is — but because He is personally, intimately invested in our wellbeing. The Greek word for cares (melei) denotes deep concern, not distant management."], "questions": ["What anxiety have you been carrying rather than casting? What makes it difficult to release it fully?", "How does knowing that God cares personally — not just powerfully — change how you approach prayer?", "What would change in your daily life if you practiced a deliberate act of surrender each morning?"], "prayer": "Father, I cast this burden on You. I am not strong enough to carry it without damage. I trust not just in Your power, but in Your care for me specifically. Amen."}];
+var TOPICS = [{"icon": "🕊️", "name": "Faith", "count": "47 verses", "desc": "What it means to trust God completely — from Abraham's call to Jesus' promises to His disciples.", "verses": [{"ref": "Hebrews 11:1", "text": "Now faith is the substance of things hoped for, the evidence of things not seen.", "exp": "The writer of Hebrews defines faith not as blind optimism but as substance — a real, present confidence in future realities. In a culture that demands visible proof, this verse calls us to trust grounded in God's character and track record, not our circumstances."}, {"ref": "Romans 10:17", "text": "So then faith cometh by hearing, and hearing by the word of God.", "exp": "Faith is not manufactured through willpower or positive thinking. It grows through encounter with Scripture. This verse is why consistent Bible reading is not optional devotion — it is the primary mechanism through which faith is built and sustained."}, {"ref": "James 2:17", "text": "Even so faith, if it hath not works, is dead, being alone.", "exp": "James corrects any notion that faith is purely intellectual agreement. Genuine faith produces action — not to earn salvation, but as its natural evidence. A faith that changes nothing about how you live is not Biblical faith; it is mere belief in propositions."}]}, {"icon": "🔮", "name": "Prophecy", "count": "35 studies", "desc": "Over 300 specific Old Testament prophecies fulfilled by Jesus Christ — examined with historical evidence.", "verses": [{"ref": "Isaiah 53:5", "text": "But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.", "exp": "Written 700 years before Christ, Isaiah 53 describes the suffering servant with remarkable precision — rejected, pierced, crushed for others' sins, silent before accusers. The Dead Sea Scrolls confirm this text predates Christ. Scholars calculate the odds of one person fulfilling even eight of these prophecies by chance as 1 in 10 to the 17th power."}, {"ref": "Micah 5:2", "text": "But thou, Bethlehem Ephratah, though thou be little among the thousands of Judah, yet out of thee shall he come forth unto me that is to be ruler in Israel.", "exp": "Written approximately 700 BC, this prophecy specifies not just the region but the exact town of Christ's birth. Of the dozens of cities in Judea, Micah names Bethlehem — and 700 years later, a Roman census requiring Joseph to return to his ancestral home fulfills it precisely."}, {"ref": "Zechariah 11:12", "text": "And I said unto them, If ye think good, give me my price; and if not, forbear. So they weighed for my price thirty pieces of silver.", "exp": "Written around 520 BC, this passage specifies the exact price of Judas's betrayal — 30 pieces of silver — and that it would be thrown into the Temple treasury. Matthew 27 records the fulfillment detail for detail, nearly 500 years later."}]}, {"icon": "⚖️", "name": "Ten Commandments", "count": "10 + modern guide", "desc": "God's moral law given to Moses at Sinai — and how each commandment speaks directly to 21st-century ethics.", "verses": [{"ref": "Exodus 20:3", "text": "Thou shalt have no other gods before me.", "exp": "In an age of distraction and devotion to status, comfort, and screens, this commandment asks: what do you actually organize your life around? The gods of modern culture are subtler than ancient idols but no less demanding. Career, approval, pleasure, and security can each quietly occupy the throne that belongs to God alone."}, {"ref": "Exodus 20:8", "text": "Remember the sabbath day, to keep it holy.", "exp": "The Sabbath principle — one day in seven for rest, worship, and renewal — runs counter to productivity culture. Yet research in occupational health consistently confirms what God designed: sustained productivity requires genuine rest. The Sabbath is not a burden but a gift."}, {"ref": "Exodus 20:12", "text": "Honour thy father and thy mother: that thy days may be long upon the land.", "exp": "The only commandment with an attached promise. In a culture that often sidelines the wisdom of the older generation, this commandment calls for countercultural honor — not blind obedience, but deliberate, active respect. Sociological research confirms strong intergenerational relationships benefit mental health and longevity."}]}, {"icon": "🙏", "name": "Prayer", "count": "42 verses", "desc": "What the Bible teaches about communicating with God — from the Lord's Prayer to praying without ceasing.", "verses": [{"ref": "Matthew 6:9", "text": "Our Father which art in heaven, Hallowed be thy name. Thy kingdom come, Thy will be done in earth, as it is in heaven.", "exp": "The Lord's Prayer is not a magic formula but a template — beginning with worship, moving to surrender, then petition, forgiveness, and protection. It teaches the proper order of prayer: God's glory first, then our needs. Most modern prayer gets this backwards."}, {"ref": "1 Thessalonians 5:17", "text": "Pray without ceasing.", "exp": "Not an impossible command to be in constant verbal prayer, but an invitation into a posture of constant awareness of God's presence — a life lived in ongoing dialogue with the Father. Like a strong marriage where communication is not confined to formal meetings, this speaks of an intimate, continuous relationship."}, {"ref": "Philippians 4:6", "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.", "exp": "The prescription is specific: in everything, with thanksgiving. Gratitude is not an optional add-on — it is the atmosphere in which Biblical petition is made. Research in psychology confirms gratitude-based prayer reduces anxiety more effectively than petition alone."}]}, {"icon": "❤️", "name": "Grace and Forgiveness", "count": "38 verses", "desc": "Understanding the unmerited favor of God and the radical call to extend that same grace to others.", "verses": [{"ref": "Ephesians 2:8-9", "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.", "exp": "Grace is the theological center of Christianity — salvation as a gift that cannot be earned, only received. This distinguishes Biblical Christianity from every other religious system, which predicates divine favor on human performance. No one can boast, and no one is beyond reach."}, {"ref": "Matthew 6:14", "text": "For if ye forgive men their trespasses, your heavenly Father will also forgive you.", "exp": "Jesus makes forgiveness bilateral — the capacity to receive God's forgiveness is connected to our willingness to extend it. Neuroscience confirms that unforgiveness is toxic to the one who holds it, producing measurable physical and psychological harm."}, {"ref": "Romans 5:8", "text": "But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.", "exp": "The timing matters: while we were yet sinners. God's love was not conditional on our improvement or repentance — it was extended to us at our worst. This is the scandal of grace and the foundation of Christian identity: we are loved not because of who we are, but because of who God is."}]}, {"icon": "💡", "name": "Wisdom", "count": "55 verses", "desc": "Practical Biblical wisdom from Proverbs, Ecclesiastes, and James — for work, relationships, money, and decisions.", "verses": [{"ref": "Proverbs 3:5-6", "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.", "exp": "The tension between self-reliance and trust in God is as old as the Fall. Proverbs does not tell us to ignore our minds — it tells us to subordinate them. Total surrender is the condition for divine guidance."}, {"ref": "James 1:5", "text": "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.", "exp": "A direct, unqualified promise: ask for wisdom, receive it. The phrase upbraideth not means God does not lecture or shame you for not already having it. This is an open, unconditional invitation especially relevant in complex decisions and leadership challenges."}, {"ref": "Ecclesiastes 3:1", "text": "To every thing there is a season, and a time to every purpose under the heaven.", "exp": "The Preacher's insight is that life moves in rhythms and wisdom includes recognizing the season you are in. Rest has its time; effort has its time; mourning has its time; celebration has its time. Accepting the current season with grace is itself a form of Biblical wisdom."}]}];
+var PLANS = [{"badge": "30 Days", "title": "The Life of Christ", "desc": "A focused journey through the four Gospels tracing the life, ministry, death, and resurrection of Jesus.", "days": 30, "theme": "New Testament", "readings": [{"r": "Matthew 1-4", "t": "The Birth and Baptism of Jesus"}, {"r": "Matthew 5-7", "t": "The Sermon on the Mount"}, {"r": "Matthew 8-10", "t": "Miracles and the Twelve"}, {"r": "Matthew 11-13", "t": "Parables of the Kingdom"}, {"r": "Matthew 14-17", "t": "Walking on Water; Transfiguration"}, {"r": "Matthew 18-20", "t": "Teachings on Humility"}, {"r": "Matthew 21-23", "t": "Triumphal Entry; Temple Cleansing"}, {"r": "Matthew 24-25", "t": "The Olivet Discourse"}, {"r": "Matthew 26-28", "t": "The Passion and Resurrection"}, {"r": "Mark 1-3", "t": "The Beginning of the Good News"}, {"r": "Mark 4-6", "t": "Parables and Miracles"}, {"r": "Mark 7-10", "t": "Serving and Suffering"}, {"r": "Mark 11-13", "t": "Jerusalem and Prophecy"}, {"r": "Mark 14-16", "t": "The Cross and the Empty Tomb"}, {"r": "Luke 1-3", "t": "Birth Narratives and Preparation"}, {"r": "Luke 4-6", "t": "The Early Ministry"}, {"r": "Luke 7-9", "t": "Faith and Discipleship"}, {"r": "Luke 10-12", "t": "The Good Samaritan and More"}, {"r": "Luke 13-15", "t": "The Lost Sheep, Coin, and Son"}, {"r": "Luke 16-18", "t": "Wealth, Persistence, and Humility"}, {"r": "Luke 19-21", "t": "Jerusalem and the Last Days"}, {"r": "Luke 22-24", "t": "The Last Supper, Cross, and Resurrection"}, {"r": "John 1-3", "t": "In the Beginning Was the Word"}, {"r": "John 4-6", "t": "Living Water; Bread of Life"}, {"r": "John 7-9", "t": "Light of the World"}, {"r": "John 10-12", "t": "The Good Shepherd; Lazarus"}, {"r": "John 13-15", "t": "The Upper Room and the Vine"}, {"r": "John 16-18", "t": "The Spirit and the High Priestly Prayer"}, {"r": "John 19-21", "t": "The Cross, Tomb, and Restoration"}, {"r": "Review", "t": "Reflect on what God spoke to you"}]}, {"badge": "60 Days", "title": "Wisdom and Worship", "desc": "A deep dive into the poetic books — Job, Psalms, Proverbs, Ecclesiastes, and Song of Solomon.", "days": 60, "theme": "Poetic Books", "readings": [{"r": "Job 1-5", "t": "The Trial Begins"}, {"r": "Job 6-10", "t": "Job's First Response"}, {"r": "Job 11-16", "t": "The Friends' Arguments"}, {"r": "Job 17-21", "t": "Darkness and Hope"}, {"r": "Job 22-28", "t": "The Search for Wisdom"}, {"r": "Job 29-33", "t": "Job's Final Defense"}, {"r": "Job 34-38", "t": "Elihu Speaks"}, {"r": "Job 39-42", "t": "God Speaks from the Whirlwind"}, {"r": "Psalms 1-10", "t": "Foundation and Lament"}, {"r": "Psalms 11-20", "t": "Trust and Protection"}, {"r": "Psalms 21-30", "t": "The Shepherd Psalm"}, {"r": "Psalms 31-40", "t": "Refuge and Restoration"}, {"r": "Psalms 41-50", "t": "Thirst for God"}, {"r": "Psalms 51-60", "t": "The Penitential Psalms"}, {"r": "Psalms 61-70", "t": "Songs of Deliverance"}, {"r": "Psalms 71-80", "t": "History and Plea"}, {"r": "Psalms 81-90", "t": "The Eternity of God"}, {"r": "Psalms 91-100", "t": "Dwelling in the Shadow"}, {"r": "Psalms 101-110", "t": "The Lord at Your Right Hand"}, {"r": "Psalms 111-120", "t": "Praise and the Word"}, {"r": "Psalms 121-130", "t": "Songs of Ascent"}, {"r": "Psalms 131-140", "t": "Trust and Deliverance"}, {"r": "Psalms 141-150", "t": "The Grand Finale of Praise"}, {"r": "Proverbs 1-5", "t": "The Fear of the Lord"}, {"r": "Proverbs 6-9", "t": "Wisdom's Call"}, {"r": "Proverbs 10-14", "t": "Contrasts of Life"}, {"r": "Proverbs 15-19", "t": "Words and their Power"}, {"r": "Proverbs 20-23", "t": "Leadership and Integrity"}, {"r": "Proverbs 24-27", "t": "Practical Wisdom"}, {"r": "Proverbs 28-31", "t": "The Noble Woman"}, {"r": "Ecclesiastes 1-5", "t": "Vanity Under the Sun"}, {"r": "Ecclesiastes 6-9", "t": "The Puzzles of Life"}, {"r": "Ecclesiastes 10-12", "t": "Fear God and Keep His Commands"}, {"r": "Song of Solomon 1-4", "t": "The Beauty of Love"}, {"r": "Song of Solomon 5-8", "t": "Love Strong as Death"}, {"r": "Review", "t": "Reflect on wisdom received"}]}, {"badge": "90 Days", "title": "The Whole Story", "desc": "An ambitious journey through the entire Bible — from Genesis to Revelation.", "days": 90, "theme": "Full Bible", "readings": [{"r": "Genesis 1-5", "t": "Creation and the Fall"}, {"r": "Genesis 6-11", "t": "The Flood and Babel"}, {"r": "Genesis 12-20", "t": "Abraham's Call and Faith"}, {"r": "Genesis 21-30", "t": "Isaac and Jacob"}, {"r": "Genesis 31-41", "t": "Joseph's Rise"}, {"r": "Genesis 42-50", "t": "Reunion and God's Providence"}, {"r": "Exodus 1-10", "t": "Moses and the Plagues"}, {"r": "Exodus 11-20", "t": "The Exodus and the Law"}, {"r": "Exodus 21-31", "t": "The Covenant Code"}, {"r": "Leviticus 1-10", "t": "The Sacrificial System"}, {"r": "Numbers 1-14", "t": "Wilderness Wanderings Begin"}, {"r": "Deuteronomy 1-11", "t": "Moses' Final Sermon"}, {"r": "Joshua 1-12", "t": "Crossing and Conquest"}, {"r": "Judges 1-12", "t": "The Cycle of Failure"}, {"r": "Ruth 1-4", "t": "Loyalty and Redemption"}, {"r": "1 Samuel 1-15", "t": "Samuel and Saul"}, {"r": "1 Samuel 16-31", "t": "The Rise of David"}, {"r": "2 Samuel 1-12", "t": "David's Kingdom"}, {"r": "1 Kings 1-11", "t": "Solomon's Glory and Fall"}, {"r": "1 Kings 12-22", "t": "The Divided Kingdom"}, {"r": "2 Kings 1-17", "t": "Prophets and Decline"}, {"r": "Ezra 1-10", "t": "The Return from Exile"}, {"r": "Nehemiah 1-13", "t": "Rebuilding the Walls"}, {"r": "Job 1-21", "t": "Suffering and Questions"}, {"r": "Psalms 1-41", "t": "Songs of the Heart"}, {"r": "Psalms 42-89", "t": "Lament and Praise"}, {"r": "Psalms 90-150", "t": "The Grand Finale"}, {"r": "Proverbs 1-15", "t": "The Way of Wisdom"}, {"r": "Proverbs 16-31", "t": "Applied Wisdom"}, {"r": "Isaiah 1-20", "t": "Judgment and Promise"}, {"r": "Isaiah 40-55", "t": "The Suffering Servant"}, {"r": "Jeremiah 1-20", "t": "The Weeping Prophet"}, {"r": "Daniel 1-12", "t": "Faith Under Fire"}, {"r": "Matthew 1-14", "t": "The King Arrives"}, {"r": "Matthew 15-28", "t": "The Cross and Resurrection"}, {"r": "Luke 1-12", "t": "Good News for All"}, {"r": "Luke 13-24", "t": "The Way to Jerusalem"}, {"r": "John 1-11", "t": "I Am the Son of God"}, {"r": "John 12-21", "t": "The Upper Room and After"}, {"r": "Acts 1-14", "t": "The Early Church"}, {"r": "Acts 15-28", "t": "Paul's Missionary Journeys"}, {"r": "Romans 1-8", "t": "The Gospel Explained"}, {"r": "Romans 9-16", "t": "The Gospel Applied"}, {"r": "Ephesians 1-6", "t": "The Church and the Armor"}, {"r": "Philippians 1-4", "t": "Joy in All Circumstances"}, {"r": "Hebrews 1-13", "t": "Christ Our High Priest"}, {"r": "James 1-5", "t": "Faith That Works"}, {"r": "1 Peter 1-5", "t": "Hope in Suffering"}, {"r": "Revelation 1-11", "t": "Letters and Seals"}, {"r": "Revelation 12-22", "t": "The End and the Beginning"}]}];
+var BOOKS_DATA = {"Genesis": {"testament": "OT", "chapters": 50, "author": "Moses", "date": "c. 1440 BC", "overview": "The foundational book of all Scripture, Genesis answers humanity's deepest questions: Who are we? Where did we come from? Why is there evil and suffering? It opens with creation, narrates the fall of mankind, and follows God's unfolding plan of redemption through the patriarchs — Abraham, Isaac, Jacob, and Joseph.", "theme": "Origins, covenant, and God's redemptive plan", "keyVerses": [{"ref": "Genesis 1:1", "text": "In the beginning God created the heaven and the earth."}, {"ref": "Genesis 3:15", "text": "It shall bruise thy head, and thou shalt bruise his heel."}, {"ref": "Genesis 12:1-2", "text": "Get thee out of thy country...and I will make of thee a great nation."}], "modern": ["Creation vs Evolution: Scholars like John Lennox (Oxford) argue the text is compatible with an old universe while asserting God as the uncaused cause. Answers in Genesis holds to a literal 6-day creation with strong scientific support for a young earth.", "The Fall and Human Nature: Genesis 3's account of the Fall is the most psychologically accurate diagnosis of human brokenness in all of literature. Pride, blame-shifting, shame, and hiding from God are patterns every therapist recognizes in their practice.", "Joseph and Resilience: Joseph's journey from the pit to the palace (Genesis 37-50) is a masterclass in resilience, forgiveness, and seeing God's hand in adversity — themes directly applicable to workplace persecution, family betrayal, and long seasons of waiting."]}, "Psalms": {"testament": "OT", "chapters": 150, "author": "David (primarily), Asaph, Sons of Korah, Moses, Solomon", "date": "c. 1400-400 BC", "overview": "The great hymn book of Scripture — 150 poems and songs covering the full range of human emotion before God. Psalms is the most frequently quoted Old Testament book in the New Testament and has been the devotional core of both Jewish and Christian worship for millennia.", "theme": "Honest worship, lament, trust, and praise", "keyVerses": [{"ref": "Psalms 23:1", "text": "The LORD is my shepherd; I shall not want."}, {"ref": "Psalms 46:10", "text": "Be still, and know that I am God."}, {"ref": "Psalms 119:105", "text": "Thy word is a lamp unto my feet, and a light unto my path."}], "modern": ["Emotional Honesty: Psalms gives permission to bring every emotion — anger, despair, confusion, even complaint — to God. This contrasts with toxic positivity of modern culture and aligns with what therapists call emotional validation.", "Mental Health: Several Psalms (22, 42, 88) accurately describe depression, anxiety, and spiritual desolation. They normalize struggle while consistently pointing to God as the ultimate anchor.", "Worship: The Psalms are the oldest surviving worship songs in human history — still being sung 3,000 years later. Their blend of honesty and theology models authentic worship."]}, "John": {"testament": "NT", "chapters": 21, "author": "John the Apostle", "date": "c. AD 85-90", "overview": "Unlike the synoptic Gospels, John is deeply theological — structured around seven I Am statements and seven miraculous signs, all pointing to one conclusion: that ye might believe that Jesus is the Christ. John writes for belief.", "theme": "The divinity of Christ and eternal life through faith", "keyVerses": [{"ref": "John 1:1", "text": "In the beginning was the Word, and the Word was with God, and the Word was God."}, {"ref": "John 3:16", "text": "For God so loved the world, that he gave his only begotten Son."}, {"ref": "John 14:6", "text": "I am the way, the truth, and the life: no man cometh unto the Father, but by me."}], "modern": ["Identity: John's Gospel repeatedly asks who Jesus is — a question as urgent today as in the first century. The seven I Am statements address human hunger, blindness, lostness, vulnerability, mortality, confusion, and disconnection.", "Belief: John uses the word believe 98 times — more than any other New Testament book. In an age of skepticism, John's Gospel engages the intellect while calling for personal commitment.", "The Holy Spirit: John 14-16 contains the most detailed teaching on the Holy Spirit in Scripture — directly relevant to every believer navigating life's complexities."]}};
+var PRAYER_CATS = [{"icon": "💔", "name": "Grief and Loss", "desc": "Comfort in times of sorrow, loss, and mourning", "prompt": "I am grieving and need comfort. Please pray for healing of my broken heart and peace that surpasses understanding."}, {"icon": "😰", "name": "Anxiety and Fear", "desc": "Peace and courage for worried or fearful hearts", "prompt": "I am struggling with anxiety and fear. Please pray for God's peace to guard my heart and mind."}, {"icon": "🏥", "name": "Healing", "desc": "Physical, emotional, and spiritual restoration", "prompt": "I am seeking healing. Please pray for God's healing touch on my body and restoration of my health."}, {"icon": "👨‍👩‍👧", "name": "Family and Relationships", "desc": "Prayers for marriages, children, and loved ones", "prompt": "I need prayer for my family and an important relationship. Please pray for reconciliation, love, and God's blessing on my loved ones."}, {"icon": "💼", "name": "Work and Provision", "desc": "Guidance, provision, and purpose in your calling", "prompt": "I am facing challenges in my work and need God's provision and direction. Please pray for wisdom, open doors, and financial blessing."}, {"icon": "🧭", "name": "Direction and Purpose", "desc": "Wisdom for life decisions and calling", "prompt": "I am at a crossroads and need direction. Please pray for wisdom and clarity about the path God has for me."}, {"icon": "🙏", "name": "Salvation", "desc": "Prayer for yourself or a loved one to know Christ", "prompt": "I want to pray for someone I love who does not yet know Jesus. Please pray for their heart to be opened to the Gospel."}, {"icon": "⚔️", "name": "Spiritual Warfare", "desc": "Protection and strength against spiritual opposition", "prompt": "I feel under spiritual attack and need God's protection and strength. Please pray the armor of God over my life."}, {"icon": "🌱", "name": "Faith and Growth", "desc": "Deepening your walk and trust in God", "prompt": "I want to grow deeper in my faith. Please pray for a stronger relationship with God and hunger for His Word."}, {"icon": "❤️‍🩹", "name": "Forgiveness", "desc": "Giving and receiving forgiveness and healing", "prompt": "I am struggling to forgive someone who has hurt me. Please pray for God's grace to forgive and to heal this wound."}, {"icon": "🎓", "name": "Students and Learning", "desc": "Wisdom and focus for those in school", "prompt": "I am a student facing pressure and need God's wisdom and focus. Please pray for clarity of mind and success in my studies."}, {"icon": "🌍", "name": "Our Nation and World", "desc": "Intercession for leaders, nations, and the lost", "prompt": "I want to intercede for our nation and world. Please pray for our leaders, for revival, and for the peace of God to reign."}];
+var OT = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi"];
+var NT = ["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"];
+var FEATURED = ["Genesis", "Psalms", "Proverbs", "Isaiah", "Matthew", "John", "Romans", "Revelation", "Daniel", "Ephesians"];
+var DEFAULT_BOOK = {"testament":"OT","chapters":0,"author":"Various","date":"Various","overview":"A comprehensive study guide for this book is coming soon. Ask our AI chatbot for an in-depth exploration of this book's themes, key verses, and modern applications.","theme":"To be added","keyVerses":[],"modern":["Study guide coming soon. Click Ask the Chatbot below for immediate deep analysis."]};
+
+var votdIdx = 0;
+var completedDays = {};
+var savedPrayers = [];
+var convHistory = [];
+var chatLoading = false;
+var prayerHistory = [];
+var prayerLoading = false;
+var currentBook = null;
+
+try { completedDays = JSON.parse(localStorage.getItem("tlw_completed") || "{}"); } catch(e) {}
+try { savedPrayers = JSON.parse(localStorage.getItem("tlw_prayers") || "[]"); } catch(e) {}
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(function(p){ p.classList.remove("active"); });
+  var el = document.getElementById("page-" + id);
+  if (el) { el.classList.add("active"); window.scrollTo(0,0); }
+  document.querySelectorAll(".nav-links a").forEach(function(a){ a.classList.toggle("active", a.dataset.page === id); });
+  if (id === "devotional") renderDevGrid();
+  if (id === "topics") renderTopics();
+  if (id === "plans") renderPlans();
+  if (id === "books") renderBooks(OT);
+  if (id === "prayer") initPrayer();
+  if (id === "chat") setTimeout(function(){ var i=document.getElementById("chatInput"); if(i) i.focus(); }, 300);
+}
+
+function toggleMenu() { document.getElementById("mobileNav").classList.toggle("open"); }
+function closeMenu() { document.getElementById("mobileNav").classList.remove("open"); }
+
+function openSearch() { document.getElementById("searchOverlay").classList.add("open"); setTimeout(function(){ document.getElementById("searchInput").focus(); }, 200); }
+function closeSearch() { document.getElementById("searchOverlay").classList.remove("open"); }
+
+function doSearch(q) {
+  var res = document.getElementById("searchResults");
+  if (!q.trim()) { res.innerHTML = "<div style='color:var(--stone);text-align:center;padding:2rem;font-size:0.9rem'>Begin typing to search...</div>"; return; }
+  var data = [];
+  VOTD.forEach(function(v){ data.push({title:v.ref, body:v.text.substring(0,80), page:"chat", arg:"Explain " + v.ref}); });
+  TOPICS.forEach(function(t){ data.push({title:t.name, body:t.desc, page:"topics"}); });
+  OT.concat(NT).forEach(function(b){ data.push({title:b, body:"Book of the Bible", page:"bookstudy", arg:b}); });
+  var hits = data.filter(function(d){ return d.title.toLowerCase().indexOf(q.toLowerCase()) > -1 || d.body.toLowerCase().indexOf(q.toLowerCase()) > -1; }).slice(0,8);
+  if (!hits.length) { res.innerHTML = "<div style='color:var(--stone);text-align:center;padding:2rem;font-size:0.9rem'>No results found. Try the chatbot for deeper answers.</div>"; return; }
+  res.innerHTML = hits.map(function(r){
+    var pg = r.page; var ag = (r.arg||r.title);
+    return "<div class='search-result' data-page='" + pg + "' data-arg='" + ag.replace(/'/g,"&#39;") + "' onclick='handleSearchClick(this.dataset.page,this.dataset.arg)'><div class='search-result-ref'>" + r.title + "</div><div class='search-result-body'>" + r.body + "</div></div>";
+  }).join("");
+}
+function handleSearchClick(page, arg) {
+  closeSearch();
+  if (page === "chat") { showPage("chat"); setTimeout(function(){ document.getElementById("chatInput").value = arg; }, 300); }
+  else if (page === "bookstudy") { openBookPage(arg); }
+  else { showPage(page); }
+}
+document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeSearch(); });
+
+function renderVOTD() {
+  var v = VOTD[votdIdx];
+  document.getElementById("votdText").textContent = v.text;
+  document.getElementById("votdRef").textContent = v.ref + " — King James Bible";
+  document.getElementById("votdModern").textContent = v.modern;
+}
+function cycleVOTD(d) { votdIdx = (votdIdx + d + VOTD.length) % VOTD.length; renderVOTD(); }
+
+function esc(t) { return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+function renderDevGrid() {
+  var grid = document.getElementById("devGrid");
+  var reader = document.getElementById("devReader");
+  reader.style.display = "none"; reader.innerHTML = ""; grid.style.display = "grid";
+  grid.innerHTML = DEVS.map(function(d,i){
+    return "<div class='devotional-card' onclick='openDevReader(" + i + ")'>" +
+      "<div class='dev-day'>" + esc(d.day) + "</div>" +
+      "<div class='dev-title'>" + esc(d.title) + "</div>" +
+      "<div class='dev-verse'>" + esc(d.verse) + "</div>" +
+      "<div class='dev-ref'>" + esc(d.ref) + "</div>" +
+      "<div class='dev-tags'>" + d.tags.map(function(t){ return "<span class='dev-tag'>" + esc(t) + "</span>"; }).join("") + "</div>" +
+      "</div>";
+  }).join("");
+}
+function openDevReader(i) {
+  var d = DEVS[i];
+  var grid = document.getElementById("devGrid");
+  var reader = document.getElementById("devReader");
+  showPage("devotional");
+  grid.style.display = "none"; reader.style.display = "block";
+  reader.innerHTML = "<button class='reader-back' onclick='renderDevGrid()'>&larr; Back to Devotionals</button>" +
+    "<h2 style='font-family:Cinzel,serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--white);margin-bottom:0.5rem'>" + esc(d.title) + "</h2>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-bottom:2rem'>" + esc(d.day) + " &middot; " + d.tags.join(" &middot; ") + "</div>" +
+    "<div style='background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.8rem 2rem;margin-bottom:2rem'>" +
+    "<div style='font-size:1.2rem;font-style:italic;color:var(--parchment);line-height:1.8;margin-bottom:0.6rem'>" + esc(d.verse) + "</div>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.75rem;color:var(--gold)'>" + esc(d.ref) + " &mdash; King James Bible</div></div>" +
+    "<div style='font-size:1.05rem;color:var(--stone-light);line-height:1.9'>" + d.body.map(function(p){ return "<p style='margin-bottom:1.2rem'>" + esc(p) + "</p>"; }).join("") + "</div>" +
+    "<div style='border-top:1px solid rgba(201,168,76,0.2);margin-top:2rem;padding-top:2rem'>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem'>Reflection Questions</div>" +
+    d.questions.map(function(q){ return "<div style='font-size:0.95rem;color:var(--parchment-dark);line-height:1.7;padding:0.8rem 0;border-bottom:1px solid rgba(201,168,76,0.08)'><span style='color:var(--gold-dark)'>&#10022; </span>" + esc(q) + "</div>"; }).join("") +
+    "<div style='background:rgba(201,168,76,0.04);border-left:3px solid var(--gold-dark);padding:1.2rem 1.5rem;margin-top:1.5rem;font-size:0.95rem;font-style:italic;color:var(--stone-light);line-height:1.75'>" + esc(d.prayer) + "</div></div>" +
+    "<div style='display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap'>" +
+    "<button class='btn-ghost' data-ref='" + esc(d.ref) + "' onclick='var r=this.getAttribute(\"data-ref\");showPage(\"chat\");setTimeout(function(){document.getElementById(\"chatInput\").value=\"Tell me more about \"+r;},300)'>Ask About This Verse</button>" +
+    (i < DEVS.length-1 ? "<button class='btn-ghost' onclick='openDevReader(" + (i+1) + ")'>Next Devotional &rarr;</button>" : "") +
+    "</div>";
+  window.scrollTo(0,0);
+}
+
+function renderTopics() {
+  var grid = document.getElementById("topicsGrid");
+  var reader = document.getElementById("topicReader");
+  reader.style.display = "none"; reader.innerHTML = ""; grid.style.display = "grid";
+  grid.innerHTML = TOPICS.map(function(t,i){
+    return "<div class='topic-card' onclick='openTopicReader(" + i + ")'>" +
+      "<div class='topic-icon-lg'>" + t.icon + "</div>" +
+      "<div class='topic-name-lg'>" + esc(t.name) + "</div>" +
+      "<div class='topic-count'>" + esc(t.count) + "</div>" +
+      "<div class='topic-desc-lg'>" + esc(t.desc) + "</div></div>";
+  }).join("");
+}
+function openTopicReader(i) {
+  var t = TOPICS[i];
+  var grid = document.getElementById("topicsGrid");
+  var reader = document.getElementById("topicReader");
+  showPage("topics");
+  grid.style.display = "none"; reader.style.display = "block";
+  reader.innerHTML = "<button class='reader-back' onclick='renderTopics()'>&larr; Back to Topics</button>" +
+    "<div style='text-align:center;margin-bottom:2rem'><div style='font-size:3rem;margin-bottom:0.8rem'>" + t.icon + "</div>" +
+    "<h2 style='font-family:Cinzel,serif;font-size:2rem;color:var(--white);margin-bottom:0.4rem'>" + esc(t.name) + "</h2>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.72rem;color:var(--gold);letter-spacing:0.15em'>" + esc(t.count) + "</div>" +
+    "<div class='gold-line'></div><p style='font-size:1rem;color:var(--stone-light);line-height:1.7;max-width:600px;margin:0 auto'>" + esc(t.desc) + "</p></div>" +
+    "<div style='display:flex;flex-direction:column;gap:1rem'>" +
+    t.verses.map(function(v){
+      return "<div style='border:1px solid rgba(201,168,76,0.15);padding:1.5rem;transition:all 0.3s'>" +
+        "<div style='font-family:Cinzel,serif;font-size:0.75rem;color:var(--gold);margin-bottom:0.6rem'>" + esc(v.ref) + "</div>" +
+        "<div style='font-size:1rem;font-style:italic;color:var(--parchment);line-height:1.7;margin-bottom:0.8rem'>" + esc(v.text) + "</div>" +
+        "<div style='font-size:0.9rem;color:var(--stone-light);line-height:1.65'>" + esc(v.exp) + "</div></div>";
+    }).join("") + "</div>" +
+    "<button class='btn-ghost' data-name='" + esc(t.name) + "' onclick='var n=this.getAttribute(\"data-name\");showPage(\"chat\");setTimeout(function(){document.getElementById(\"chatInput\").value=\"What does the Bible say about \"+n+\"?\";},300)'>Deep Dive with AI</button></div>";
+  window.scrollTo(0,0);
+}
+
+function renderPlans() {
+  var grid = document.getElementById("plansGrid");
+  var active = document.getElementById("activePlan");
+  active.style.display = "none"; active.innerHTML = ""; grid.style.display = "grid";
+  grid.innerHTML = PLANS.map(function(p,i){
+    var done = Object.keys(completedDays).filter(function(k){ return k.indexOf("plan_"+i+"_") === 0; }).length;
+    var pct = Math.round((done/p.days)*100);
+    return "<div class='plan-card'>" +
+      "<div class='plan-badge'>" + esc(p.badge) + "</div>" +
+      "<div class='plan-title'>" + esc(p.title) + "</div>" +
+      "<div class='plan-desc'>" + esc(p.desc) + "</div>" +
+      "<div class='plan-stats'><div><span class='plan-stat-num'>" + p.days + "</span><span class='plan-stat-label'>Days</span></div><div><span class='plan-stat-num'>" + done + "</span><span class='plan-stat-label'>Done</span></div><div><span class='plan-stat-num'>" + pct + "%</span><span class='plan-stat-label'>Progress</span></div></div>" +
+      "<div class='plan-progress'><div class='plan-progress-fill' style='width:" + pct + "%'></div></div>" +
+      "<button class='btn-primary' onclick='openPlan(" + i + ")' style='width:100%'>" + (done > 0 ? "Continue Plan" : "Start Plan") + "</button></div>";
+  }).join("");
+}
+function openPlan(i) {
+  var p = PLANS[i];
+  var grid = document.getElementById("plansGrid");
+  var active = document.getElementById("activePlan");
+  grid.style.display = "none"; active.style.display = "block";
+  active.innerHTML = "<button class='reader-back' onclick='renderPlans()'>&larr; Back to Plans</button>" +
+    "<h2 style='font-family:Cinzel,serif;font-size:1.8rem;color:var(--white);margin-bottom:0.4rem'>" + esc(p.title) + "</h2>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem'>" + esc(p.badge) + " &middot; " + esc(p.theme) + "</div>" +
+    "<div style='display:flex;flex-direction:column;gap:0.6rem'>" +
+    p.readings.map(function(r,j){
+      var key = "plan_"+i+"_"+j;
+      var done = completedDays[key];
+      return "<div class='plan-day-card" + (done?" completed":"") + "' data-key='" + key + "' onclick='toggleDay(this.dataset.key,this)'>" +
+        "<div class='plan-day-num'>" + (j+1) + "</div>" +
+        "<div><div class='plan-day-reading'>" + esc(r.r) + "</div><div class='plan-day-theme'>" + esc(r.t) + "</div></div>" +
+        "<div class='plan-day-check'>" + (done?"&#10003;":"") + "</div></div>";
+    }).join("") + "</div>";
+  window.scrollTo(0,0);
+}
+function toggleDay(key, el) {
+  if (completedDays[key]) { delete completedDays[key]; } else { completedDays[key] = true; }
+  try { localStorage.setItem("tlw_completed", JSON.stringify(completedDays)); } catch(e) {}
+  el.classList.toggle("completed");
+  el.querySelector(".plan-day-check").innerHTML = completedDays[key] ? "&#10003;" : "";
+}
+
+function renderBooks(books) {
+  document.getElementById("booksGrid").innerHTML = books.map(function(b){
+    return "<button class='book-chip" + (FEATURED.indexOf(b) > -1 ? " featured" : "") + "' data-book='" + b + "' onclick='openBookPage(this.dataset.book)'>" + b + "</button>";
+  }).join("");
+}
+function showTestament(which, btn) {
+  document.querySelectorAll(".tab-btn").forEach(function(b){ b.classList.remove("active"); });
+  btn.classList.add("active");
+  renderBooks(which === "old" ? OT : NT);
+}
+function openBookPage(name) {
+  currentBook = name;
+  var data = BOOKS_DATA[name] || DEFAULT_BOOK;
+  document.getElementById("bookPageHero").innerHTML =
+    "<div class='section-label' style='justify-content:center'>Book Study</div>" +
+    "<div class='book-page-title'>" + esc(name) + "</div>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.8rem;letter-spacing:0.2em;color:var(--stone-light);text-transform:uppercase;margin-bottom:1.5rem'>" +
+    (data.testament==="OT"?"Old Testament":"New Testament") + " &middot; " + data.chapters + " Chapters</div>" +
+    "<div class='book-meta'>" +
+    "<div class='book-meta-item'><div class='book-meta-label'>Author</div><div class='book-meta-val'>" + esc(data.author) + "</div></div>" +
+    "<div class='book-meta-item'><div class='book-meta-label'>Date Written</div><div class='book-meta-val'>" + esc(data.date) + "</div></div>" +
+    "<div class='book-meta-item'><div class='book-meta-label'>Theme</div><div class='book-meta-val'>" + esc(data.theme) + "</div></div></div>" +
+    "<button class='btn-ghost' onclick='showPage(&quot;books&quot;)' style='margin-top:0.5rem'>&larr; All Books</button>";
+  showBookTab("overview", null);
+  showPage("bookstudy");
+}
+function showBookTab(tab, btn) {
+  document.querySelectorAll(".book-tab").forEach(function(b){ b.classList.remove("active"); });
+  if (btn) btn.classList.add("active");
+  else { var tabs = document.querySelectorAll(".book-tab"); if(tabs[0]) tabs[0].classList.add("active"); }
+  var data = BOOKS_DATA[currentBook] || DEFAULT_BOOK;
+  var el = document.getElementById("bookStudyContent");
+  if (tab === "overview") {
+    el.innerHTML = "<div style='display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem'>" +
+      "<div class='book-info-card'><div class='book-info-title'>Overview</div><div class='book-info-body'>" + esc(data.overview) + "</div></div>" +
+      "<div class='book-info-card'><div class='book-info-title'>Central Theme</div><div class='book-info-body' style='margin-bottom:1.5rem'>" + esc(data.theme) + "</div>" +
+      "<div class='book-info-title'>Ask the AI</div><div class='book-info-body' style='margin-bottom:1rem'>Have deeper questions about " + esc(currentBook) + "?</div>" +
+    "<button class='btn-ghost' onclick='var b=currentBook;showPage(\"chat\");setTimeout(function(){document.getElementById(\"chatInput\").value=\"Give me a comprehensive study of the Book of \"+b;},300)'>Ask About " + esc(currentBook) + "</button></div></div>";
+  } else if (tab === "keyverses") {
+    el.innerHTML = "<div style='margin-top:2rem'>" + (data.keyVerses.length ? data.keyVerses.map(function(v){
+      return "<div class='key-verse-block'><div class='key-verse-text'>" + esc(v.text) + "</div><div class='key-verse-ref'>" + esc(v.ref) + " &mdash; King James Bible</div></div>";
+    }).join("") : "<p style='color:var(--stone-light);font-size:1rem;line-height:1.7'>Key verse study for this book coming soon. Ask our AI chatbot for key verses and their meanings.</p>") + "</div>";
+  } else if (tab === "modern") {
+    el.innerHTML = "<div style='margin-top:2rem'>" + data.modern.map(function(m){
+      return "<div style='border:1px solid rgba(201,168,76,0.15);padding:1.5rem;margin-bottom:1rem;background:rgba(201,168,76,0.02)'><div style='font-size:0.95rem;color:var(--stone-light);line-height:1.7'>" + esc(m) + "</div></div>";
+    }).join("") + "</div>";
+  } else if (tab === "chapters") {
+    var count = typeof data.chapters === "number" && data.chapters > 0 ? data.chapters : 30;
+    var chips = "";
+    for (var c=1; c<=count; c++) {
+      chips += "<button class='chapter-chip' data-ch='" + c + "' onclick='var b=currentBook,ch=this.dataset.ch;showPage(\"chat\");setTimeout(function(){document.getElementById(\"chatInput\").value=\"Explain \"+b+\" chapter \"+ch;},300)'>Ch. " + c + "</button>";
+    }
+    el.innerHTML = "<div style='margin-top:2rem'><div style='font-family:Cinzel,serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-bottom:1rem'>Select a chapter to ask the AI about it:</div><div class='chapter-grid'>" + chips + "</div></div>";
+  }
+}
+
+var CHAT_SYSTEM = "You are The Living Word Assistant, a compassionate and scholarly Biblical guide for a website called The Living Word focused on the King James Bible. Answer questions about KJV Scripture with accuracy, depth, and reverence. Provide historical, cultural, and archaeological context. Bridge ancient Biblical wisdom to modern-day life situations. Always quote from the King James Bible specifically (1611 KJV). Cite reputable sources: Matthew Henry's Commentary, Easton's Bible Dictionary, Blue Letter Bible, Answers in Genesis, archaeological scholarship, Josephus. Be warm, approachable, and faith-affirming. Format responses with: 1) the relevant KJV Scripture verse, 2) historical/contextual explanation (2-3 paragraphs), 3) modern application, 4) brief source note. Keep responses thorough but readable (200-350 words). Be encouraging, warm, and faithful.";
+
+var PRAYER_SYSTEM = "You are a compassionate, Spirit-filled prayer guide for The Living Word Biblical platform. Your role is to write beautiful, heartfelt, personalized prayers for people based on what they share with you. When someone describes their need: 1) Write a warm, genuine, Scripture-grounded prayer specifically tailored to their situation. 2) Address God directly (Heavenly Father, Lord, Gracious God, etc.). 3) Weave in relevant KJV Scripture naturally within the prayer. 4) Cover thanksgiving, the specific need, trust in God's sovereignty, and a closing of faith. 5) After the prayer write Scripture for this moment: followed by 1-2 relevant KJV verses. Keep the prayer 120-220 words. Never be generic — reference the specific details they shared. Begin prayers with a direct address to God. End with Amen.";
+
+async function callAPI(system, messages) {
+  var r = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({model:"claude-sonnet-4-20250514", max_tokens:1000, system:system, messages:messages})
+  });
+  var d = await r.json();
+  return (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : "Something went wrong. Please try again.";
+}
+
+function addMsg(containerId, role, html, isHTML) {
+  var msgs = document.getElementById(containerId);
+  var div = document.createElement("div");
+  div.className = "msg " + role;
+  var avClass = role === "bot" ? "bot" : "user";
+  var avChar = role === "bot" ? "&#10013;" : "&#128100;";
+  div.innerHTML = "<div class='msg-avatar " + avClass + "'>" + avChar + "</div><div><div class='msg-bubble'>" + (isHTML ? html : esc(html).split("\n").join("<br>")) + "</div></div>";
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping(id, label) {
+  var msgs = document.getElementById(id);
+  var div = document.createElement("div");
+  div.className = "msg bot"; div.id = id + "Typing";
+  div.innerHTML = "<div class='msg-avatar bot'>&#10013;</div><div><div class='msg-bubble'><div class='typing-indicator'><span></span><span></span><span></span></div><span style='font-size:0.78rem;color:var(--stone)'>" + (label||"Searching Scripture...") + "</span></div></div>";
+  msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping(id) { var el = document.getElementById(id + "Typing"); if (el) el.remove(); }
+
+function fmtChat(text) {
+  return text.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>").replace(/\*(.*?)\*/g,"<em>$1</em>").split("\n").join("<br>");
+}
+
+async function sendMessage() {
+  if (chatLoading) return;
+  var input = document.getElementById("chatInput");
+  var text = input.value.trim(); if (!text) return;
+  chatLoading = true;
+  document.getElementById("sendBtn").style.opacity = "0.5";
+  input.value = ""; input.style.height = "auto";
+  addMsg("chatMessages", "user", text, false);
+  convHistory.push({role:"user", content:text});
+  showTyping("chatMessages", "Searching Scripture and sources...");
+  try {
+    var reply = await callAPI(CHAT_SYSTEM, convHistory.slice(-12));
+    removeTyping("chatMessages");
+    addMsg("chatMessages", "bot", fmtChat(reply) + "<div class='msg-source'>KJV Scripture &middot; Matthew Henry &middot; Easton's Dictionary &middot; Blue Letter Bible &middot; Answers in Genesis</div>", true);
+    convHistory.push({role:"assistant", content:reply});
+    if (convHistory.length > 20) convHistory = convHistory.slice(-16);
+  } catch(e) {
+    removeTyping("chatMessages");
+    addMsg("chatMessages", "bot", "Connection issue. Please try again.", false);
+  }
+  chatLoading = false;
+  document.getElementById("sendBtn").style.opacity = "1";
+}
+function sendChip(btn) { document.getElementById("chatInput").value = btn.textContent; sendMessage(); }
+function prefill(text) { document.getElementById("chatInput").value = text; document.getElementById("chatInput").focus(); }
+function handleChatKey(e) { if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); sendMessage(); } }
+function autoResize(el) { el.style.height = "auto"; el.style.height = Math.min(el.scrollHeight,110) + "px"; }
+
+function initPrayer() {
+  document.getElementById("prayerChips").innerHTML = PRAYER_CATS.slice(0,8).map(function(c,i){
+    return "<button class='prayer-cat-btn' onclick='startPrayerCat(" + i + ")'>" + c.icon + " " + esc(c.name) + "</button>";
+  }).join("");
+  document.getElementById("prayerCategoryCards").innerHTML = PRAYER_CATS.map(function(c,i){
+    return "<div class='prayer-category-card' onclick='startPrayerCat(" + i + ")'>" +
+      "<div class='pcat-icon'>" + c.icon + "</div>" +
+      "<div class='pcat-name'>" + esc(c.name) + "</div>" +
+      "<div class='pcat-desc'>" + esc(c.desc) + "</div></div>";
+  }).join("");
+  renderSavedPrayers();
+}
+function startPrayerCat(i) {
+  document.getElementById("prayerInput").value = PRAYER_CATS[i].prompt;
+  document.getElementById("prayerInput").focus();
+  document.getElementById("prayerInput").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function addPMsg(role, html, isHTML) {
+  var msgs = document.getElementById("prayerMessages");
+  var div = document.createElement("div");
+  div.className = "pmsg " + role;
+  var avClass = role === "guide" ? "guide" : "user";
+  var avChar = role === "guide" ? "&#128591;" : "&#128100;";
+  div.innerHTML = "<div class='pmsg-avatar " + avClass + "'>" + avChar + "</div><div><div class='pmsg-bubble'>" + (isHTML ? html : esc(html).split("\n").join("<br>")) + "</div></div>";
+  msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+}
+function showPrayerTyping() {
+  var msgs = document.getElementById("prayerMessages");
+  var div = document.createElement("div");
+  div.className = "pmsg guide"; div.id = "prayerTyping";
+  div.innerHTML = "<div class='pmsg-avatar guide'>&#128591;</div><div><div class='pmsg-bubble'><div class='typing-indicator'><span></span><span></span><span></span></div><span style='font-size:0.78rem;color:var(--stone)'>Preparing your prayer...</span></div></div>";
+  msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+}
+function removePrayerTyping() { var el = document.getElementById("prayerTyping"); if(el) el.remove(); }
+function fmtPrayer(text) {
+  var parts = text.split(/scripture for this moment[:]/i);
+  var prayer = parts[0].trim();
+  var scripture = parts[1] ? parts[1].trim() : "";
+  var html = "<div class='prayer-output'>" + esc(prayer).replace(/\n/g,"<br>").split("\n").join("<br>");
+  if (scripture) html += "<span class='prayer-scripture-tag'>&#10022; Scripture for this moment: " + esc(scripture) + "</span>";
+  html += "</div>";
+  var safeText = prayer.replace(/"/g,"&quot;");
+  html += "<div style='display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.4rem'>" +
+    "<button class='prayer-copy-btn' onclick='copyPrayer(this)' data-prayer='" + prayer.replace(/'/g,"&#39;") + "'>Copy Prayer</button>" +
+    "<button class='prayer-copy-btn' onclick='savePrayer(this)' data-prayer='" + prayer.replace(/'/g,"&#39;") + "'>Save Prayer</button></div>" +
+    "<div class='prayer-source'>Grounded in KJV Scripture &middot; Powered by The Living Word</div>";
+  return html;
+}
+async function sendPrayer() {
+  if (prayerLoading) return;
+  var input = document.getElementById("prayerInput");
+  var text = input.value.trim(); if (!text) return;
+  prayerLoading = true;
+  document.getElementById("prayerSendBtn").style.opacity = "0.5";
+  input.value = ""; input.style.height = "auto";
+  addPMsg("user", text, false);
+  prayerHistory.push({role:"user", content:text});
+  showPrayerTyping();
+  try {
+    var reply = await callAPI(PRAYER_SYSTEM, prayerHistory.slice(-10));
+    removePrayerTyping();
+    addPMsg("guide", fmtPrayer(reply), true);
+    prayerHistory.push({role:"assistant", content:reply});
+    if (prayerHistory.length > 12) prayerHistory = prayerHistory.slice(-10);
+  } catch(e) {
+    removePrayerTyping();
+    addPMsg("guide", "Connection issue. Please try again.", false);
+  }
+  prayerLoading = false;
+  document.getElementById("prayerSendBtn").style.opacity = "1";
+}
+function handlePrayerKey(e) { if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); sendPrayer(); } }
+function autoResizePrayer(el) { el.style.height = "auto"; el.style.height = Math.min(el.scrollHeight,110) + "px"; }
+function copyPrayer(btn) {
+  navigator.clipboard.writeText(btn.dataset.prayer).then(function(){
+    btn.textContent = "Copied!"; setTimeout(function(){ btn.textContent = "Copy Prayer"; }, 2000);
+  });
+}
+function savePrayer(btn) {
+  savedPrayers.unshift({text:btn.dataset.prayer, date:new Date().toLocaleDateString()});
+  if (savedPrayers.length > 10) savedPrayers = savedPrayers.slice(0,10);
+  try { localStorage.setItem("tlw_prayers", JSON.stringify(savedPrayers)); } catch(e) {}
+  btn.textContent = "Saved!"; setTimeout(function(){ btn.textContent = "Save Prayer"; }, 2000);
+  renderSavedPrayers();
+}
+function deleteSavedPrayer(i) {
+  savedPrayers.splice(i,1);
+  try { localStorage.setItem("tlw_prayers", JSON.stringify(savedPrayers)); } catch(e) {}
+  renderSavedPrayers();
+}
+function renderSavedPrayers() {
+  var el = document.getElementById("savedPrayersList");
+  if (!el) return;
+  if (!savedPrayers.length) { el.innerHTML = "<div style='color:var(--stone);font-size:0.9rem;font-style:italic;text-align:center;padding:1.5rem'>Your saved prayers will appear here.</div>"; return; }
+  el.innerHTML = savedPrayers.map(function(p,i){
+    return "<div class='saved-prayer-item'><div style='flex:1'><div style='font-family:Cinzel,serif;font-size:0.62rem;color:var(--stone);letter-spacing:0.1em;margin-bottom:0.4rem'>" + esc(p.date) + "</div><div class='saved-prayer-text'>" + esc(p.text.substring(0,180)) + (p.text.length>180?"...":"") + "</div></div><button class='saved-prayer-del' onclick='deleteSavedPrayer(" + i + ")' title='Remove'>&#10005;</button></div>";
+  }).join("");
+}
+
+renderVOTD();
+renderBooks(OT);
+</script>
+</body>
+</html>
