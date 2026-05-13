@@ -289,6 +289,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <li><a onclick="showPage('books')" data-page="books">Books</a></li>
     <li><a onclick="showPage('sources')" data-page="sources">Sources</a></li>
     <li><a onclick="showPage('partners')" data-page="partners">Partners</a></li>
+    <li><a onclick="showPage('seo')" data-page="seo">Articles</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()" title="Search">&#128269;</button>
@@ -305,6 +306,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
   <a onclick="showPage('books');closeMenu()">Books of the Bible</a>
   <a onclick="showPage('sources');closeMenu()">Sources</a>
   <a onclick="showPage('partners');closeMenu()">Partners</a>
+  <a onclick="showPage('seo');closeMenu()">Articles</a>
   <a onclick="showPage('prayer');closeMenu();" style="color:var(--crimson-light)">&#128591; Prayer Guidance</a>
   <a onclick="showPage('chat');closeMenu();" style="color:var(--gold)">Ask the Word (Chatbot)</a>
 </div>
@@ -402,8 +404,8 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <div class="footer-inner">
       <div><a class="nav-logo" onclick="showPage('home')">The Living Word</a><p class="footer-tagline">An AI-powered Biblical study platform anchored in the King James Bible and verified by centuries of reputable scholarship — making the eternal Word accessible to every generation.</p></div>
       <div><div class="footer-heading">Explore</div><ul class="footer-links"><li><a onclick="showPage('devotional')">Daily Devotional</a></li><li><a onclick="showPage('books')">Books of the Bible</a></li><li><a onclick="showPage('topics')">Topic Studies</a></li><li><a onclick="showPage('plans')">Reading Plans</a></li><li><a onclick="showPage('prayer')">Prayer Guidance</a></li><li><a onclick="showPage('chat')">AI Chatbot</a></li></ul></div>
-      <div><div class="footer-heading">Resources</div><ul class="footer-links"><li><a onclick="showPage('sources')">Our Sources</a></li><li><a onclick="showPage('partners')">Partners</a></li><li><a onclick="openSearch()">Search Scripture</a></li></ul></div>
-      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a>Our Mission</a></li><li><a>Statement of Faith</a></li><li><a>Contact</a></li></ul></div>
+      <div><div class="footer-heading">Resources</div><ul class="footer-links"><li><a onclick="showPage('sources')">Our Sources</a></li><li><a onclick="showPage('partners')">Partners</a></li><li><a onclick="openSearch()">Search Scripture</a></li><li><a onclick="showPage('seo')">Study Articles</a></li></ul></div>
+      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a onclick="showPage('mission')">Our Mission</a></li><li><a onclick="showPage('faith')">Statement of Faith</a></li><li><a>Contact</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2025 The Living Word. Built on the King James Bible.</span><span style="font-style:italic;color:var(--gold-dark)">"Heaven and earth shall pass away, but my words shall not pass away." &mdash; Matthew 24:35</span></div>
   </footer>
@@ -537,12 +539,17 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <div class="section-label">Ministry Partnerships</div>
     <h1 class="section-title">Partners in the Word</h1>
     <p class="section-desc">This platform is being developed with an open door to trusted Christian ministries, apologetics organizations, and educational institutions who share our commitment to Biblical accuracy and broad, accessible outreach.</p>
-    <div class="partners-grid">
-      <div class="partner-card"><div class="partner-icon-lg">&#9925;</div><div class="partner-name">Ark Encounter</div><div class="partner-status">Potential Partner</div><div class="partner-desc">Ken Ham's full-scale Noah's Ark replica in Williamstown, Kentucky — a world-class apologetics attraction drawing millions of visitors annually and producing extensive creation-based research and educational content.</div><button class="btn-ghost">Learn More</button></div>
-      <div class="partner-card"><div class="partner-icon-lg">&#127482;&#127480;</div><div class="partner-name">Turning Point USA</div><div class="partner-status">Potential Partner</div><div class="partner-desc">A nonprofit organization founded on Judeo-Christian values, dedicated to educating students and young Americans about free markets, limited government, and Biblical principles as foundations of liberty.</div><button class="btn-ghost">Learn More</button></div>
-      <div class="partner-card"><div class="partner-icon-lg">&#127963;&#65039;</div><div class="partner-name">Answers in Genesis</div><div class="partner-status">Potential Partner</div><div class="partner-desc">One of the world's leading apologetics ministries, providing rigorous, faith-affirming research on creation, science, and the authority of Scripture from a Biblical worldview.</div><button class="btn-ghost">Learn More</button></div>
-      <div class="partner-slot-card"><div style="font-size:2rem;color:var(--stone);margin-bottom:0.8rem">&#10010;</div><div style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--stone);letter-spacing:0.1em">Your Ministry Here</div><p style="font-size:0.8rem;color:var(--stone);margin-top:0.8rem;line-height:1.6">We are actively seeking partnerships with verified, reputable ministries who share our commitment to Biblical truth.</p></div>
-      <div class="partner-slot-card"><div style="font-size:2rem;color:var(--stone);margin-bottom:0.8rem">&#10010;</div><div style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--stone);letter-spacing:0.1em">Your Ministry Here</div><p style="font-size:0.8rem;color:var(--stone);margin-top:0.8rem;line-height:1.6">Contact us to discuss how your organization can reach new audiences through The Living Word platform.</p></div>
+    <div style="max-width:700px;margin:0 auto 3rem;text-align:center">
+      <div style="font-size:3rem;margin-bottom:1.5rem">&#9997;&#65039;</div>
+      <h2 style="font-family:Cinzel,serif;font-size:1.4rem;color:var(--gold);margin-bottom:1rem">Partnership Conversations Underway</h2>
+      <p style="font-size:1rem;color:var(--stone-light);line-height:1.8;margin-bottom:2rem">The Living Word is actively pursuing partnerships with trusted Christian ministries, apologetics organizations, and educational institutions. We are committed to only listing partners who have formally agreed to collaborate. Announcements coming soon.</p>
+      <div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;font-size:0.95rem;font-style:italic;color:var(--parchment-dark);line-height:1.75">"Can two walk together, except they be agreed?" &mdash; Amos 3:3</div>
+    </div>
+    <div class="partners-grid" style="max-width:900px;margin:0 auto">
+      <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#10010;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Ministry Partner</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">Apologetics, creation science, and Biblical research organizations that strengthen confidence in Scripture.</p></div>
+      <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#10010;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Educational Partner</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">Christian schools, seminaries, and discipleship organizations equipping the next generation in Biblical truth.</p></div>
+      <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#10010;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Church Partner</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">Local and national churches seeking to equip their congregations with deeper Biblical study resources.</p></div>
+      <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#9993;&#65039;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Interested in Partnering?</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">If your organization shares our commitment to Biblical truth and broad outreach, we would love to hear from you.</p></div>
     </div>
   </section>
   <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
@@ -585,6 +592,160 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
         <span style="font-style:italic;color:var(--gold-dark);font-size:0.72rem">"The effectual fervent prayer of a righteous man availeth much." &mdash; James 5:16</span>
       </div>
     </footer>
+  </div>
+</div>
+
+
+<!-- MISSION -->
+<div class="page" id="page-mission">
+  <div class="pt-nav" style="background:linear-gradient(135deg,#0A0802,#140E04,#0A0802);min-height:100vh">
+    <section style="max-width:860px;margin:0 auto">
+      <div class="section-label">Who We Are</div>
+      <h1 class="section-title">Our Mission</h1>
+      <div class="gold-line"></div>
+      <div style="font-size:1.15rem;font-style:italic;color:var(--parchment-dark);line-height:1.85;text-align:center;max-width:680px;margin:0 auto 3rem">"Thy word is a lamp unto my feet, and a light unto my path." &mdash; Psalms 119:105</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:2rem;background:rgba(201,168,76,0.02)">
+          <div style="font-size:2rem;margin-bottom:1rem">&#128220;</div>
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">The Word</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75">We believe the King James Bible is the inspired, authoritative Word of God — sufficient for salvation, sanctification, and every question of life and faith. Every feature of this platform exists to bring people into deeper contact with that Word.</p>
+        </div>
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:2rem;background:rgba(201,168,76,0.02)">
+          <div style="font-size:2rem;margin-bottom:1rem">&#127760;</div>
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">The Reach</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75">The internet is where people bring their hardest questions. We built The Living Word to meet them there — not with watered-down religion, but with the full depth of Scripture, presented in language every generation can access and understand.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(201,168,76,0.22);padding:2.5rem;background:linear-gradient(135deg,#120D04,#0A0802);margin-bottom:2rem">
+        <div style="font-family:Cinzel,serif;font-size:1.1rem;color:var(--white);margin-bottom:1.2rem">Why We Built This</div>
+        <p style="font-size:1rem;color:var(--stone-light);line-height:1.85;margin-bottom:1rem">The Bible is the most studied, most translated, most verified, and most transformative document in human history — and yet Biblical literacy is declining in the very culture that was shaped by it. People are not rejecting Scripture because they have examined it and found it wanting. They are drifting from it because no one has made it accessible enough, credible enough, or relevant enough to hold their attention.</p>
+        <p style="font-size:1rem;color:var(--stone-light);line-height:1.85;margin-bottom:1rem">The Living Word was built to change that. Using AI grounded in centuries of verified Biblical scholarship, we give every person — regardless of church background, education level, or prior Bible knowledge — the tools to encounter Scripture on its own terms and discover why it has spoken to every generation for three thousand years.</p>
+        <p style="font-size:1rem;color:var(--stone-light);line-height:1.85">We are not building a church. We are building a door. What happens when people walk through it is between them and God.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem">
+        <div style="border:1px solid rgba(201,168,76,0.15);padding:1.5rem;text-align:center">
+          <div style="font-family:Cinzel,serif;font-size:1.8rem;color:var(--gold);margin-bottom:0.4rem">66</div>
+          <div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase">Books of the Bible</div>
+          <div style="font-size:0.82rem;color:var(--stone-light);margin-top:0.5rem;line-height:1.5">Full study guides for every book of the King James Bible</div>
+        </div>
+        <div style="border:1px solid rgba(201,168,76,0.15);padding:1.5rem;text-align:center">
+          <div style="font-family:Cinzel,serif;font-size:1.8rem;color:var(--gold);margin-bottom:0.4rem">9</div>
+          <div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase">Verified Sources</div>
+          <div style="font-size:0.82rem;color:var(--stone-light);margin-top:0.5rem;line-height:1.5">Centuries of peer-reviewed Biblical scholarship behind every answer</div>
+        </div>
+        <div style="border:1px solid rgba(201,168,76,0.15);padding:1.5rem;text-align:center">
+          <div style="font-family:Cinzel,serif;font-size:1.8rem;color:var(--gold);margin-bottom:0.4rem">24/7</div>
+          <div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase">Always Available</div>
+          <div style="font-size:0.82rem;color:var(--stone-light);margin-top:0.5rem;line-height:1.5">Scripture study, prayer guidance, and answers whenever you need them</div>
+        </div>
+      </div>
+
+      <div style="border-left:3px solid var(--gold);padding:1.5rem 2rem;background:rgba(201,168,76,0.04);margin-bottom:2.5rem">
+        <div style="font-family:Cinzel,serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">Our Commitment</div>
+        <p style="font-size:1rem;color:var(--parchment-dark);line-height:1.8">The Living Word will always be grounded in the authority of Scripture, academically credible, spiritually honest, and free to access. We do not water down the Gospel. We do not replace the church. We do not offer opinions dressed as doctrine. We point people to the Word — and trust the Word to do what it has always done.</p>
+      </div>
+
+      <div style="text-align:center;padding:2rem 0">
+        <button class="btn-primary" onclick="showPage('chat')">Ask the Word Anything</button>
+        &nbsp;&nbsp;
+        <button class="btn-secondary" onclick="showPage('faith')">Statement of Faith</button>
+      </div>
+    </section>
+    <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer>
+  </div>
+</div>
+
+<!-- STATEMENT OF FAITH -->
+<div class="page" id="page-faith">
+  <div class="pt-nav" style="background:linear-gradient(135deg,#0A0802,#140E04,#0A0802);min-height:100vh">
+    <section style="max-width:860px;margin:0 auto">
+      <div class="section-label">What We Believe</div>
+      <h1 class="section-title">Statement of Faith</h1>
+      <div class="gold-line"></div>
+      <p style="font-size:1rem;color:var(--stone-light);line-height:1.8;text-align:center;max-width:640px;margin:0 auto 3rem">The Living Word is built on the historic, orthodox Christian faith as revealed in the King James Bible. The following statements summarize what we believe and what guides every feature of this platform.</p>
+
+      <div style="display:flex;flex-direction:column;gap:1.2rem">
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9312; The Scripture</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe the Bible is the inspired, inerrant, and authoritative Word of God. Every word of the original manuscripts was given by God through human authors, making Scripture completely truthful and trustworthy in all that it affirms.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness." &mdash; 2 Timothy 3:16</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9313; God</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe in one God, eternally existing in three persons — Father, Son, and Holy Spirit — co-equal, co-eternal, and co-substantial. God is the Creator of all things, sovereign over all things, and perfectly holy, just, and loving in His nature.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"Hear, O Israel: The LORD our God is one LORD." &mdash; Deuteronomy 6:4</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9314; Jesus Christ</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe in the Lord Jesus Christ — fully God and fully man — born of a virgin, sinless in life, crucified for our sins, bodily risen from the dead on the third day, ascended to the Father, and coming again in glory. He is the only mediator between God and man, and salvation is found in no one else.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"I am the way, the truth, and the life: no man cometh unto the Father, but by me." &mdash; John 14:6</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9315; The Holy Spirit</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe in the Holy Spirit, the third person of the Trinity, who convicts the world of sin, regenerates believers at salvation, indwells every Christian, and produces spiritual fruit. He inspired the Scriptures and illumines them to the hearts of those who seek understanding.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind." &mdash; 2 Timothy 1:7</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9316; Mankind and Sin</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe that God created humanity in His image and likeness, with inherent dignity and eternal worth. Through Adam's fall, all humanity inherited a sinful nature and stands in need of redemption. No person is able to save themselves by their own goodness or effort.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"For all have sinned, and come short of the glory of God." &mdash; Romans 3:23</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9317; Salvation</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe that salvation is by grace alone, through faith alone, in Christ alone. It is the free gift of God — not earned by works, merit, or religious observance. All who repent of their sin and place their trust in Jesus Christ as Lord and Saviour are forgiven, justified, and given eternal life.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"For by grace are ye saved through faith; and that not of yourselves: it is the gift of God." &mdash; Ephesians 2:8</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9318; The Church</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe in the universal church — the body of all true believers — and in the importance of local church community, fellowship, accountability, and worship. The Living Word is not a substitute for the local church; it is a resource to complement and enrich it.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"Not forsaking the assembling of ourselves together." &mdash; Hebrews 10:25</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9319; Creation</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe God created the heavens and the earth and all living things. We affirm the historical reality of the accounts of creation and the fall of mankind as recorded in Genesis. We hold that Scripture and genuine science, rightly understood, are fully compatible, and we encourage honest inquiry into both.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"In the beginning God created the heaven and the earth." &mdash; Genesis 1:1</div>
+        </div>
+
+        <div style="border:1px solid rgba(201,168,76,0.18);padding:1.8rem;background:rgba(201,168,76,0.02)">
+          <div style="font-family:Cinzel,serif;font-size:0.78rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">&#9320; Eternity</div>
+          <p style="font-size:0.95rem;color:var(--stone-light);line-height:1.75;margin-bottom:0.8rem">We believe in the bodily resurrection of the dead, the final judgment, and the eternal existence of all people — believers to eternal life with God, and unbelievers to eternal separation from Him. We hold these truths with both conviction and compassion, and they are the reason we pursue every person with the Gospel.</p>
+          <div style="font-size:0.88rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem">"And God shall wipe away all tears from their eyes; and there shall be no more death." &mdash; Revelation 21:4</div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;padding:2.5rem 0">
+        <button class="btn-primary" onclick="showPage('chat')">Explore These Truths</button>
+        &nbsp;&nbsp;
+        <button class="btn-secondary" onclick="showPage('mission')">Our Mission</button>
+      </div>
+    </section>
+    <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer>
+  </div>
+</div>
+
+<!-- SEO ARTICLES -->
+<div class="page" id="page-seo">
+  <div class="pt-nav" style="background:#0A0802;min-height:100vh">
+    <section>
+      <div class="section-label">Biblical Study Articles</div>
+      <h1 class="section-title">Scripture &amp; Life</h1>
+      <p class="section-desc">In-depth articles answering the questions people search most — grounded in KJV Scripture and centuries of Biblical scholarship.</p>
+      <div id="seoGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto"></div>
+      <div id="seoReader" style="display:none;max-width:820px;margin:2rem auto 0"></div>
+    </section>
+    <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer>
   </div>
 </div>
 
@@ -688,6 +849,7 @@ function showPage(id) {
   if (id === "books") renderBooks(OT);
   if (id === "prayer") initPrayer();
   if (id === "chat") setTimeout(function(){ var i=document.getElementById("chatInput"); if(i) i.focus(); }, 300);
+  if (id === "seo") renderSEO();
 }
 
 function toggleMenu() { document.getElementById("mobileNav").classList.toggle("open"); }
@@ -1061,6 +1223,195 @@ function renderSavedPrayers() {
     return "<div class='saved-prayer-item'><div style='flex:1'><div style='font-family:Cinzel,serif;font-size:0.62rem;color:var(--stone);letter-spacing:0.1em;margin-bottom:0.4rem'>" + esc(p.date) + "</div><div class='saved-prayer-text'>" + esc(p.text.substring(0,180)) + (p.text.length>180?"...":"") + "</div></div><button class='saved-prayer-del' onclick='deleteSavedPrayer(" + i + ")' title='Remove'>&#10005;</button></div>";
   }).join("");
 }
+
+
+var SEO_ARTICLES = [
+  {
+    "slug": "what-does-bible-say-about-anxiety",
+    "tag": "Mental Health",
+    "title": "What Does the Bible Say About Anxiety?",
+    "summary": "Millions search this question every day. The Bible's answer is more specific, more honest, and more practical than most people expect.",
+    "verse": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
+    "verseRef": "Philippians 4:6-7",
+    "body": [
+      {"h": "God Takes Anxiety Seriously", "p": "The Bible does not tell anxious people to simply try harder or think more positively. It acknowledges that anxiety is real, that it is heavy, and that it requires a specific response. The word translated be careful for nothing in Philippians 4:6 literally means stop being anxious about anything — a direct acknowledgment that the anxiety is actually present."},
+      {"h": "The Prescription: Prayer with Thanksgiving", "p": "Paul's instruction is precise. Do not pray generically — pray specifically, about everything, with supplication (an earnest asking), and with thanksgiving. The thanksgiving is not a reward for answered prayer. It is the posture in which the request is made. Gratitude reframes the prayer from a demand to an act of trust. Modern psychology has confirmed what Paul wrote 2,000 years ago: gratitude-based practices measurably reduce cortisol and anxiety symptoms."},
+      {"h": "The Promise: A Peace That Guards", "p": "The result is not the removal of circumstances but the installation of a peace that passeth all understanding — a peace that functions as a military guard (the Greek word phrouro means to garrison or protect) over the heart and mind. It is a peace that cannot be explained by circumstances because it does not come from circumstances. It comes from God."},
+      {"h": "Other Key Verses on Anxiety", "p": "1 Peter 5:7 commands believers to cast all their anxiety on God, because he cares for you. The Greek word for cast (epiripsantes) implies a forceful, deliberate throwing — not a gentle suggestion but a decisive act of surrender. Isaiah 26:3 promises perfect peace to the mind stayed on God. Matthew 6:25-34 is Jesus' most extended treatment of anxiety, concluding with the command to seek first the kingdom of God and trust God with everything else."},
+      {"h": "What This Looks Like in Practice", "p": "Biblical anxiety management is not passive. It involves deliberate, specific prayer about the actual source of anxiety. It involves gratitude — naming what is good even in the midst of what is hard. It involves fixing the mind on God's character rather than on the problem. And it involves community — the kind of honest, prayerful support that the early church modeled and that remains irreplaceable."}
+    ],
+    "cta": "prayer"
+  },
+  {
+    "slug": "is-the-bible-historically-accurate",
+    "tag": "Archaeology",
+    "title": "Is the Bible Historically Accurate?",
+    "summary": "Skeptics have challenged the historical reliability of Scripture for centuries. What does the archaeological and manuscript evidence actually show?",
+    "verse": "For we have not followed cunningly devised fables, when we made known unto you the power and coming of our Lord Jesus Christ, but were eyewitnesses of his majesty.",
+    "verseRef": "2 Peter 1:16",
+    "body": [
+      {"h": "The Manuscript Evidence", "p": "The New Testament is the most textually attested document in all of ancient history — with over 5,800 Greek manuscripts, plus thousands more in Latin, Syriac, Coptic, and other languages. The next closest ancient document is Homer's Iliad with around 1,800 manuscripts. The time gap between the original New Testament writings and the earliest surviving manuscripts is 25-50 years — far shorter than for any other ancient historical document."},
+      {"h": "The Dead Sea Scrolls", "p": "Discovered in 1947 in the caves of Qumran, the Dead Sea Scrolls include a complete copy of the book of Isaiah dating to approximately 100 BC — 1,000 years older than any previously known Hebrew manuscript. When scholars compared it to the text already in use, they found remarkable accuracy across the entire document. The discovery confirmed that the Old Testament text had been transmitted with extraordinary faithfulness across a millennium."},
+      {"h": "Archaeological Confirmations", "p": "For much of the 19th and early 20th centuries, critics claimed that cities, kings, and events described in the Bible were mythological. Excavations have repeatedly overturned those claims. The Hittites — once called a Biblical myth — were confirmed by massive archaeological discoveries in Turkey. The Pool of Siloam mentioned in John 9 was excavated in 2004. The walls of Jericho show evidence of violent destruction consistent with the Biblical account. King David's existence was confirmed by the Tel Dan Stele inscription discovered in 1993."},
+      {"h": "Non-Biblical Sources", "p": "First-century historian Flavius Josephus, a Jewish writer with no Christian agenda, references Jesus, John the Baptist, and James the brother of Jesus in his Antiquities. The Roman historian Tacitus mentions Christ's execution under Pontius Pilate. Pliny the Younger describes early Christians worshipping Christ as God in the early second century. These non-Biblical sources corroborate the existence of Jesus and the early Christian movement."},
+      {"h": "The Honest Conclusion", "p": "No serious archaeologist or historian today claims the Bible is pure mythology. The debate has shifted to interpretation, not existence. The places, people, cultures, and events the Bible describes have been confirmed repeatedly. This does not prove every theological claim — but it does establish that Scripture is engaging with real history, not invented legend."}
+    ],
+    "cta": "sources"
+  },
+  {
+    "slug": "book-of-revelation-explained",
+    "tag": "Prophecy",
+    "title": "The Book of Revelation Explained",
+    "summary": "The most misunderstood book in the Bible. What it actually says, who it was written to, and why its message is more relevant now than ever.",
+    "verse": "I am Alpha and Omega, the beginning and the ending, saith the Lord, which is, and which was, and which is to come, the Almighty.",
+    "verseRef": "Revelation 1:8",
+    "body": [
+      {"h": "Who Wrote It and Why", "p": "The Apostle John wrote Revelation around AD 95 while exiled to the island of Patmos under the Emperor Domitian. He wrote to seven specific churches in Asia Minor — real congregations of real people living under real persecution. The book was not written to frighten modern readers with cryptic end-times speculation. It was written to encourage suffering first-century Christians with one unshakeable message: God is in control, Christ has already conquered, and the final victory is certain."},
+      {"h": "What Kind of Literature Is It?", "p": "Revelation is apocalyptic literature — a genre well understood by its original Jewish and Christian audience that uses symbolic imagery to convey spiritual realities. When John sees a beast with seven heads and ten horns, his readers understood this as a coded reference to Rome and its emperors — not a literal future creature. Understanding the genre is the single most important step in reading Revelation accurately."},
+      {"h": "The Core Message", "p": "Strip away the symbolic imagery and the core message of Revelation is straightforward: the Lamb who was slain holds the scroll of history. Every power that opposes God — every empire, every ideology, every form of evil — is ultimately subject to His authority and will be judged by it. The book is fundamentally a book of hope, written to people who desperately needed to be reminded that their suffering was not the final word."},
+      {"h": "Key Symbols Explained", "p": "The number 666 was almost certainly a reference to Nero Caesar using a Hebrew numerological system called gematria. The scarlet woman of chapter 17 is widely understood as a reference to Rome. The 144,000 represents the complete people of God across history — 12 tribes times 12 apostles times 1,000, a symbolic number of completeness. The new Jerusalem of chapters 21-22 is the picture of the fully restored creation, God dwelling with humanity forever."},
+      {"h": "Why It Still Matters", "p": "Revelation speaks to every generation that has ever lived under an oppressive power and wondered whether God was paying attention. The answer across all 22 chapters is the same: He is. The Lamb wins. And the final image — no more death, no more mourning, no more pain — is not mythology. It is the destination toward which all of history is moving."}
+    ],
+    "cta": "chat"
+  },
+  {
+    "slug": "what-does-john-3-16-mean",
+    "tag": "Core Gospel",
+    "title": "What Does John 3:16 Really Mean?",
+    "summary": "The most quoted verse in the Bible. But most people have only scratched the surface of what it actually says — and what it demands.",
+    "verse": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+    "verseRef": "John 3:16",
+    "body": [
+      {"h": "The Context: A Nighttime Conversation", "p": "Jesus spoke these words to Nicodemus, a Pharisee and ruler of the Jews who came to Jesus at night — likely to avoid being seen. Nicodemus was religious, educated, and respected. And yet Jesus tells him that everything he knew was insufficient, that he needed to be born again, and that the entire system of Jewish law pointed toward this moment: God giving His Son."},
+      {"h": "So Loved: The Motivation", "p": "The word so in the King James is not an intensifier — it does not mean God loved the world very much. It means God loved the world in this way, in this manner — and then describes that manner: by giving. Divine love is not a feeling. It is an action. The entire weight of John 3:16 rests on that word gave. God did not merely feel warmly toward humanity. He gave the most costly thing He had."},
+      {"h": "The World: The Scope", "p": "God so loved the world — not just Israel, not just the religious, not just the good. The Greek word kosmos encompasses all of humanity in its rebellion and brokenness. This verse is the New Testament's clearest statement of the universal scope of God's redemptive intent. No one is excluded from its offer. No sin is too great for its provision."},
+      {"h": "Only Begotten Son: The Cost", "p": "Only begotten does not mean Jesus was created at a point in time. The Greek word monogenes means unique — the one and only of its kind. Jesus is uniquely the eternal Son of God, equal in nature and substance with the Father. The giving of this Son was not a small gift. It was the giving of God Himself, entering human history to bear what humanity could not bear alone."},
+      {"h": "Believeth: The Condition", "p": "The Greek word pisteuon (believe) is a present participle — ongoing belief, not a one-time transaction. It implies a continuing trust, a sustained reliance, a life oriented around Jesus rather than a moment of intellectual agreement. This is why James would later write that faith without works is dead — because genuine belief produces a changed life, not merely a changed opinion."},
+      {"h": "Perish vs Everlasting Life: The Stakes", "p": "The contrast is stark and intentional. Perish is the destination of every human being apart from Christ — not because God wants it, but because sin has consequences and justice requires it. Everlasting life is not just duration but quality — the Greek aionios life means the life of the age to come, the life of God Himself, shared with those who believe. John 3:16 is not a nice religious sentiment. It is the most important sentence ever spoken."}
+    ],
+    "cta": "chat"
+  },
+  {
+    "slug": "bible-verses-for-grief-and-loss",
+    "tag": "Comfort",
+    "title": "Bible Verses for Grief and Loss",
+    "summary": "The Bible does not tell grieving people to cheer up. It sits with them in the darkness — and then points toward the only light that lasts.",
+    "verse": "He healeth the broken in heart, and bindeth up their wounds.",
+    "verseRef": "Psalms 147:3",
+    "body": [
+      {"h": "The Bible's Permission to Grieve", "p": "The shortest verse in the Bible is John 11:35 — Jesus wept. Standing at the tomb of Lazarus, knowing He was about to raise him from the dead, the Son of God wept. This is not sentimentality. It is a theological statement: grief is not a failure of faith. It is a fully human, fully appropriate response to loss. Jesus did not rebuke Mary and Martha for weeping. He wept with them."},
+      {"h": "Psalm 23: The Shepherd in the Valley", "p": "Psalm 23 is the most read Scripture at funerals — not because it promises escape from suffering, but because it promises presence in it. Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me. David does not say God will keep him from the valley. He says God will be with him in it. That distinction is everything to someone who is grieving."},
+      {"h": "Lamentations: The Book That Gives Grief a Voice", "p": "The entire book of Lamentations is a sustained, structured lament — five chapters of raw grief over the destruction of Jerusalem. Remarkably, God did not edit these chapters out of Scripture. He left them in, intact, as evidence that honest grief before God is not only permitted but recorded, honored, and answered. Great is Thy Faithfulness — one of the most beloved hymns in Christian history — was drawn directly from the middle of Lamentations."},
+      {"h": "1 Thessalonians 4:13-18: Grief with Hope", "p": "Paul does not tell the Thessalonians not to grieve. He tells them not to grieve as others which have no hope. The distinction is crucial. Christian grief is not the absence of grief. It is grief with a horizon — a horizon shaped by the resurrection of Jesus Christ and the promise that those who die in Him are not lost but asleep, awaiting the reunion that death cannot permanently prevent."},
+      {"h": "Revelation 21:4: The Final Word on Grief", "p": "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away. This is not a denial of present grief. It is the promise that present grief is not permanent. God's own hand will wipe every tear. The intimacy of that image — the Creator of the universe personally wiping the tears of His children — is the final word on suffering in all of Scripture."}
+    ],
+    "cta": "prayer"
+  },
+  {
+    "slug": "how-to-study-the-bible",
+    "tag": "Study Guide",
+    "title": "How to Study the Bible: A Beginner's Guide",
+    "summary": "You do not need a theology degree to read Scripture seriously. Here is a practical, honest guide to getting started and going deeper.",
+    "verse": "Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth.",
+    "verseRef": "2 Timothy 2:15",
+    "body": [
+      {"h": "Start with the Right Translation", "p": "The Living Word is built on the King James Bible — the 1611 Authorized Version. It is the most precisely translated, most textually faithful, and most literary English translation in existence. Its language may take some adjustment for modern readers, but the investment is worth it. Every other English translation was made by scholars who had the KJV on their desks as a reference point."},
+      {"h": "Context Is Everything", "p": "The single most important rule of Bible study is this: a text without a context is a pretext. Every verse exists within a paragraph, which exists within a chapter, which exists within a book, which exists within a Testament, which exists within the whole canon of Scripture. Before applying a verse to your life, ask: who wrote this? To whom? In what circumstances? What was the situation being addressed?"},
+      {"h": "Start with the Gospels", "p": "For new Bible readers, the best entry point is the Gospel of John. It is the most theologically rich of the four Gospels, deliberately structured around the question of who Jesus is, and written so that ye might believe. Read it slowly, one chapter at a time. Ask after each chapter: what does this tell me about who Jesus is? What does He do? What does He say? What does He demand?"},
+      {"h": "Use Good Tools", "p": "You do not need to buy a library. The tools available for free today would have astonished Bible scholars a generation ago. Blue Letter Bible gives you access to the original Hebrew and Greek with Strong's concordance. Matthew Henry's Commentary — available in full for free online — provides verse-by-verse devotional insight for the entire Bible. And The Living Word's AI assistant can answer specific questions about any verse or passage you encounter."},
+      {"h": "Read Regularly, Not Just Occasionally", "p": "The key to Bible literacy is not marathon reading sessions — it is consistent, daily engagement. Ten minutes every morning will transform your knowledge of Scripture over twelve months more than a weekend retreat once a year. The Psalms are ideal for daily reading: 150 psalms, five per day, equals one complete reading of the Psalms every month. Start there."},
+      {"h": "Pray Before You Read", "p": "The Holy Spirit is the ultimate interpreter of Scripture — He inspired it, and He illuminates it. The habit of a brief prayer before reading — asking God to open your eyes to what He wants to show you — is not a religious formality. It is an acknowledgment that Bible study is not merely an intellectual exercise but a relational one. You are not just reading about God. You are reading a letter from Him."}
+    ],
+    "cta": "plans"
+  },
+  {
+    "slug": "daniel-in-the-lions-den",
+    "tag": "Character Study",
+    "title": "Daniel in the Lions' Den: Faith That Cannot Be Buried",
+    "summary": "One of the most famous stories in the Bible. But the real miracle of Daniel 6 happened before the lions' den — in the prayer room.",
+    "verse": "Now when Daniel knew that the writing was signed, he went into his house; and his windows being open in his chamber toward Jerusalem, he kneeled upon his knees three times a day, and prayed.",
+    "verseRef": "Daniel 6:10",
+    "body": [
+      {"h": "The Setup: Deliberate Entrapment", "p": "Daniel was by this point an old man — likely in his eighties — and one of the most effective administrators in the Persian Empire. His colleagues, jealous of his influence over King Darius, searched for a reason to destroy him. They could find no corruption, no negligence, no failure of duty. So they targeted his faith. They persuaded the king to issue a decree forbidding prayer to anyone except Darius for thirty days. The trap was set."},
+      {"h": "The Response: Completely Ordinary", "p": "What is remarkable about Daniel 6:10 is what is not remarkable. Daniel did not hold an emergency prayer meeting. He did not call for civil disobedience. He did not make a dramatic public stand. He went home and prayed — exactly as he had done every day for decades. Three times a day, windows open toward Jerusalem, kneeling in prayer. The lions' den did not produce Daniel's faith. His faith was already formed. The lions' den merely revealed it."},
+      {"h": "But If Not: The Theology of Uncertain Outcomes", "p": "Daniel does not pray for deliverance. He simply prays. There is no recorded petition for rescue, no bargaining, no emotional crisis. He trusts God with the outcome without requiring God to guarantee it in advance. This is the same posture as Shadrach, Meshach, and Abednego before the fiery furnace: our God is able to deliver us — but if not, we will still not serve your gods. Unconditional faithfulness regardless of outcome is the highest form of trust in Scripture."},
+      {"h": "The Miracle and Its Purpose", "p": "God shut the lions' mouths. Daniel was unharmed. But the purpose of the miracle was not just Daniel's preservation — it was the proclamation of God's power to an entire empire. Darius issued a decree to all nations, peoples, and languages that dwell in all the earth: the God of Daniel is the living God, and His kingdom shall never be destroyed. One man's private faithfulness produced a public declaration of God's sovereignty across the ancient world."},
+      {"h": "Daniel for Today", "p": "In an increasingly hostile cultural environment, Daniel is the model. Not the dramatic martyr who makes headlines, but the quiet, consistent believer whose daily habits of prayer and integrity have been maintained for so long that no crisis can uproot them. The question Daniel's life asks every generation is simple: what do you do when it costs you something to pray?"}
+    ],
+    "cta": "chat"
+  },
+  {
+    "slug": "what-is-grace-in-the-bible",
+    "tag": "Theology",
+    "title": "What Is Grace? The Bible's Most Radical Idea",
+    "summary": "Grace is the word that separates Christianity from every other religion in the world. Here is what it actually means — and why it changes everything.",
+    "verse": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.",
+    "verseRef": "Ephesians 2:8-9",
+    "body": [
+      {"h": "What Grace Is Not", "p": "Grace is not God grading on a curve. It is not God lowering His standards because He knows human beings cannot meet them. It is not a second chance or a spiritual participation trophy. Every religious system in the world operates on some version of this principle: do enough good things and God — or the universe — will reward you. Grace is the complete rejection of that principle."},
+      {"h": "What Grace Is", "p": "Grace is the unmerited, unearned, undeserved favor of God extended to people who have done nothing to warrant it and everything to forfeit it. The Greek word charis carries the idea of a gift given freely from the giver's own goodness, with no expectation of return. Paul's statement in Ephesians 2:8-9 is the clearest articulation of grace in the New Testament: saved by grace through faith — not of yourselves — the gift of God — not of works."},
+      {"h": "The Old Testament Anticipation", "p": "Grace did not begin at the New Testament. Every act of divine rescue in the Old Testament is grace. God did not choose Israel because they were the most numerous or the most righteous — Deuteronomy 7:7 explicitly says the opposite. He chose them because He loved them. Noah found grace in the eyes of the LORD (Genesis 6:8) before he had built a single plank of the Ark. Grace runs through the entire Biblical narrative from the first pages."},
+      {"h": "Grace and the Cross", "p": "The cross is where grace becomes most visible and most costly. God does not simply overlook sin — He pays for it. The righteousness that grace credits to believers is not fictional. It was purchased at the cost of the life of the eternal Son of God. This is why Paul can say in Romans 5:8 that God demonstrated His love for us in that while we were yet sinners, Christ died for us. The timing is everything: grace was extended before we cleaned up, before we deserved it, before we asked for it."},
+      {"h": "Grace and How We Live", "p": "The grace that saves is also the grace that teaches. Paul writes in Titus 2:11-12 that the grace of God that brings salvation has appeared to all men, teaching us to deny ungodliness and to live soberly, righteously, and godly in this present age. Grace is not a license for sin — it is the most powerful motivator for holy living that exists. We do not obey God to earn grace. We obey God because we have received it."}
+    ],
+    "cta": "topics"
+  }
+];
+
+function renderSEO() {
+  var grid = document.getElementById("seoGrid");
+  var reader = document.getElementById("seoReader");
+  if (!grid) return;
+  reader.style.display = "none"; reader.innerHTML = ""; grid.style.display = "grid";
+  grid.innerHTML = SEO_ARTICLES.map(function(a, i) {
+    var card = document.createElement("div");
+    card.style.cssText = "border:1px solid rgba(201,168,76,0.18);background:linear-gradient(135deg,#120D04,#0A0802);padding:2rem;cursor:pointer;transition:all 0.35s";
+    card.setAttribute("data-idx", i);
+    card.addEventListener("click", function(){ openSEOArticle(parseInt(this.getAttribute("data-idx"))); });
+    card.addEventListener("mouseover", function(){ this.style.borderColor="rgba(201,168,76,0.45)"; this.style.transform="translateY(-3px)"; });
+    card.addEventListener("mouseout", function(){ this.style.borderColor="rgba(201,168,76,0.18)"; this.style.transform="none"; });
+    card.innerHTML =
+      "<div style='font-family:Cinzel,serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;display:inline-block;padding:0.25rem 0.7rem;border:1px solid rgba(201,168,76,0.28)'>" + esc(a.tag) + "</div>" +
+      "<div style='font-family:Cinzel,serif;font-size:1rem;color:var(--white);margin-bottom:0.8rem;line-height:1.3'>" + esc(a.title) + "</div>" +
+      "<div style='font-size:0.88rem;color:var(--stone-light);line-height:1.65;margin-bottom:1rem'>" + esc(a.summary) + "</div>" +
+      "<div style='font-size:0.85rem;font-style:italic;color:var(--parchment-dark);border-left:2px solid var(--gold-dark);padding-left:0.8rem;line-height:1.6'>" + esc(a.verse.substring(0,100)) + (a.verse.length > 100 ? "..." : "") + "</div>";
+    return card.outerHTML;
+  }).join("");
+}
+
+function openSEOArticle(i) {
+  var a = SEO_ARTICLES[i];
+  var grid = document.getElementById("seoGrid");
+  var reader = document.getElementById("seoReader");
+  grid.style.display = "none"; reader.style.display = "block";
+  var ctaHtml = "";
+  var ctaPage = a.cta;
+  var ctaLabels = {prayer:"&#128591; Get a Personalized Prayer", chat:"Ask the Word About This", sources:"View Our Sources", plans:"Start a Reading Plan", topics:"Explore Topic Guides"};
+  if (ctaLabels[ctaPage]) {
+    var ctaBtn = document.createElement("button");
+    ctaBtn.className = "btn-primary";
+    ctaBtn.innerHTML = ctaLabels[ctaPage];
+    ctaBtn.setAttribute("data-page", ctaPage);
+    ctaBtn.addEventListener("click", function(){ showPage(this.getAttribute("data-page")); });
+    ctaHtml = ctaBtn.outerHTML;
+  }
+  reader.innerHTML = "<button class='reader-back' onclick='renderSEO()'>&larr; All Articles</button>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block;padding:0.25rem 0.7rem;border:1px solid rgba(201,168,76,0.28)'>" + esc(a.tag) + "</div>" +
+    "<h2 style='font-family:Cinzel,serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--white);margin-bottom:1.5rem;line-height:1.25'>" + esc(a.title) + "</h2>" +
+    "<div style='background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;margin-bottom:2.5rem'>" +
+    "<div style='font-size:1.05rem;font-style:italic;color:var(--parchment);line-height:1.8;margin-bottom:0.5rem'>" + esc(a.verse) + "</div>" +
+    "<div style='font-family:Cinzel,serif;font-size:0.72rem;color:var(--gold)'>" + esc(a.verseRef) + " &mdash; King James Bible</div></div>" +
+    "<div style='font-size:1rem;color:var(--stone-light);line-height:1.85'>" +
+    a.body.map(function(s) {
+      return "<h3 style='font-family:Cinzel,serif;font-size:0.85rem;color:var(--white);letter-spacing:0.05em;margin:1.8rem 0 0.7rem'>" + esc(s.h) + "</h3>" +
+        "<p style='margin-bottom:0.5rem'>" + esc(s.p) + "</p>";
+    }).join("") + "</div>" +
+    "<div style='border-top:1px solid rgba(201,168,76,0.2);margin-top:2.5rem;padding-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center'>" +
+    ctaHtml +
+    "<button class='btn-ghost' onclick='renderSEO()'>&larr; More Articles</button></div>";
+  window.scrollTo(0, 0);
+}
+
 
 renderVOTD();
 renderBooks(OT);
