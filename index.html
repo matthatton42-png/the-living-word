@@ -6,6 +6,20 @@
 <title>The Living Word</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="The Living Word">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="The Living Word">
+<meta name="theme-color" content="#1A1208">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="The Living Word">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="The Living Word">
+<meta name="theme-color" content="#1A1208">
+<link rel="manifest" href="/manifest.json">
 <style>
 :root{--gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#8B6914;--parchment:#F5EDD6;--parchment-dark:#E8D9B0;--ink:#1A1208;--crimson:#7B1D1D;--crimson-light:#A52828;--deep-blue:#0D1B3E;--stone:#8A7D6B;--stone-light:#B5A88A;--white:#FDFAF3;--green:#2D6A4F;--green-light:#52B788;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -405,7 +419,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
       <div><a class="nav-logo" onclick="showPage('home')">The Living Word</a><p class="footer-tagline">An AI-powered Biblical study platform anchored in the King James Bible and verified by centuries of reputable scholarship — making the eternal Word accessible to every generation.</p></div>
       <div><div class="footer-heading">Explore</div><ul class="footer-links"><li><a onclick="showPage('devotional')">Daily Devotional</a></li><li><a onclick="showPage('books')">Books of the Bible</a></li><li><a onclick="showPage('topics')">Topic Studies</a></li><li><a onclick="showPage('plans')">Reading Plans</a></li><li><a onclick="showPage('prayer')">Prayer Guidance</a></li><li><a onclick="showPage('chat')">AI Chatbot</a></li></ul></div>
       <div><div class="footer-heading">Resources</div><ul class="footer-links"><li><a onclick="showPage('sources')">Our Sources</a></li><li><a onclick="showPage('partners')">Partners</a></li><li><a onclick="openSearch()">Search Scripture</a></li><li><a onclick="showPage('seo')">Study Articles</a></li></ul></div>
-      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a onclick="showPage('mission')">Our Mission</a></li><li><a onclick="showPage('faith')">Statement of Faith</a></li><li><a>Contact</a></li></ul></div>
+      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a onclick="showPage('mission')">Our Mission</a></li><li><a onclick="showPage('faith')">Statement of Faith</a></li><li><a href="mailto:welcome@thelivingword.community">Contact</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2025 The Living Word. Built on the King James Bible.</span><span style="font-style:italic;color:var(--gold-dark)">"Heaven and earth shall pass away, but my words shall not pass away." &mdash; Matthew 24:35</span></div>
   </footer>
@@ -1054,9 +1068,83 @@ function showBookTab(tab, btn) {
     var count = typeof data.chapters === "number" && data.chapters > 0 ? data.chapters : 30;
     var chips = "";
     for (var c=1; c<=count; c++) {
-      chips += "<button class='chapter-chip' data-ch='" + c + "' onclick='var b=currentBook,ch=this.dataset.ch;showPage(\"chat\");setTimeout(function(){document.getElementById(\"chatInput\").value=\"Explain \"+b+\" chapter \"+ch;},300)'>Ch. " + c + "</button>";
+      chips += "<button class='chapter-chip' id='ch-btn-" + c + "' data-ch='" + c + "' onclick='loadChapterStudy(this.dataset.ch)'>Ch. " + c + "</button>";
     }
-    el.innerHTML = "<div style='margin-top:2rem'><div style='font-family:Cinzel,serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-bottom:1rem'>Select a chapter to ask the AI about it:</div><div class='chapter-grid'>" + chips + "</div></div>";
+    el.innerHTML = "<div style='margin-top:2rem'>" +
+      "<div style='font-family:Cinzel,serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-bottom:1rem'>Select a chapter to study it here:</div>" +
+      "<div class='chapter-grid' id='chapterGrid'>" + chips + "</div>" +
+      "<div id='chapterStudyArea' style='margin-top:2rem;display:none'></div>" +
+      "</div>";
+  }
+}
+
+async function loadChapterStudy(ch) {
+  var area = document.getElementById("chapterStudyArea");
+  if (!area) return;
+  document.querySelectorAll(".chapter-chip").forEach(function(b){ b.style.borderColor=""; b.style.color=""; });
+  var activeBtn = document.getElementById("ch-btn-" + ch);
+  if (activeBtn) { activeBtn.style.borderColor="var(--gold)"; activeBtn.style.color="var(--gold)"; }
+  area.style.display = "block";
+  area.innerHTML = "<div style='border:1px solid rgba(201,168,76,0.18);padding:1.5rem;background:rgba(201,168,76,0.02)'><div style='font-family:Cinzel,serif;font-size:0.8rem;color:var(--gold);margin-bottom:1rem'>" + esc(currentBook) + " &mdash; Chapter " + ch + "</div><div style='display:flex;align-items:center;gap:0.8rem;color:var(--stone-light);font-size:0.9rem'><div class='typing-indicator' style='display:inline-flex'><span></span><span></span><span></span></div>Loading chapter study...</div></div>";
+  area.scrollIntoView({behavior:"smooth", block:"nearest"});
+  try {
+    var prompt = "Give me a concise study of " + currentBook + " chapter " + ch + " from the King James Bible. Include: 1) A 2-3 sentence overview of what happens in this chapter. 2) The key verse of the chapter with its KJV text. 3) Three to five specific verses from this chapter worth highlighting (give the verse reference and full KJV text for each). 4) One paragraph of practical modern application. Keep it focused and readable.";
+    var reply = await callAPI(CHAT_SYSTEM, [{role:"user", content:prompt}]);
+    var bookName = currentBook;
+    var wrapper = document.createElement("div");
+    wrapper.style.cssText = "border:1px solid rgba(201,168,76,0.22);padding:1.8rem;background:rgba(201,168,76,0.03)";
+    var header = document.createElement("div");
+    header.style.cssText = "display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:0.8rem";
+    header.innerHTML = "<div style='font-family:Cinzel,serif;font-size:0.9rem;color:var(--gold)'>" + esc(bookName) + " &mdash; Chapter " + ch + "</div>";
+    var btnGroup = document.createElement("div");
+    btnGroup.style.cssText = "display:flex;gap:0.6rem";
+    var askMoreBtn = document.createElement("button");
+    askMoreBtn.className = "btn-ghost";
+    askMoreBtn.style.cssText = "font-size:0.65rem;padding:0.3rem 0.8rem";
+    askMoreBtn.textContent = "Ask More";
+    askMoreBtn.addEventListener("click", function(){
+      var b = bookName, c = ch;
+      showPage("chat");
+      setTimeout(function(){ document.getElementById("chatInput").value = "Tell me more about " + b + " chapter " + c; }, 300);
+    });
+    var closeBtn = document.createElement("button");
+    closeBtn.className = "btn-ghost";
+    closeBtn.style.cssText = "font-size:0.65rem;padding:0.3rem 0.8rem";
+    closeBtn.textContent = "Close";
+    closeBtn.addEventListener("click", function(){
+      area.style.display = "none";
+      document.querySelectorAll(".chapter-chip").forEach(function(b){ b.style.borderColor=""; b.style.color=""; });
+    });
+    btnGroup.appendChild(askMoreBtn);
+    btnGroup.appendChild(closeBtn);
+    header.appendChild(btnGroup);
+    wrapper.appendChild(header);
+    var content = document.createElement("div");
+    content.style.cssText = "font-size:0.95rem;color:var(--stone-light);line-height:1.85";
+    content.innerHTML = fmtChat(reply);
+    wrapper.appendChild(content);
+    var sourceNote = document.createElement("div");
+    sourceNote.style.cssText = "margin-top:1rem;font-family:Lato,sans-serif;font-size:0.68rem;color:var(--stone)";
+    sourceNote.textContent = "KJV Scripture · Matthew Henry · Blue Letter Bible · Answers in Genesis";
+    wrapper.appendChild(sourceNote);
+    area.innerHTML = "";
+    area.appendChild(wrapper);
+  } catch(e) {
+    var errDiv = document.createElement("div");
+    errDiv.style.cssText = "border:1px solid rgba(201,168,76,0.15);padding:1.5rem;color:var(--stone-light);font-size:0.9rem";
+    errDiv.textContent = "Could not load chapter study. ";
+    var fallbackBtn = document.createElement("button");
+    fallbackBtn.className = "btn-ghost";
+    fallbackBtn.style.cssText = "font-size:0.65rem;padding:0.3rem 0.8rem;margin-left:0.5rem";
+    fallbackBtn.textContent = "Ask in Chatbot";
+    fallbackBtn.addEventListener("click", function(){
+      var b = currentBook, c = ch;
+      showPage("chat");
+      setTimeout(function(){ document.getElementById("chatInput").value = "Explain " + b + " chapter " + c; }, 300);
+    });
+    errDiv.appendChild(fallbackBtn);
+    area.innerHTML = "";
+    area.appendChild(errDiv);
   }
 }
 
@@ -1070,8 +1158,11 @@ async function callAPI(system, messages) {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({system: system, messages: messages})
   });
-  if (!r.ok) { throw new Error("API error " + r.status); }
   var d = await r.json();
+  if (!r.ok) {
+    var errMsg = (d && d.detail && d.detail.error && d.detail.error.message) ? d.detail.error.message : ("API error " + r.status);
+    throw new Error(errMsg);
+  }
   return (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : "Something went wrong. Please try again.";
 }
 
