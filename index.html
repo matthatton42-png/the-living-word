@@ -289,6 +289,12 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
 @keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.3;}30%{transform:translateY(-6px);opacity:1;}}
 @media(max-width:900px){nav{padding:0 1.4rem;}.nav-links,.nav-cta,.nav-prayer-btn{display:none;}.nav-menu-btn{display:flex;}.hero-actions{flex-direction:column;align-items:center;}.btn-primary,.btn-secondary{width:100%;max-width:260px;text-align:center;}.features-grid{grid-template-columns:repeat(2,1fr);}.feature-item{border-right:none;border-bottom:1px solid rgba(201,168,76,0.12);}.feature-item:nth-child(odd){border-right:1px solid rgba(201,168,76,0.12);}.feature-item:last-child{border-bottom:none;grid-column:span 2;}.explore-grid{grid-template-columns:1fr;}.explore-card.featured{grid-column:span 1;grid-row:span 1;}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.chat-topics-grid{grid-template-columns:1fr 1fr;}.book-nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}}
 @media(max-width:600px){section{padding:3.5rem 1.2rem;}.features-grid{grid-template-columns:1fr;}.feature-item{border-right:none!important;grid-column:span 1!important;}.chat-topics-grid{grid-template-columns:1fr;}.chatbot-messages,.prayer-messages{height:300px;}.books-grid{grid-template-columns:repeat(auto-fill,minmax(95px,1fr));}.footer-inner{grid-template-columns:1fr;gap:1.5rem;}.devotional-grid,.topics-grid,.plans-grid,.partners-grid,.prayer-categories-grid{grid-template-columns:1fr;}}
+
+.contact-popup{position:fixed;bottom:2rem;right:2rem;background:#1A1208;border:1px solid rgba(201,168,76,0.35);padding:1.2rem 1.5rem;z-index:9999;min-width:260px;box-shadow:0 8px 32px rgba(0,0,0,0.6);}
+.contact-popup-title{font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.contact-popup-email{font-size:0.9rem;color:var(--parchment);margin-bottom:1rem;word-break:break-all;}
+.contact-popup-btns{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.contact-popup-close{position:absolute;top:0.5rem;right:0.7rem;background:none;border:none;color:var(--stone);cursor:pointer;font-size:1rem;line-height:1;}
 </style>
 </head>
 <body>
@@ -419,7 +425,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
       <div><a class="nav-logo" onclick="showPage('home')">The Living Word</a><p class="footer-tagline">An AI-powered Biblical study platform anchored in the King James Bible and verified by centuries of reputable scholarship — making the eternal Word accessible to every generation.</p></div>
       <div><div class="footer-heading">Explore</div><ul class="footer-links"><li><a onclick="showPage('devotional')">Daily Devotional</a></li><li><a onclick="showPage('books')">Books of the Bible</a></li><li><a onclick="showPage('topics')">Topic Studies</a></li><li><a onclick="showPage('plans')">Reading Plans</a></li><li><a onclick="showPage('prayer')">Prayer Guidance</a></li><li><a onclick="showPage('chat')">AI Chatbot</a></li></ul></div>
       <div><div class="footer-heading">Resources</div><ul class="footer-links"><li><a onclick="showPage('sources')">Our Sources</a></li><li><a onclick="showPage('partners')">Partners</a></li><li><a onclick="openSearch()">Search Scripture</a></li><li><a onclick="showPage('seo')">Study Articles</a></li></ul></div>
-      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a onclick="showPage('mission')">Our Mission</a></li><li><a onclick="showPage('faith')">Statement of Faith</a></li><li><a href="mailto:welcome@thelivingword.community">Contact</a></li></ul></div>
+      <div><div class="footer-heading">About</div><ul class="footer-links"><li><a onclick="showPage('mission')">Our Mission</a></li><li><a onclick="showPage('faith')">Statement of Faith</a></li><li><a onclick="showContactOptions(event)" style="cursor:pointer">Contact</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2025 The Living Word. Built on the King James Bible.</span><span style="font-style:italic;color:var(--gold-dark)">"Heaven and earth shall pass away, but my words shall not pass away." &mdash; Matthew 24:35</span></div>
   </footer>
@@ -1504,8 +1510,50 @@ function openSEOArticle(i) {
 }
 
 
+function showContactOptions(e) {
+  e.preventDefault();
+  var popup = document.getElementById("contactPopup");
+  popup.style.display = popup.style.display === "none" ? "block" : "none";
+  // Close when clicking outside
+  setTimeout(function(){
+    document.addEventListener("click", function closePopup(ev){
+      if (!popup.contains(ev.target)) {
+        popup.style.display = "none";
+        document.removeEventListener("click", closePopup);
+      }
+    });
+  }, 100);
+}
+function copyContactEmail(btn) {
+  navigator.clipboard.writeText("welcome@thelivingword.community").then(function(){
+    btn.textContent = "&#10003; Copied!";
+    btn.innerHTML = "&#10003; Copied!";
+    setTimeout(function(){ btn.innerHTML = "&#128203; Copy Address"; }, 2000);
+  }).catch(function(){
+    // Fallback for older browsers
+    var ta = document.createElement("textarea");
+    ta.value = "welcome@thelivingword.community";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    btn.innerHTML = "&#10003; Copied!";
+    setTimeout(function(){ btn.innerHTML = "&#128203; Copy Address"; }, 2000);
+  });
+}
+
 renderVOTD();
 renderBooks(OT);
 </script>
+
+<div id="contactPopup" style="display:none" class="contact-popup">
+  <button class="contact-popup-close" onclick="document.getElementById('contactPopup').style.display='none'">&#10005;</button>
+  <div class="contact-popup-title">Get in Touch</div>
+  <div class="contact-popup-email">welcome@thelivingword.community</div>
+  <div class="contact-popup-btns">
+    <a href="mailto:welcome@thelivingword.community" class="btn-ghost" style="font-size:0.7rem;padding:0.4rem 0.9rem;text-decoration:none">&#9993; Open Email</a>
+    <button class="btn-ghost" style="font-size:0.7rem;padding:0.4rem 0.9rem" onclick="copyContactEmail(this)">&#128203; Copy Address</button>
+  </div>
+</div>
 </body>
 </html>
