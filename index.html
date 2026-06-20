@@ -161,6 +161,7 @@ section{padding:5rem 2rem;}
 .source-name{font-family:'Cinzel',serif;font-size:0.92rem;color:var(--white);margin-bottom:0.5rem;}
 .source-desc{font-size:0.88rem;color:var(--stone-light);line-height:1.65;}
 .partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+@media(min-width:769px){.partners-grid-3col{grid-template-columns:repeat(3,1fr)!important}.partners-grid-center-item{grid-column:2}}
 .partner-card{border:1px solid rgba(201,168,76,0.2);padding:2rem;background:linear-gradient(135deg,#0F0C04,#0A0802);text-align:center;}
 .partner-icon-lg{font-size:2.8rem;margin-bottom:1rem;}
 .partner-name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;}
@@ -349,6 +350,36 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
 .geo-map-link{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.08em;color:var(--gold);text-decoration:none;padding:0.35rem 0.8rem;border:1px solid rgba(201,168,76,0.3);transition:all 0.25s}
 .geo-map-link:hover{background:rgba(201,168,76,0.1)}
 @media(max-width:600px){.geo-map-iframe{height:280px}}
+
+.nav-new-badge{display:inline-block;font-family:'Lato',sans-serif;font-size:0.52rem;font-weight:700;letter-spacing:0.06em;color:var(--ink);background:linear-gradient(110deg,var(--gold) 30%,#FFF6D8 50%,var(--gold) 70%);background-size:220% 100%;padding:0.1rem 0.4rem;border-radius:2px;white-space:nowrap;pointer-events:none;margin-right:0.35rem;vertical-align:middle;animation:shimmerBadge 2.5s ease-in-out infinite;box-shadow:0 0 6px rgba(201,168,76,0.5)}
+@keyframes shimmerBadge{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.shimmer-title{background:linear-gradient(110deg,var(--white) 25%,var(--gold-light) 45%,#FFF6D8 50%,var(--gold-light) 55%,var(--white) 75%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.shimmer-title-anim{animation:shimmerSweep 4s ease-in-out infinite}
+@keyframes shimmerSweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+.geo-map-toggle{display:flex;border:1px solid rgba(201,168,76,0.3);border-radius:3px;overflow:hidden}
+.geo-toggle-btn{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.06em;padding:0.3rem 0.7rem;background:transparent;border:none;color:var(--stone-light);cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.geo-toggle-btn.active{background:var(--gold);color:var(--ink)}
+.geo-toggle-btn:not(.active):hover{background:rgba(201,168,76,0.12)}
+.geo-map-footnote{font-family:'Lato',sans-serif;font-size:0.7rem;color:var(--stone);padding:0.7rem 1.3rem;border-top:1px solid rgba(201,168,76,0.1);line-height:1.5}
+
+.translate-overlay{display:none;position:fixed;inset:0;background:rgba(5,4,1,0.96);z-index:600;padding:6rem 1.5rem 2rem;backdrop-filter:blur(10px);align-items:flex-start;justify-content:center}
+.translate-overlay.open{display:flex}
+.translate-modal{width:100%;max-width:620px;background:#120D04;border:1px solid rgba(201,168,76,0.3);box-shadow:0 12px 48px rgba(0,0,0,0.7)}
+.translate-modal-header{padding:1.2rem 1.6rem;background:linear-gradient(90deg,#1A1205,#110D04);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;justify-content:space-between;align-items:center}
+.translate-modal-title{font-family:'Cinzel',serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.08em}
+.translate-modal-close{background:none;border:none;color:var(--stone);cursor:pointer;font-size:1.2rem}
+.translate-modal-body{padding:1.6rem}
+.translate-lang-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.translate-lang-chip{font-family:'Lato',sans-serif;font-size:0.72rem;padding:0.35rem 0.85rem;border:1px solid rgba(201,168,76,0.25);color:var(--stone-light);background:transparent;cursor:pointer;border-radius:16px;transition:all 0.25s}
+.translate-lang-chip:hover,.translate-lang-chip.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08)}
+.translate-input{width:100%;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);color:var(--parchment);font-family:'EB Garamond',serif;font-size:1rem;padding:0.9rem 1rem;resize:vertical;min-height:100px;outline:none;border-radius:3px}
+.translate-input:focus{border-color:var(--gold-dark)}
+.translate-input::placeholder{color:var(--stone)}
+.translate-submit{width:100%;margin-top:1rem}
+.translate-result{margin-top:1.5rem;padding:1.3rem 1.5rem;background:rgba(201,168,76,0.05);border-left:3px solid var(--gold);font-size:0.95rem;color:var(--parchment);line-height:1.8}
+.translate-result-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.6rem}
+.translate-footnote{margin-top:1rem;font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);line-height:1.5;text-align:center}
 </style>
 </head>
 <body>
@@ -363,12 +394,13 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <li><a onclick="showPage('books')" data-page="books">Books</a></li>
     <li><a onclick="showPage('sources')" data-page="sources">Sources</a></li>
     <li><a onclick="showPage('partners')" data-page="partners">Partners</a></li>
-    <li><a onclick="showPage('seo')" data-page="seo">Articles</a></li>
-    <li><a onclick="showPage('quiz')" data-page="quiz">Quiz</a></li>
-    <li><a onclick="showPage('geo')" data-page="geo">Biblical Maps</a></li>
+    <li><span class="nav-new-badge">New</span><a onclick="showPage('seo')" data-page="seo">Articles</a></li>
+    <li><span class="nav-new-badge">New</span><a onclick="showPage('quiz')" data-page="quiz">Quiz</a></li>
+    <li><span class="nav-new-badge">New</span><a onclick="showPage('geo')" data-page="geo">Biblical Maps</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()" title="Search">&#128269;</button>
+    <button class="nav-search-btn" onclick="openTranslate()" title="Translate">&#127760;</button>
     <button class="nav-prayer-btn" onclick="showPage('prayer')">&#128591; Prayer</button>
     <button class="nav-cta" onclick="showPage('chat')">Ask the Word</button>
     <button class="nav-menu-btn" onclick="toggleMenu()" id="menuBtn"><span></span><span></span><span></span></button>
@@ -387,6 +419,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
   <a onclick="showPage('geo');closeMenu()">Biblical Maps</a>
   <a onclick="showPage('prayer');closeMenu();" style="color:var(--crimson-light)">&#128591; Prayer Guidance</a>
   <a onclick="showPage('chat');closeMenu();" style="color:var(--gold)">Ask the Word (Chatbot)</a>
+  <a onclick="openTranslate();closeMenu();">&#127760; Translate to English</a>
 </div>
 <div class="search-overlay" id="searchOverlay">
   <button class="search-close" onclick="closeSearch()">&#10005;</button>
@@ -400,7 +433,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <div class="hero-bg"></div><div class="hero-texture"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">King James Bible &mdash; Ancient Wisdom for the Modern World</div>
-      <h1 class="hero-title">The Living<span>Word</span></h1>
+      <h1 class="hero-title"><span class="shimmer-title shimmer-title-anim">The Living</span><span class="shimmer-title shimmer-title-anim" style="display:block">Word</span></h1>
       <div class="hero-subtitle">Scripture &middot; Understanding &middot; Application</div>
       <div class="hero-divider"></div>
       <p class="hero-verse" id="heroVerseText">"Thy word is a lamp unto my feet, and a light unto my path."</p>
@@ -646,11 +679,19 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
       <p style="font-size:1rem;color:var(--stone-light);line-height:1.8;margin-bottom:2rem">The Living Word is actively pursuing partnerships with trusted Christian ministries, apologetics organizations, and educational institutions. We are committed to only listing partners who have formally agreed to collaborate. Announcements coming soon.</p>
       <div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;font-size:0.95rem;font-style:italic;color:var(--parchment-dark);line-height:1.75">"Can two walk together, except they be agreed?" &mdash; Amos 3:3</div>
     </div>
-    <div class="partners-grid" style="max-width:900px;margin:0 auto">
+    <div class="partners-grid partners-grid-3col" style="max-width:900px;margin:0 auto">
       <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#10010;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Ministry Partner</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">Apologetics, creation science, and Biblical research organizations that strengthen confidence in Scripture.</p></div>
       <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#10010;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Educational Partner</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">Christian schools, seminaries, and discipleship organizations equipping the next generation in Biblical truth.</p></div>
       <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#10010;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Church Partner</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">Local and national churches seeking to equip their congregations with deeper Biblical study resources.</p></div>
-      <div class="partner-slot-card"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#9993;&#65039;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Interested in Partnering?</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">If your organization shares our commitment to Biblical truth and broad outreach, we would love to hear from you.</p></div>
+      <div class="partner-slot-card partners-grid-center-item" style="cursor:pointer" onclick="document.getElementById('partnersEmailLine').scrollIntoView({behavior:'smooth',block:'center'})"><div style="font-size:2.5rem;color:var(--stone);margin-bottom:1rem">&#9993;&#65039;</div><div style="font-family:Cinzel,serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.6rem">Interested in Partnering?</div><p style="font-size:0.88rem;color:var(--stone);line-height:1.65">If your organization shares our commitment to Biblical truth and broad outreach, we would love to hear from you.</p></div>
+    </div>
+    <div id="partnersEmailLine" style="max-width:560px;margin:2.5rem auto 0;text-align:center;border:1px solid rgba(201,168,76,0.22);padding:1.8rem 2rem;background:rgba(201,168,76,0.03)">
+      <div style="font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem">Reach Out Directly</div>
+      <div style="font-size:1.05rem;color:var(--parchment);margin-bottom:1.3rem">welcome@thelivingword.community</div>
+      <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap">
+        <a href="mailto:welcome@thelivingword.community" class="btn-ghost" style="text-decoration:none">&#9993; Open Email</a>
+        <button class="btn-ghost" onclick="copyContactEmail(this)">&#128203; Copy Address</button>
+      </div>
     </div>
   </section>
   <footer><div class="footer-bottom" style="max-width:1100px;margin:0 auto;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.1);justify-content:center"><span>&copy; 2025 The Living Word</span></div></footer></div>
@@ -2024,28 +2065,50 @@ function renderGeo() {
   }).join("");
 }
 
+var geoCurrentMapMode = "modern";
+
+function buildGeoMapHtml(g) {
+  var delta = 0.04;
+  var bbox = (g.lng - delta) + "," + (g.lat - delta) + "," + (g.lng + delta) + "," + (g.lat + delta);
+  var gmapsLink = "https://www.google.com/maps/search/?api=1&query=" + g.lat + "," + g.lng;
+  var src;
+  if (geoCurrentMapMode === "terrain") {
+    src = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=cyclemap&marker=" + g.lat + "," + g.lng;
+  } else {
+    src = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik&marker=" + g.lat + "," + g.lng;
+  }
+  return "<div class='geo-map-wrap'>" +
+    "<div class='geo-map-header'>" +
+    "<div class='geo-map-title'>&#128205; " + esc(g.modernName) + "</div>" +
+    "<div style='display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap'>" +
+    "<div class='geo-map-toggle'>" +
+    "<button class='geo-toggle-btn" + (geoCurrentMapMode==="modern"?" active":"") + "' onclick='setGeoMapMode(\"modern\")'>Modern Map</button>" +
+    "<button class='geo-toggle-btn" + (geoCurrentMapMode==="terrain"?" active":"") + "' onclick='setGeoMapMode(\"terrain\")'>Terrain View</button>" +
+    "</div>" +
+    "<span class='geo-map-coords'>" + g.lat.toFixed(4) + "&deg;, " + g.lng.toFixed(4) + "&deg;</span>" +
+    "<a class='geo-map-link' href='" + gmapsLink + "' target='_blank' rel='noopener'>Open in Maps &#8599;</a>" +
+    "</div></div>" +
+    "<iframe class='geo-map-iframe' src='" + src + "' loading='lazy' title='Map of " + esc(g.modernName) + "'></iframe>" +
+    "<div class='geo-map-footnote'>" + (geoCurrentMapMode==="terrain" ? "Terrain view shows natural landscape features \u2014 hills, valleys, and topography \u2014 closer to how the land would have appeared in Biblical times, without modern roads and labels." : "Modern map shows present-day roads, borders, and city layout at this location.") + "</div>" +
+    "</div>";
+}
+
+function setGeoMapMode(mode) {
+  geoCurrentMapMode = mode;
+  var g = GEO_LOCATIONS[window.currentGeoIdx];
+  var container = document.getElementById("geoMapContainer");
+  if (container && g) container.innerHTML = buildGeoMapHtml(g);
+}
+
 function openGeoDetail(i) {
   var g = GEO_LOCATIONS[i];
   var grid = document.getElementById("geoGrid");
   var detail = document.getElementById("geoDetail");
   grid.style.display = "none"; detail.style.display = "block";
+  geoCurrentMapMode = "modern";
+  window.currentGeoIdx = i;
 
-  var mapHtml = "";
-  if (g.lat && g.lng) {
-    var delta = 0.04;
-    var bbox = (g.lng - delta) + "," + (g.lat - delta) + "," + (g.lng + delta) + "," + (g.lat + delta);
-    var osmSrc = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik&marker=" + g.lat + "," + g.lng;
-    var gmapsLink = "https://www.google.com/maps/search/?api=1&query=" + g.lat + "," + g.lng;
-    mapHtml = "<div class='geo-map-wrap'>" +
-      "<div class='geo-map-header'>" +
-      "<div class='geo-map-title'>&#128205; " + esc(g.modernName) + "</div>" +
-      "<div style='display:flex;align-items:center;gap:1rem'>" +
-      "<span class='geo-map-coords'>" + g.lat.toFixed(4) + "&deg;, " + g.lng.toFixed(4) + "&deg;</span>" +
-      "<a class='geo-map-link' href='" + gmapsLink + "' target='_blank' rel='noopener'>Open in Maps &#8599;</a>" +
-      "</div></div>" +
-      "<iframe class='geo-map-iframe' src='" + osmSrc + "' loading='lazy' title='Map of " + esc(g.modernName) + "'></iframe>" +
-      "</div>";
-  }
+  var mapHtml = (g.lat && g.lng) ? buildGeoMapHtml(g) : "";
 
   detail.innerHTML = "<button class='reader-back' onclick='renderGeo()'>&larr; All Locations</button>" +
     "<div class='geo-detail'>" +
@@ -2054,7 +2117,7 @@ function openGeoDetail(i) {
     "<h2 style='font-family:Cinzel,serif;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);margin-bottom:0.5rem'>" + esc(g.name) + "</h2>" +
     "<p style='font-size:1rem;color:var(--stone-light);line-height:1.8;max-width:680px;margin:0 auto'>" + esc(g.biblicalSignificance) + "</p>" +
     "</div>" +
-    mapHtml +
+    "<div id='geoMapContainer'>" + mapHtml + "</div>" +
     "<div class='geo-then-now'>" +
     "<div class='geo-col'>" +
     "<div class='geo-col-label'>Then &mdash; Biblical Times</div>" +
@@ -2094,6 +2157,43 @@ function renderHeroVerse() {
 
 renderHeroVerse();
 renderVOTD();
+// ─────────────────────────────────────────────
+// TRANSLATE WIDGET
+// ─────────────────────────────────────────────
+var translateLang = "auto";
+
+function openTranslate() {
+  document.getElementById("translateOverlay").classList.add("open");
+  setTimeout(function(){ var i = document.getElementById("translateInput"); if (i) i.focus(); }, 150);
+}
+function closeTranslate() {
+  document.getElementById("translateOverlay").classList.remove("open");
+}
+function setTranslateLang(lang, btn) {
+  translateLang = lang;
+  document.querySelectorAll(".translate-lang-chip").forEach(function(c){ c.classList.remove("active"); });
+  btn.classList.add("active");
+}
+async function runTranslate() {
+  var input = document.getElementById("translateInput");
+  var text = input.value.trim();
+  if (!text) return;
+  var btn = document.getElementById("translateSubmitBtn");
+  var resultArea = document.getElementById("translateResultArea");
+  btn.disabled = true; btn.style.opacity = "0.6"; btn.textContent = "Translating...";
+  resultArea.innerHTML = "";
+  try {
+    var langHint = translateLang === "auto" ? "Detect the original language (likely Hebrew, Koine Greek, Latin, Aramaic, or archaic/Old English such as KJV-style phrasing) and state which it is." : ("The text is in " + translateLang + ".");
+    var prompt = "Translate the following text into clear, plain modern English. " + langHint + " If it is a Biblical phrase or verse, also note the likely Scripture reference if recognizable. Text to translate: \n\n" + text;
+    var reply = await callAPI("You are a careful, scholarly translation assistant for The Living Word Biblical study platform. Provide clear, accurate, plain modern English translations of Hebrew, Greek, Latin, Aramaic, or archaic English (KJV-style) text. Be concise: state the detected language briefly, then the translation, then a one-sentence note on nuance or Scripture reference if relevant. Do not pad with unnecessary commentary.", [{role:"user", content:prompt}]);
+    resultArea.innerHTML = "<div class='translate-result'><div class='translate-result-label'>Translation</div>" + fmtChat(reply) + "</div>";
+  } catch(e) {
+    resultArea.innerHTML = "<div class='translate-result' style='border-left-color:var(--crimson-light)'>Could not complete translation. Please try again.</div>";
+  }
+  btn.disabled = false; btn.style.opacity = "1"; btn.textContent = "Translate";
+}
+document.addEventListener("keydown", function(e){ if(e.key==="Escape"){ closeTranslate(); } });
+
 renderBooks(OT);
 </script>
 
@@ -2104,6 +2204,29 @@ renderBooks(OT);
   <div class="contact-popup-btns">
     <a href="mailto:welcome@thelivingword.community" class="btn-ghost" style="font-size:0.7rem;padding:0.4rem 0.9rem;text-decoration:none">&#9993; Open Email</a>
     <button class="btn-ghost" style="font-size:0.7rem;padding:0.4rem 0.9rem" onclick="copyContactEmail(this)">&#128203; Copy Address</button>
+  </div>
+</div>
+
+<div class="translate-overlay" id="translateOverlay">
+  <div class="translate-modal">
+    <div class="translate-modal-header">
+      <div class="translate-modal-title">&#127760; Translate to English</div>
+      <button class="translate-modal-close" onclick="closeTranslate()">&#10005;</button>
+    </div>
+    <div class="translate-modal-body">
+      <div class="translate-lang-row" id="translateLangRow">
+        <button class="translate-lang-chip active" data-lang="auto" onclick="setTranslateLang('auto',this)">Auto-Detect</button>
+        <button class="translate-lang-chip" data-lang="Hebrew" onclick="setTranslateLang('Hebrew',this)">Hebrew</button>
+        <button class="translate-lang-chip" data-lang="Koine Greek" onclick="setTranslateLang('Koine Greek',this)">Greek</button>
+        <button class="translate-lang-chip" data-lang="Latin" onclick="setTranslateLang('Latin',this)">Latin</button>
+        <button class="translate-lang-chip" data-lang="Aramaic" onclick="setTranslateLang('Aramaic',this)">Aramaic</button>
+        <button class="translate-lang-chip" data-lang="Old/Middle English" onclick="setTranslateLang('Old/Middle English',this)">Old English (KJV)</button>
+      </div>
+      <textarea class="translate-input" id="translateInput" placeholder="Paste a word, phrase, or verse in Hebrew, Greek, Latin, Aramaic, or archaic English (like KJV phrasing) to translate into plain modern English..."></textarea>
+      <button class="btn-primary translate-submit" onclick="runTranslate()" id="translateSubmitBtn">Translate</button>
+      <div id="translateResultArea"></div>
+      <div class="translate-footnote">AI-assisted translation for study purposes &middot; Always cross-reference significant findings with a qualified Hebrew/Greek scholar or trusted lexicon.</div>
+    </div>
   </div>
 </div>
 </body>
