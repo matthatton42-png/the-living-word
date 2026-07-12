@@ -80,7 +80,7 @@ section{padding:5rem 2rem;}
 .hero-divider{width:180px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.2rem auto;opacity:0;animation:fadeIn 1.5s ease 1.2s forwards;}
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;opacity:0;animation:fadeUp 1s ease 1.3s forwards;}
 .features-bar{background:linear-gradient(135deg,#0E0A03,#1A1005,#0E0A03);border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2);}
-.features-grid{display:grid;grid-template-columns:repeat(5,1fr);max-width:1200px;margin:0 auto;}
+.features-grid{display:grid;grid-template-columns:repeat(7,1fr);max-width:1400px;margin:0 auto;}
 .feature-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(201,168,76,0.12);transition:background 0.3s;cursor:pointer;}
 .feature-item:last-child{border-right:none;}
 .feature-item:hover{background:rgba(201,168,76,0.05);}
@@ -288,7 +288,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.3);opacity:0.6;}}
 @keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.3;}30%{transform:translateY(-6px);opacity:1;}}
-@media(max-width:900px){nav{padding:0 1.4rem;}.nav-links,.nav-cta,.nav-prayer-btn{display:none;}.nav-menu-btn{display:flex;}.hero-actions{flex-direction:column;align-items:center;}.btn-primary,.btn-secondary{width:100%;max-width:260px;text-align:center;}.features-grid{grid-template-columns:repeat(2,1fr);}.feature-item{border-right:none;border-bottom:1px solid rgba(201,168,76,0.12);}.feature-item:nth-child(odd){border-right:1px solid rgba(201,168,76,0.12);}.feature-item:last-child{border-bottom:none;grid-column:span 2;}.explore-grid{grid-template-columns:1fr;}.explore-card.featured{grid-column:span 1;grid-row:span 1;}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.chat-topics-grid{grid-template-columns:1fr 1fr;}.book-nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}}
+@media(max-width:900px){nav{padding:0 1.4rem;}.nav-links,.nav-cta,.nav-prayer-btn{display:none;}.nav-menu-btn{display:flex;}.hero-actions{flex-direction:column;align-items:center;}.btn-primary,.btn-secondary{width:100%;max-width:260px;text-align:center;}.features-grid{grid-template-columns:repeat(2,1fr);}.feature-item{border-right:none;border-bottom:1px solid rgba(201,168,76,0.12);}.feature-item:nth-child(odd){border-right:1px solid rgba(201,168,76,0.12);}.feature-item:last-child{border-bottom:none;}.feature-item:nth-last-child(-n+1):nth-child(odd){grid-column:span 2;}.explore-grid{grid-template-columns:1fr;}.explore-card.featured{grid-column:span 1;grid-row:span 1;}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.chat-topics-grid{grid-template-columns:1fr 1fr;}.book-nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}}
 @media(max-width:600px){section{padding:3.5rem 1.2rem;}.features-grid{grid-template-columns:1fr;}.feature-item{border-right:none!important;grid-column:span 1!important;}.chat-topics-grid{grid-template-columns:1fr;}.chatbot-messages,.prayer-messages{height:300px;}.books-grid{grid-template-columns:repeat(auto-fill,minmax(95px,1fr));}.footer-inner{grid-template-columns:1fr;gap:1.5rem;}.devotional-grid,.topics-grid,.plans-grid,.partners-grid,.prayer-categories-grid{grid-template-columns:1fr;}}
 
 .contact-popup{position:fixed;bottom:2rem;right:2rem;background:#1A1208;border:1px solid rgba(201,168,76,0.35);padding:1.2rem 1.5rem;z-index:9999;min-width:260px;box-shadow:0 8px 32px rgba(0,0,0,0.6);}
@@ -617,6 +617,8 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
       <div class="feature-item" onclick="showPage('prayer')"><div class="feature-icon">&#128591;</div><div class="feature-title">Prayer Guidance</div><div class="feature-desc">Personalized Scripture-grounded prayers for your needs</div></div>
       <div class="feature-item" onclick="showPage('quiz')"><div class="feature-icon">&#10067;</div><div class="feature-title">Bible Quiz</div><div class="feature-desc">Test your knowledge across 80 questions, 3 difficulty levels</div></div>
       <div class="feature-item" onclick="showPage('geo')"><div class="feature-icon">&#128506;&#65039;</div><div class="feature-title">Biblical Maps</div><div class="feature-desc">Interactive maps comparing Biblical times to today</div></div>
+      <div class="feature-item" onclick="showPage('bible')"><div class="feature-icon">&#128214;</div><div class="feature-title">Bible Study</div><div class="feature-desc">Full KJV reader with notes, highlights &amp; version compare</div></div>
+      <div class="feature-item" onclick="openAuthOrMenu()"><div class="feature-icon">&#128100;</div><div class="feature-title">My Account</div><div class="feature-desc">Sign in to sync your notes and progress across devices</div></div>
     </div>
   </div>
   <section class="votd-section">
