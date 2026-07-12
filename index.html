@@ -429,6 +429,16 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
 .user-dropdown-item:hover{color:var(--gold);background:rgba(201,168,76,0.06)}
 .user-dropdown-item.danger{color:var(--crimson-light)}
 
+/* ── BIBLE SIGN-IN BANNER ── */
+.bible-signin-banner{background:linear-gradient(90deg,rgba(123,29,29,0.18),rgba(201,168,76,0.08));border-bottom:1px solid rgba(201,168,76,0.2);padding:0.75rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.bible-signin-banner-text{font-family:'EB Garamond',serif;font-size:0.95rem;color:var(--parchment);flex:1;min-width:200px}
+.bible-signin-banner-text strong{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--gold);font-weight:600;letter-spacing:0.04em}
+.bible-signin-banner-actions{display:flex;gap:0.5rem;flex-shrink:0}
+.bible-signin-banner-btn{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.08em;padding:0.35rem 0.9rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.25s;border-radius:2px;white-space:nowrap}
+.bible-signin-banner-btn:hover{background:rgba(201,168,76,0.12)}
+.bible-signin-banner-btn.primary{background:rgba(201,168,76,0.12);color:var(--gold)}
+.bible-signin-banner-dismiss{background:none;border:none;color:var(--stone);cursor:pointer;font-size:1rem;padding:0;flex-shrink:0;line-height:1}
+.bible-signin-banner-dismiss:hover{color:var(--parchment)}
 /* ── BIBLE READER ── */
 .bible-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 68px);overflow:hidden}
 .bible-sidebar{background:#0C0802;border-right:1px solid rgba(201,168,76,0.15);overflow-y:auto;display:flex;flex-direction:column}
@@ -538,7 +548,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <li><span class="nav-new-badge">New</span><a onclick="showPage('seo')" data-page="seo">Articles</a></li>
     <li><span class="nav-new-badge">New</span><a onclick="showPage('quiz')" data-page="quiz">Quiz</a></li>
     <li><span class="nav-new-badge">New</span><a onclick="showPage('geo')" data-page="geo">Biblical Maps</a></li>
-    <li><a onclick="showPage('bible')" data-page="bible">KJV Bible</a></li>
+    <li><span class="nav-new-badge">New</span><a onclick="showPage('bible')" data-page="bible">Bible Study</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()" title="Search">&#128269;</button>
@@ -547,7 +557,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
       <button class="nav-search-btn" onclick="openAuthOrMenu()" id="userNavBtn" title="Account">&#128100;</button>
       <div class="user-dropdown" id="userDropdown">
         <div class="user-dropdown-item" id="userEmailDisplay" style="color:var(--gold-dark);cursor:default;font-size:0.65rem"></div>
-        <button class="user-dropdown-item" onclick="showPage('bible');closeUserMenu()">&#128220; KJV Bible</button>
+        <button class="user-dropdown-item" onclick="showPage('bible');closeUserMenu()">&#128220; Bible Study</button>
         <button class="user-dropdown-item" onclick="showPage('quiz');closeUserMenu()">&#10067; My Quiz Progress</button>
         <button class="user-dropdown-item" onclick="openNotesPanelFromMenu();closeUserMenu()">&#128221; My Notes</button>
         <button class="user-dropdown-item danger" onclick="signOut()">&#128682; Sign Out</button>
@@ -569,7 +579,7 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
   <a onclick="showPage('seo');closeMenu()">Articles</a>
   <a onclick="showPage('quiz');closeMenu()">Bible Quiz</a>
   <a onclick="showPage('geo');closeMenu()">Biblical Maps</a>
-  <a onclick="showPage('bible');closeMenu()">&#128220; KJV Bible</a>
+  <a onclick="showPage('bible');closeMenu()">&#128220; Bible Study</a>
   <a onclick="openAuthOrMenu();closeMenu()">&#128100; My Account</a>
   <a onclick="showPage('prayer');closeMenu();" style="color:var(--crimson-light)">&#128591; Prayer Guidance</a>
   <a onclick="showPage('chat');closeMenu();" style="color:var(--gold)">Ask the Word (Chatbot)</a>
@@ -1127,9 +1137,20 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
   </div>
 </div>
 
-<!-- KJV BIBLE READER -->
+<!-- BIBLE STUDY -->
 <div class="page" id="page-bible">
   <div class="pt-nav" style="background:#080603;min-height:100vh">
+    <!-- Sign-in banner — hidden once logged in -->
+    <div class="bible-signin-banner" id="bibleSigninBanner">
+      <span class="bible-signin-banner-text">
+        <strong>&#128100; Save Your Work</strong> &mdash; Create a free account to sync your notes, highlights, and reading progress across all your devices.
+      </span>
+      <div class="bible-signin-banner-actions">
+        <button class="bible-signin-banner-btn primary" onclick="openAuth();trackBannerClick()">Sign In</button>
+        <button class="bible-signin-banner-btn" onclick="setAuthTab('signup',document.getElementById('signupTab'));openAuth();trackBannerClick()">Create Account</button>
+      </div>
+      <button class="bible-signin-banner-dismiss" onclick="dismissBibleBanner()" title="Dismiss">&#10005;</button>
+    </div>
     <div class="bible-layout" id="bibleLayout">
       <!-- Sidebar -->
       <div class="bible-sidebar" id="bibleSidebar">
@@ -2329,6 +2350,7 @@ function updateAuthUI() {
     btn.innerHTML = "&#128100;";
     btn.style.color = "";
   }
+  updateBibleSigninBanner();
 }
 
 function openAuthOrMenu() {
@@ -2523,7 +2545,29 @@ function loadLocalNotes() {
   try { return JSON.parse(localStorage.getItem("tlw_bible_notes") || "[]"); } catch(e) { return []; }
 }
 
+function updateBibleSigninBanner() {
+  var banner = document.getElementById("bibleSigninBanner");
+  if (!banner) return;
+  // Hide if logged in
+  if (currentUser) { banner.style.display = "none"; return; }
+  // Hide if user already dismissed it this session
+  try { if (localStorage.getItem("tlw_bible_banner_dismissed") === "1") { banner.style.display = "none"; return; } } catch(e) {}
+  banner.style.display = "flex";
+}
+
+function dismissBibleBanner() {
+  var banner = document.getElementById("bibleSigninBanner");
+  if (banner) banner.style.display = "none";
+  try { localStorage.setItem("tlw_bible_banner_dismissed", "1"); } catch(e) {}
+}
+
+function trackBannerClick() {
+  // Dismiss banner after user taps sign-in/create — auth modal handles the rest
+  try { localStorage.setItem("tlw_bible_banner_dismissed", "1"); } catch(e) {}
+}
+
 function initBibleReader() {
+  updateBibleSigninBanner();
   bibleNotes = loadLocalNotes();
   bibleState.highlights = {};
   try { bibleState.highlights = JSON.parse(localStorage.getItem("tlw_highlights") || "{}"); } catch(e) {}
