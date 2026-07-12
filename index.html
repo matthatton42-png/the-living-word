@@ -397,6 +397,130 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
 .translate-result{margin-top:1.5rem;padding:1.3rem 1.5rem;background:rgba(201,168,76,0.05);border-left:3px solid var(--gold);font-size:0.95rem;color:var(--parchment);line-height:1.8}
 .translate-result-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.6rem}
 .translate-footnote{margin-top:1rem;font-family:'Lato',sans-serif;font-size:0.68rem;color:var(--stone);line-height:1.5;text-align:center}
+
+/* ── AUTH MODAL ── */
+.auth-overlay{display:none;position:fixed;inset:0;background:rgba(5,4,1,0.97);z-index:700;align-items:center;justify-content:center;padding:1rem}
+.auth-overlay.open{display:flex}
+.auth-modal{width:100%;max-width:440px;background:#120D04;border:1px solid rgba(201,168,76,0.35);box-shadow:0 12px 48px rgba(0,0,0,0.7)}
+.auth-modal-header{padding:1.4rem 1.8rem;background:linear-gradient(90deg,#1A1205,#110D04);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;justify-content:space-between;align-items:center}
+.auth-modal-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);letter-spacing:0.06em}
+.auth-modal-close{background:none;border:none;color:var(--stone);cursor:pointer;font-size:1.3rem;line-height:1}
+.auth-modal-body{padding:1.8rem}
+.auth-tabs{display:flex;border-bottom:1px solid rgba(201,168,76,0.2);margin-bottom:1.5rem}
+.auth-tab{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.08em;padding:0.6rem 1.2rem;background:transparent;border:none;cursor:pointer;color:var(--stone);text-transform:uppercase;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.25s}
+.auth-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.auth-input-group{margin-bottom:1.1rem}
+.auth-label{font-family:'Lato',sans-serif;font-size:0.72rem;color:var(--stone);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:0.4rem}
+.auth-input{width:100%;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);color:var(--parchment);font-family:'EB Garamond',serif;font-size:1rem;padding:0.7rem 1rem;outline:none;border-radius:3px;transition:border-color 0.3s;box-sizing:border-box}
+.auth-input:focus{border-color:var(--gold-dark)}
+.auth-submit{width:100%;margin-top:0.5rem}
+.auth-msg{font-family:'Lato',sans-serif;font-size:0.78rem;text-align:center;padding:0.7rem;border-radius:3px;margin-top:0.8rem}
+.auth-msg.success{background:rgba(82,183,136,0.12);color:var(--green-light);border:1px solid rgba(82,183,136,0.3)}
+.auth-msg.error{background:rgba(165,40,40,0.12);color:#F87171;border:1px solid rgba(165,40,40,0.3)}
+.auth-divider{display:flex;align-items:center;gap:0.8rem;margin:1.2rem 0;color:var(--stone);font-size:0.72rem}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.15)}
+.user-menu{position:relative}
+.user-menu-btn{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;border:1px solid rgba(201,168,76,0.4);color:var(--gold);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.3s;display:flex;align-items:center;gap:0.4rem}
+.user-menu-btn:hover{background:rgba(201,168,76,0.08)}
+.user-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#120D04;border:1px solid rgba(201,168,76,0.3);min-width:180px;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+.user-dropdown.open{display:block}
+.user-dropdown-item{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.06em;padding:0.75rem 1.1rem;color:var(--stone-light);cursor:pointer;text-transform:uppercase;display:block;width:100%;background:none;border:none;text-align:left;transition:all 0.2s;border-bottom:1px solid rgba(201,168,76,0.08)}
+.user-dropdown-item:last-child{border-bottom:none}
+.user-dropdown-item:hover{color:var(--gold);background:rgba(201,168,76,0.06)}
+.user-dropdown-item.danger{color:var(--crimson-light)}
+
+/* ── BIBLE READER ── */
+.bible-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 68px);overflow:hidden}
+.bible-sidebar{background:#0C0802;border-right:1px solid rgba(201,168,76,0.15);overflow-y:auto;display:flex;flex-direction:column}
+.bible-sidebar::-webkit-scrollbar{width:4px}
+.bible-sidebar::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:2px}
+.bible-nav-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(201,168,76,0.12);background:#0A0802}
+.bible-nav-title{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.6rem}
+.bible-nav-selects{display:flex;flex-direction:column;gap:0.5rem}
+.bible-select{width:100%;background:#0F0C04;border:1px solid rgba(201,168,76,0.22);color:var(--parchment);font-family:'Cinzel',serif;font-size:0.75rem;padding:0.5rem 0.7rem;outline:none;cursor:pointer;appearance:none;border-radius:2px}
+.bible-select:focus{border-color:var(--gold)}
+.bible-book-list{padding:0.5rem 0;flex:1}
+.bible-book-item{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.04em;padding:0.55rem 1.2rem;color:var(--stone-light);cursor:pointer;transition:all 0.2s;border-left:2px solid transparent}
+.bible-book-item:hover{color:var(--gold);background:rgba(201,168,76,0.05)}
+.bible-book-item.active{color:var(--gold);border-left-color:var(--gold);background:rgba(201,168,76,0.07)}
+.bible-testament-label{font-family:'Lato',sans-serif;font-size:0.6rem;letter-spacing:0.2em;color:var(--stone);text-transform:uppercase;padding:0.9rem 1.2rem 0.3rem;border-top:1px solid rgba(201,168,76,0.08)}
+.bible-main{display:flex;flex-direction:column;overflow:hidden;background:#080603}
+.bible-toolbar{padding:0.7rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.12);background:#0A0802;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
+.bible-toolbar-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold);flex:1;min-width:120px}
+.bible-toolbar-btn{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.06em;padding:0.35rem 0.75rem;border:1px solid rgba(201,168,76,0.25);color:var(--stone-light);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.25s;border-radius:2px;white-space:nowrap}
+.bible-toolbar-btn:hover,.bible-toolbar-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.07)}
+.bible-chapter-nav{display:flex;gap:0.4rem;align-items:center}
+.bible-chapter-nav span{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--stone)}
+.bible-text{flex:1;overflow-y:auto;padding:2rem 2.5rem;max-width:860px;margin:0 auto;width:100%}
+.bible-text::-webkit-scrollbar{width:4px}
+.bible-text::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:2px}
+.bible-chapter-title{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold);margin-bottom:0.4rem}
+.bible-book-subtitle{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-bottom:2rem}
+.bible-verse-wrap{display:flex;gap:0.6rem;padding:0.25rem 0;border-radius:3px;transition:background 0.2s;cursor:pointer;position:relative}
+.bible-verse-wrap:hover{background:rgba(201,168,76,0.05)}
+.bible-verse-wrap.selected{background:rgba(201,168,76,0.1)}
+.bible-verse-wrap.highlighted{background:rgba(201,168,76,0.12);border-left:3px solid var(--gold)}
+.bible-verse-num{font-family:'Cinzel',serif;font-size:0.7rem;color:var(--gold-dark);min-width:28px;padding-top:0.3rem;text-align:right;flex-shrink:0;user-select:none}
+.bible-verse-text{font-size:1.1rem;color:var(--parchment);line-height:1.85;flex:1}
+.bible-verse-note-icon{font-size:0.7rem;color:var(--gold);margin-left:0.4rem;cursor:pointer;opacity:0;transition:opacity 0.2s}
+.bible-verse-wrap:hover .bible-verse-note-icon{opacity:1}
+.bible-verse-wrap.has-note .bible-verse-note-icon{opacity:1;color:var(--green-light)}
+.verse-action-popup{display:none;position:fixed;z-index:400;background:#120D04;border:1px solid rgba(201,168,76,0.4);box-shadow:0 6px 24px rgba(0,0,0,0.6);min-width:200px}
+.verse-action-popup.open{display:block}
+.verse-action-item{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.05em;padding:0.65rem 1rem;color:var(--stone-light);cursor:pointer;text-transform:uppercase;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid rgba(201,168,76,0.08);transition:all 0.2s}
+.verse-action-item:last-child{border-bottom:none}
+.verse-action-item:hover{color:var(--gold);background:rgba(201,168,76,0.06)}
+
+/* Notes panel */
+.bible-notes-panel{position:fixed;right:0;top:68px;bottom:0;width:320px;background:#0F0C04;border-left:1px solid rgba(201,168,76,0.2);transform:translateX(100%);transition:transform 0.3s;z-index:250;display:flex;flex-direction:column}
+.bible-notes-panel.open{transform:translateX(0)}
+.notes-panel-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(201,168,76,0.15);display:flex;justify-content:space-between;align-items:center}
+.notes-panel-title{font-family:'Cinzel',serif;font-size:0.8rem;color:var(--gold);letter-spacing:0.08em}
+.notes-panel-close{background:none;border:none;color:var(--stone);cursor:pointer;font-size:1.1rem}
+.notes-list{flex:1;overflow-y:auto;padding:0.8rem}
+.note-item{border:1px solid rgba(201,168,76,0.15);padding:0.9rem 1rem;margin-bottom:0.6rem;background:rgba(201,168,76,0.02)}
+.note-ref{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--gold);letter-spacing:0.08em;margin-bottom:0.4rem}
+.note-text{font-size:0.88rem;color:var(--stone-light);line-height:1.6}
+.note-date{font-family:'Lato',sans-serif;font-size:0.62rem;color:var(--stone);margin-top:0.4rem}
+.note-del{float:right;background:none;border:none;color:var(--stone);cursor:pointer;font-size:0.8rem;padding:0}
+.note-del:hover{color:var(--crimson-light)}
+.note-add-form{padding:0.8rem;border-top:1px solid rgba(201,168,76,0.12)}
+.note-add-ref{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--gold);margin-bottom:0.5rem}
+.note-textarea{width:100%;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);color:var(--parchment);font-family:'EB Garamond',serif;font-size:0.95rem;padding:0.65rem 0.8rem;resize:vertical;min-height:80px;outline:none;border-radius:2px;box-sizing:border-box}
+.note-save-btn{width:100%;margin-top:0.6rem;padding:0.5rem;font-size:0.7rem}
+
+/* Compare panel */
+.bible-compare-panel{background:#080603;border-top:1px solid rgba(201,168,76,0.15);padding:1rem 1.5rem;max-height:260px;overflow-y:auto;display:none}
+.bible-compare-panel.open{display:block}
+.compare-header{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;display:flex;justify-content:space-between;align-items:center}
+.compare-close{background:none;border:none;color:var(--stone);cursor:pointer;font-size:1rem}
+.compare-versions{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.compare-version-card{border:1px solid rgba(201,168,76,0.12);padding:0.9rem 1rem;background:rgba(201,168,76,0.02)}
+.compare-version-name{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem}
+.compare-version-text{font-size:0.92rem;color:var(--parchment-dark);line-height:1.75;font-style:italic}
+.compare-loading{font-size:0.85rem;color:var(--stone);font-style:italic}
+
+/* Map link banner */
+.bible-map-banner{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:0.65rem 1.5rem;display:none;align-items:center;gap:0.8rem;flex-wrap:wrap}
+.bible-map-banner.show{display:flex}
+.bible-map-banner-text{font-size:0.85rem;color:var(--stone-light);flex:1}
+.bible-map-btn{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.08em;padding:0.3rem 0.8rem;border:1px solid rgba(201,168,76,0.35);color:var(--gold);background:transparent;cursor:pointer;text-transform:uppercase;transition:all 0.25s;border-radius:2px}
+.bible-map-btn:hover{background:rgba(201,168,76,0.1)}
+
+/* Mobile bible adaptations */
+@media(max-width:900px){
+  .bible-layout{grid-template-columns:1fr;height:auto}
+  .bible-sidebar{display:none;position:fixed;left:0;top:68px;bottom:0;width:260px;z-index:300;transform:translateX(-100%);transition:transform 0.3s}
+  .bible-sidebar.mobile-open{display:flex;transform:translateX(0)}
+  .bible-text{padding:1.2rem 1rem}
+  .bible-notes-panel{width:100%;left:0;right:0}
+  .compare-versions{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .bible-chapter-title{font-size:1.2rem}
+  .bible-verse-text{font-size:1rem}
+  .bible-toolbar{padding:0.5rem 0.8rem;gap:0.4rem}
+}
 </style>
 </head>
 <body>
@@ -414,10 +538,21 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
     <li><span class="nav-new-badge">New</span><a onclick="showPage('seo')" data-page="seo">Articles</a></li>
     <li><span class="nav-new-badge">New</span><a onclick="showPage('quiz')" data-page="quiz">Quiz</a></li>
     <li><span class="nav-new-badge">New</span><a onclick="showPage('geo')" data-page="geo">Biblical Maps</a></li>
+    <li><a onclick="showPage('bible')" data-page="bible">KJV Bible</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-search-btn" onclick="openSearch()" title="Search">&#128269;</button>
     <button class="nav-search-btn" onclick="openTranslate()" title="Translate">&#127760;</button>
+    <div class="user-menu" id="userMenuWrap">
+      <button class="nav-search-btn" onclick="openAuthOrMenu()" id="userNavBtn" title="Account">&#128100;</button>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-item" id="userEmailDisplay" style="color:var(--gold-dark);cursor:default;font-size:0.65rem"></div>
+        <button class="user-dropdown-item" onclick="showPage('bible');closeUserMenu()">&#128220; KJV Bible</button>
+        <button class="user-dropdown-item" onclick="showPage('quiz');closeUserMenu()">&#10067; My Quiz Progress</button>
+        <button class="user-dropdown-item" onclick="openNotesPanelFromMenu();closeUserMenu()">&#128221; My Notes</button>
+        <button class="user-dropdown-item danger" onclick="signOut()">&#128682; Sign Out</button>
+      </div>
+    </div>
     <button class="nav-prayer-btn" onclick="showPage('prayer')">&#128591; Prayer</button>
     <button class="nav-cta" onclick="showPage('chat')">Ask the Word</button>
     <button class="nav-menu-btn" onclick="toggleMenu()" id="menuBtn"><span></span><span></span><span></span></button>
@@ -434,6 +569,8 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
   <a onclick="showPage('seo');closeMenu()">Articles</a>
   <a onclick="showPage('quiz');closeMenu()">Bible Quiz</a>
   <a onclick="showPage('geo');closeMenu()">Biblical Maps</a>
+  <a onclick="showPage('bible');closeMenu()">&#128220; KJV Bible</a>
+  <a onclick="openAuthOrMenu();closeMenu()">&#128100; My Account</a>
   <a onclick="showPage('prayer');closeMenu();" style="color:var(--crimson-light)">&#128591; Prayer Guidance</a>
   <a onclick="showPage('chat');closeMenu();" style="color:var(--gold)">Ask the Word (Chatbot)</a>
   <a onclick="openTranslate();closeMenu();">&#127760; Translate to English</a>
@@ -942,6 +1079,144 @@ footer{background:#050402;border-top:1px solid rgba(201,168,76,0.15);padding:3re
   </div>
 </div>
 
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <div class="auth-modal-header">
+      <div class="auth-modal-title">&#128100; My Living Word Account</div>
+      <button class="auth-modal-close" onclick="closeAuth()">&#10005;</button>
+    </div>
+    <div class="auth-modal-body">
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="setAuthTab('signin',this)" id="signinTab">Sign In</button>
+        <button class="auth-tab" onclick="setAuthTab('signup',this)" id="signupTab">Create Account</button>
+      </div>
+      <div id="authSignIn">
+        <div class="auth-input-group">
+          <label class="auth-label">Email Address</label>
+          <input class="auth-input" type="email" id="authEmail" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="authPassword" placeholder="Your password" autocomplete="current-password">
+        </div>
+        <button class="btn-primary auth-submit" onclick="signIn()">Sign In</button>
+        <div class="auth-divider">or</div>
+        <button class="btn-secondary auth-submit" onclick="signInMagicLink()" style="font-size:0.72rem">&#9993; Send Magic Link (no password)</button>
+        <div id="authMsg"></div>
+      </div>
+      <div id="authSignUp" style="display:none">
+        <div class="auth-input-group">
+          <label class="auth-label">Full Name</label>
+          <input class="auth-input" type="text" id="authName" placeholder="Your name">
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-label">Email Address</label>
+          <input class="auth-input" type="email" id="authEmailUp" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-label">Password (min 6 characters)</label>
+          <input class="auth-input" type="password" id="authPasswordUp" placeholder="Create a password" autocomplete="new-password">
+        </div>
+        <button class="btn-primary auth-submit" onclick="signUp()">Create Account</button>
+        <div id="authMsgUp"></div>
+        <p style="font-size:0.78rem;color:var(--stone);margin-top:1rem;line-height:1.5;text-align:center">By creating an account you can sync your quiz progress, Bible reading plans, and personal notes across all your devices.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KJV BIBLE READER -->
+<div class="page" id="page-bible">
+  <div class="pt-nav" style="background:#080603;min-height:100vh">
+    <div class="bible-layout" id="bibleLayout">
+      <!-- Sidebar -->
+      <div class="bible-sidebar" id="bibleSidebar">
+        <div class="bible-nav-header">
+          <div class="bible-nav-title">&#128220; Books of the Bible</div>
+          <div class="bible-nav-selects">
+            <select class="bible-select" id="bibleTestamentSelect" onchange="filterBibleBooks(this.value)">
+              <option value="all">All 66 Books</option>
+              <option value="OT">Old Testament (39)</option>
+              <option value="NT">New Testament (27)</option>
+            </select>
+          </div>
+        </div>
+        <div class="bible-book-list" id="bibleBookList"></div>
+      </div>
+      <!-- Main reading area -->
+      <div class="bible-main" id="bibleMain">
+        <div class="bible-toolbar">
+          <button class="bible-toolbar-btn" id="bibleSidebarToggle" onclick="toggleBibleSidebar()" style="display:none">&#9776; Books</button>
+          <span class="bible-toolbar-title" id="bibleToolbarTitle">Select a book to begin reading</span>
+          <div class="bible-chapter-nav" id="bibleChapterNav" style="display:none">
+            <button class="bible-toolbar-btn" onclick="changeChapter(-1)">&#8592;</button>
+            <span id="bibleChapterLabel">Ch. 1</span>
+            <button class="bible-toolbar-btn" onclick="changeChapter(1)">&#8594;</button>
+          </div>
+          <button class="bible-toolbar-btn" id="btnNotes" onclick="toggleNotesPanel()" style="display:none">&#128221; Notes</button>
+          <button class="bible-toolbar-btn" id="btnCompare" onclick="toggleComparePanel()" style="display:none">&#9878; Compare</button>
+          <button class="bible-toolbar-btn" onclick="goToRandomVerse()">&#127922; Surprise Me</button>
+        </div>
+        <div class="bible-map-banner" id="bibleMapBanner">
+          <span class="bible-map-banner-text" id="bibleMapBannerText">&#128205; This chapter mentions a location you can explore on the Biblical Maps page</span>
+          <button class="bible-map-btn" id="bibleMapBtn" onclick="goToChapterMap()">View on Map &#8599;</button>
+          <button class="bible-toolbar-btn" onclick="document.getElementById('bibleMapBanner').classList.remove('show')" style="border:none;padding:0.2rem 0.4rem">&#10005;</button>
+        </div>
+        <div class="bible-text" id="bibleText">
+          <div style="text-align:center;padding:4rem 2rem">
+            <div style="font-size:3rem;margin-bottom:1.5rem">&#128220;</div>
+            <h2 style="font-family:Cinzel,serif;font-size:1.6rem;color:var(--gold);margin-bottom:1rem">The King James Bible</h2>
+            <p style="font-size:1rem;color:var(--stone-light);line-height:1.8;max-width:520px;margin:0 auto 2rem">All 66 books of the King James Bible — with built-in notes, verse comparison, and links to Biblical Maps. Select a book from the sidebar to begin.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;max-width:600px;margin:0 auto">
+              <div style="border:1px solid rgba(201,168,76,0.18);padding:1rem;background:rgba(201,168,76,0.02)">
+                <div style="font-family:Cinzel,serif;font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem">Click a Verse</div>
+                <div style="font-size:0.82rem;color:var(--stone-light);line-height:1.5">Copy, highlight, compare versions, or add personal notes</div>
+              </div>
+              <div style="border:1px solid rgba(201,168,76,0.18);padding:1rem;background:rgba(201,168,76,0.02)">
+                <div style="font-family:Cinzel,serif;font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem">Map Links</div>
+                <div style="font-size:0.82rem;color:var(--stone-light);line-height:1.5">Chapters mentioning real locations link to the Biblical Maps feature</div>
+              </div>
+              <div style="border:1px solid rgba(201,168,76,0.18);padding:1rem;background:rgba(201,168,76,0.02)">
+                <div style="font-family:Cinzel,serif;font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem">Notes Sync</div>
+                <div style="font-size:0.82rem;color:var(--stone-light);line-height:1.5">Sign in to save notes across all your devices automatically</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bible-compare-panel" id="bibleComparePanel">
+          <div class="compare-header">
+            <span>&#9878; Version Comparison</span>
+            <button class="compare-close" onclick="toggleComparePanel()">&#10005;</button>
+          </div>
+          <div class="compare-versions" id="compareVersionsGrid"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Notes panel (slides in from right) -->
+    <div class="bible-notes-panel" id="bibleNotesPanel">
+      <div class="notes-panel-header">
+        <span class="notes-panel-title">&#128221; My Bible Notes</span>
+        <button class="notes-panel-close" onclick="toggleNotesPanel()">&#10005;</button>
+      </div>
+      <div class="notes-list" id="notesList"></div>
+      <div class="note-add-form" id="noteAddForm" style="display:none">
+        <div class="note-add-ref" id="noteAddRef"></div>
+        <textarea class="note-textarea" id="noteTextarea" placeholder="Write your note here..."></textarea>
+        <button class="btn-primary note-save-btn" onclick="saveNote()">Save Note</button>
+      </div>
+    </div>
+    <!-- Verse action popup -->
+    <div class="verse-action-popup" id="verseActionPopup">
+      <div class="verse-action-item" onclick="copyVerse()">&#128203; Copy Verse</div>
+      <div class="verse-action-item" onclick="highlightVerse()">&#127775; Highlight</div>
+      <div class="verse-action-item" onclick="addNoteToVerse()">&#128221; Add Note</div>
+      <div class="verse-action-item" onclick="compareVerse()">&#9878; Compare Versions</div>
+      <div class="verse-action-item" onclick="askAboutVerse()">&#129302; Ask the AI</div>
+    </div>
+  </div>
+</div>
 <script>
 var BOOKS_DATA = {"Genesis": {"testament": "OT", "chapters": 50, "author": "Moses", "date": "c. 1440 BC", "overview": "The foundational book of all Scripture, Genesis answers humanity's deepest questions: Who are we? Where did we come from? Why is there evil and suffering? It opens with creation, narrates the fall of mankind, and follows God's unfolding plan of redemption through the patriarchs — Abraham, Isaac, Jacob, and Joseph.", "theme": "Origins, covenant, and God's redemptive plan", "keyVerses": [{"ref": "Genesis 1:1", "text": "In the beginning God created the heaven and the earth."}, {"ref": "Genesis 3:15", "text": "It shall bruise thy head, and thou shalt bruise his heel."}, {"ref": "Genesis 12:1-2", "text": "Get thee out of thy country...and I will make of thee a great nation."}], "modern": ["Creation vs Evolution: Scholars like John Lennox (Oxford) argue the text is compatible with an old universe while asserting God as the uncaused cause. Answers in Genesis holds to a literal 6-day creation with strong scientific support for a young earth.", "The Fall and Human Nature: Genesis 3's account of the Fall is the most psychologically accurate diagnosis of human brokenness in all of literature. Pride, blame-shifting, shame, and hiding from God are patterns every therapist recognizes in their practice.", "Joseph and Resilience: Joseph's journey from the pit to the palace (Genesis 37-50) is a masterclass in resilience, forgiveness, and seeing God's hand in adversity — themes directly applicable to workplace persecution, family betrayal, and long seasons of waiting."]},
 "Exodus": {"testament": "OT", "chapters": 40, "author": "Moses", "date": "c. 1440 BC", "overview": "Exodus is the story of God's dramatic rescue of His people from Egyptian slavery and the birth of Israel as a nation. It contains the Ten Plagues, the Passover, the crossing of the Red Sea, the giving of the Law at Mount Sinai, and the construction of the Tabernacle. The name means departure and it is the foundational story of redemption in the Old Testament.", "theme": "Redemption, law, and the presence of God", "keyVerses": [{"ref": "Exodus 3:14", "text": "And God said unto Moses, I AM THAT I AM."}, {"ref": "Exodus 20:2", "text": "I am the LORD thy God, which have brought thee out of the land of Egypt, out of the house of bondage."}, {"ref": "Exodus 14:14", "text": "The LORD shall fight for you, and ye shall hold your peace."}], "modern": ["The Passover lamb is one of the most vivid prophetic pictures in Scripture — pointing directly to Jesus Christ as the Lamb of God whose blood covers sin. Every Communion service is a direct echo of Exodus.", "The Ten Commandments given at Sinai remain the moral foundation of Western law and civilization. Legal scholars trace the roots of modern jurisprudence directly to the Mosaic code.", "Moses as a leader — reluctant, flawed, yet chosen — speaks directly to anyone who feels unqualified for the task God has placed before them. His story is one of the most encouraging leadership narratives in all of history."]},
@@ -1060,6 +1335,7 @@ function showPage(id) {
   if (id === "seo") renderSEO();
   if (id === "quiz") initQuiz();
   if (id === "geo") renderGeo();
+  if (id === "bible") initBibleReader();
 }
 
 function toggleMenu() { document.getElementById("mobileNav").classList.toggle("open"); }
@@ -1955,7 +2231,661 @@ async function runTranslate() {
 }
 document.addEventListener("keydown", function(e){ if(e.key==="Escape"){ closeTranslate(); } });
 
+
+// ═══════════════════════════════════════════════════════════════
+// SUPABASE CONFIG — replace with your actual values from Supabase
+// ═══════════════════════════════════════════════════════════════
+var SUPABASE_URL = "https://ihilxtqeougvhzqkmtje.supabase.co";
+var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloaWx4dHFlb3Vndmh6cWttdGplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4NzQ2OTksImV4cCI6MjA5OTQ1MDY5OX0.0KOfVFt1q9btmmJqq_mdLeXA6Hb7E6g_qumMmRyoBdU";
+var BIBLE_API_KEY = "_RusC1Y3FNkhysAwzdQnl";
+
+// ═══════════════════════════════════════════════════════════════
+// INLINE SUPABASE CLIENT — no external SDK, pure fetch
+// ═══════════════════════════════════════════════════════════════
+var supabase = null;   // kept for compat but unused
+var currentUser = null;
+var _sbSession = null;
+
+function _sbHeaders() {
+  return {
+    "Content-Type": "application/json",
+    "apikey": SUPABASE_ANON_KEY,
+    "Authorization": "Bearer " + (_sbSession ? _sbSession.access_token : SUPABASE_ANON_KEY)
+  };
+}
+
+async function _sbUpsert(table, row) {
+  try {
+    await fetch(SUPABASE_URL + "/rest/v1/" + table, {
+      method: "POST",
+      headers: Object.assign(_sbHeaders(), { "Prefer": "resolution=merge-duplicates,return=minimal" }),
+      body: JSON.stringify(row)
+    });
+  } catch(e) {}
+}
+
+async function _sbSelect(table, col, val, select) {
+  try {
+    var url = SUPABASE_URL + "/rest/v1/" + table + "?" + col + "=eq." + encodeURIComponent(val) + "&select=" + (select || "*");
+    var r = await fetch(url, { headers: _sbHeaders() });
+    if (!r.ok) return { data: null };
+    var arr = await r.json();
+    return { data: arr && arr.length ? arr[0] : null };
+  } catch(e) { return { data: null }; }
+}
+
+function _sbSaveSession(s) {
+  _sbSession = s;
+  try { localStorage.setItem("tlw_sb_session", JSON.stringify(s)); } catch(e) {}
+}
+function _sbLoadSession() {
+  try { return JSON.parse(localStorage.getItem("tlw_sb_session")); } catch(e) { return null; }
+}
+function _sbClearSession() {
+  _sbSession = null;
+  try { localStorage.removeItem("tlw_sb_session"); } catch(e) {}
+}
+
+async function _sbRefreshToken() {
+  if (!_sbSession || !_sbSession.refresh_token) return false;
+  try {
+    var r = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=refresh_token", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
+      body: JSON.stringify({ refresh_token: _sbSession.refresh_token })
+    });
+    if (!r.ok) { _sbClearSession(); return false; }
+    var d = await r.json();
+    _sbSaveSession({ access_token: d.access_token, refresh_token: d.refresh_token, user: d.user });
+    return true;
+  } catch(e) { return false; }
+}
+
+function initSupabase() {
+  var saved = _sbLoadSession();
+  if (saved && saved.access_token && saved.user) {
+    _sbSession = saved;
+    currentUser = saved.user;
+    updateAuthUI();
+    _sbRefreshToken().then(function(ok) {
+      if (ok) { currentUser = _sbSession.user; updateAuthUI(); }
+      loadUserProgress();
+    });
+  } else {
+    updateAuthUI();
+  }
+}
+
+// ─── AUTH UI ─────────────────────────────────────────────────
+function updateAuthUI() {
+  var btn = document.getElementById("userNavBtn");
+  if (!btn) return;
+  if (currentUser) {
+    btn.innerHTML = "&#9900;";
+    btn.style.color = "var(--green-light)";
+    var el = document.getElementById("userEmailDisplay");
+    if (el) el.textContent = currentUser.email;
+  } else {
+    btn.innerHTML = "&#128100;";
+    btn.style.color = "";
+  }
+}
+
+function openAuthOrMenu() {
+  if (currentUser) {
+    var dd = document.getElementById("userDropdown");
+    if (dd) dd.classList.toggle("open");
+  } else { openAuth(); }
+}
+function closeUserMenu() {
+  var dd = document.getElementById("userDropdown");
+  if (dd) dd.classList.remove("open");
+}
+document.addEventListener("click", function(e) {
+  var wrap = document.getElementById("userMenuWrap");
+  if (wrap && !wrap.contains(e.target)) closeUserMenu();
+});
+
+function openAuth() {
+  document.getElementById("authOverlay").classList.add("open");
+  setAuthTab("signin", document.getElementById("signinTab"));
+}
+function closeAuth() { document.getElementById("authOverlay").classList.remove("open"); }
+
+function setAuthTab(tab, btn) {
+  document.querySelectorAll(".auth-tab").forEach(function(b){ b.classList.remove("active"); });
+  btn.classList.add("active");
+  document.getElementById("authSignIn").style.display = tab === "signin" ? "block" : "none";
+  document.getElementById("authSignUp").style.display = tab === "signup" ? "block" : "none";
+}
+
+function showAuthMsg(id, msg, type) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.className = "auth-msg " + type;
+  el.textContent = msg;
+}
+
+async function signIn() {
+  var email = document.getElementById("authEmail").value.trim();
+  var pass  = document.getElementById("authPassword").value;
+  if (!email || !pass) { showAuthMsg("authMsg", "Please enter your email and password.", "error"); return; }
+  showAuthMsg("authMsg", "Signing in...", "success");
+  try {
+    var r = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
+      body: JSON.stringify({ email: email, password: pass })
+    });
+    var d = await r.json();
+    if (!r.ok) { showAuthMsg("authMsg", d.error_description || d.msg || "Invalid email or password.", "error"); return; }
+    _sbSaveSession({ access_token: d.access_token, refresh_token: d.refresh_token, user: d.user });
+    currentUser = d.user;
+    updateAuthUI();
+    closeAuth();
+    loadUserProgress();
+  } catch(e) { showAuthMsg("authMsg", "Network error. Please try again.", "error"); }
+}
+
+async function signUp() {
+  var name  = document.getElementById("authName").value.trim();
+  var email = document.getElementById("authEmailUp").value.trim();
+  var pass  = document.getElementById("authPasswordUp").value;
+  if (!email || !pass) { showAuthMsg("authMsgUp", "Please fill in all fields.", "error"); return; }
+  if (pass.length < 6) { showAuthMsg("authMsgUp", "Password must be at least 6 characters.", "error"); return; }
+  showAuthMsg("authMsgUp", "Creating account...", "success");
+  try {
+    var r = await fetch(SUPABASE_URL + "/auth/v1/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
+      body: JSON.stringify({ email: email, password: pass, data: { full_name: name } })
+    });
+    var d = await r.json();
+    if (!r.ok) { showAuthMsg("authMsgUp", d.msg || d.message || "Sign up failed.", "error"); return; }
+    showAuthMsg("authMsgUp", "Account created! Check your email to confirm, then sign in.", "success");
+  } catch(e) { showAuthMsg("authMsgUp", "Network error. Please try again.", "error"); }
+}
+
+async function signInMagicLink() {
+  var email = document.getElementById("authEmail").value.trim();
+  if (!email) { showAuthMsg("authMsg", "Please enter your email address.", "error"); return; }
+  showAuthMsg("authMsg", "Sending magic link...", "success");
+  try {
+    var r = await fetch(SUPABASE_URL + "/auth/v1/magiclink", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
+      body: JSON.stringify({ email: email })
+    });
+    if (r.ok) { showAuthMsg("authMsg", "Magic link sent! Check your inbox.", "success"); }
+    else { var d = await r.json(); showAuthMsg("authMsg", d.msg || "Could not send link.", "error"); }
+  } catch(e) { showAuthMsg("authMsg", "Network error. Please try again.", "error"); }
+}
+
+async function signOut() {
+  if (_sbSession) {
+    try {
+      await fetch(SUPABASE_URL + "/auth/v1/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + _sbSession.access_token }
+      });
+    } catch(e) {}
+  }
+  _sbClearSession();
+  currentUser = null;
+  updateAuthUI();
+  closeUserMenu();
+  bibleNotes = loadLocalNotes();
+  renderNotesList();
+}
+
+// ─── PROGRESS SYNC ────────────────────────────────────────────
+async function loadUserProgress() {
+  if (!currentUser || !_sbSession) return;
+  try {
+    var r1 = await _sbSelect("quiz_progress",    "user_id", currentUser.id, "data");
+    if (r1.data && r1.data.data)  quizProgress  = Object.assign(quizProgress, r1.data.data);
+    var r2 = await _sbSelect("reading_progress", "user_id", currentUser.id, "data");
+    if (r2.data && r2.data.data)  completedDays = Object.assign(completedDays, r2.data.data);
+    var r3 = await _sbSelect("bible_notes",      "user_id", currentUser.id, "notes");
+    if (r3.data && r3.data.notes) { bibleNotes  = r3.data.notes; renderNotesList(); }
+  } catch(e) {}
+}
+
+function loadUserNotes() { loadUserProgress(); }
+
+function saveQuizProgress() {
+  try { localStorage.setItem(QUIZ_PROGRESS_KEY, JSON.stringify(quizProgress)); } catch(e) {}
+  if (currentUser && _sbSession) _sbUpsert("quiz_progress", { user_id: currentUser.id, data: quizProgress });
+}
+
+function saveReadingProgress() {
+  try { localStorage.setItem("tlw_completed", JSON.stringify(completedDays)); } catch(e) {}
+  if (currentUser && _sbSession) _sbUpsert("reading_progress", { user_id: currentUser.id, data: completedDays });
+}
+
+function saveNotesToDB() {
+  try { localStorage.setItem("tlw_bible_notes", JSON.stringify(bibleNotes)); } catch(e) {}
+  if (currentUser && _sbSession) _sbUpsert("bible_notes", { user_id: currentUser.id, notes: bibleNotes });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// KJV BIBLE READER
+// ═══════════════════════════════════════════════════════════════
+var BIBLE_BOOKS = [
+  {n:"Genesis",t:"OT",c:50},{n:"Exodus",t:"OT",c:40},{n:"Leviticus",t:"OT",c:27},{n:"Numbers",t:"OT",c:36},{n:"Deuteronomy",t:"OT",c:34},
+  {n:"Joshua",t:"OT",c:24},{n:"Judges",t:"OT",c:21},{n:"Ruth",t:"OT",c:4},{n:"1 Samuel",t:"OT",c:31},{n:"2 Samuel",t:"OT",c:24},
+  {n:"1 Kings",t:"OT",c:22},{n:"2 Kings",t:"OT",c:25},{n:"1 Chronicles",t:"OT",c:29},{n:"2 Chronicles",t:"OT",c:36},
+  {n:"Ezra",t:"OT",c:10},{n:"Nehemiah",t:"OT",c:13},{n:"Esther",t:"OT",c:10},{n:"Job",t:"OT",c:42},
+  {n:"Psalms",t:"OT",c:150},{n:"Proverbs",t:"OT",c:31},{n:"Ecclesiastes",t:"OT",c:12},{n:"Song of Solomon",t:"OT",c:8},
+  {n:"Isaiah",t:"OT",c:66},{n:"Jeremiah",t:"OT",c:52},{n:"Lamentations",t:"OT",c:5},{n:"Ezekiel",t:"OT",c:48},
+  {n:"Daniel",t:"OT",c:12},{n:"Hosea",t:"OT",c:14},{n:"Joel",t:"OT",c:3},{n:"Amos",t:"OT",c:9},
+  {n:"Obadiah",t:"OT",c:1},{n:"Jonah",t:"OT",c:4},{n:"Micah",t:"OT",c:7},{n:"Nahum",t:"OT",c:3},
+  {n:"Habakkuk",t:"OT",c:3},{n:"Zephaniah",t:"OT",c:3},{n:"Haggai",t:"OT",c:2},{n:"Zechariah",t:"OT",c:14},
+  {n:"Malachi",t:"OT",c:4},{n:"Matthew",t:"NT",c:28},{n:"Mark",t:"NT",c:16},{n:"Luke",t:"NT",c:24},
+  {n:"John",t:"NT",c:21},{n:"Acts",t:"NT",c:28},{n:"Romans",t:"NT",c:16},{n:"1 Corinthians",t:"NT",c:16},
+  {n:"2 Corinthians",t:"NT",c:13},{n:"Galatians",t:"NT",c:6},{n:"Ephesians",t:"NT",c:6},{n:"Philippians",t:"NT",c:4},
+  {n:"Colossians",t:"NT",c:4},{n:"1 Thessalonians",t:"NT",c:5},{n:"2 Thessalonians",t:"NT",c:3},
+  {n:"1 Timothy",t:"NT",c:6},{n:"2 Timothy",t:"NT",c:4},{n:"Titus",t:"NT",c:3},{n:"Philemon",t:"NT",c:1},
+  {n:"Hebrews",t:"NT",c:13},{n:"James",t:"NT",c:5},{n:"1 Peter",t:"NT",c:5},{n:"2 Peter",t:"NT",c:3},
+  {n:"1 John",t:"NT",c:5},{n:"2 John",t:"NT",c:1},{n:"3 John",t:"NT",c:1},{n:"Jude",t:"NT",c:1},
+  {n:"Revelation",t:"NT",c:22}
+];
+
+// Map of book+chapter keywords to geo location names
+var BIBLE_GEO_MAP = {
+  "Genesis": ["Babylon","Shechem"], "Exodus": ["Mount Sinai"], "Numbers": ["Mount Sinai"],
+  "Deuteronomy": ["Mount Hermon"], "Joshua": ["Jericho","Shechem"],
+  "Judges": ["Jerusalem"], "Ruth": ["Bethlehem"], "1 Samuel": ["Jerusalem","Bethlehem"],
+  "2 Samuel": ["Jerusalem"], "1 Kings": ["Jerusalem","Mount Carmel"],
+  "2 Kings": ["Jerusalem","Nineveh"], "Ezra": ["Jerusalem"], "Nehemiah": ["Jerusalem"],
+  "Esther": ["Babylon"], "Daniel": ["Babylon"], "Jonah": ["Nineveh"],
+  "Matthew": ["Jerusalem","Bethlehem","Capernaum","Mount of Olives"],
+  "Mark": ["Jerusalem","Capernaum"], "Luke": ["Jerusalem","Bethlehem","Nazareth","Capernaum"],
+  "John": ["Jerusalem","Capernaum"], "Acts": ["Jerusalem","Antioch","Philippi","Thessalonica","Ephesus","Caesarea","Rome","Damascus","Corinth"],
+  "Romans": ["Rome"], "1 Corinthians": ["Corinth"], "2 Corinthians": ["Corinth"],
+  "Galatians": ["Antioch"], "Ephesians": ["Ephesus"], "Philippians": ["Philippi"],
+  "1 Thessalonians": ["Thessalonica"], "2 Thessalonians": ["Thessalonica"],
+  "Revelation": ["Ephesus"]
+};
+
+var COMPARE_VERSIONS = [
+  {id:"de4e12af7fb5a05c", name:"ESV", label:"English Standard Version"},
+  {id:"01b29f4b342acc35", name:"NET", label:"New English Translation"},
+  {id:"06125adad2d5898a", name:"NLT", label:"New Living Translation"}
+];
+
+var bibleState = { book: null, chapter: 1, selectedVerse: null, highlights: {}, noteTarget: null };
+var bibleNotes = [];
+var bibleCache = {};
+var currentFilterTest = "all";
+
+function loadLocalNotes() {
+  try { return JSON.parse(localStorage.getItem("tlw_bible_notes") || "[]"); } catch(e) { return []; }
+}
+
+function initBibleReader() {
+  bibleNotes = loadLocalNotes();
+  bibleState.highlights = {};
+  try { bibleState.highlights = JSON.parse(localStorage.getItem("tlw_highlights") || "{}"); } catch(e) {}
+  buildBibleBookList("all");
+  // Mobile: show sidebar toggle
+  if (window.innerWidth <= 900) {
+    var toggle = document.getElementById("bibleSidebarToggle");
+    if (toggle) toggle.style.display = "block";
+  }
+  renderNotesList();
+}
+
+function buildBibleBookList(filter) {
+  var list = document.getElementById("bibleBookList");
+  if (!list) return;
+  var html = "";
+  var lastTest = "";
+  BIBLE_BOOKS.forEach(function(b) {
+    if (filter !== "all" && b.t !== filter) return;
+    if (b.t !== lastTest) {
+      html += "<div class='bible-testament-label'>" + (b.t === "OT" ? "Old Testament" : "New Testament") + "</div>";
+      lastTest = b.t;
+    }
+    var active = bibleState.book && bibleState.book.n === b.n ? " active" : "";
+    html += "<div class='bible-book-item" + active + "' data-book='" + esc(b.n) + "' onclick='selectBibleBook(this.dataset.book)'>" + esc(b.n) + "</div>";
+  });
+  list.innerHTML = html;
+}
+
+function filterBibleBooks(val) {
+  currentFilterTest = val;
+  buildBibleBookList(val);
+}
+
+function selectBibleBook(bookName) {
+  var book = BIBLE_BOOKS.find(function(b){ return b.n === bookName; });
+  if (!book) return;
+  bibleState.book = book;
+  bibleState.chapter = 1;
+  buildBibleBookList(currentFilterTest);
+  loadBibleChapter();
+  // Close mobile sidebar
+  if (window.innerWidth <= 900) {
+    document.getElementById("bibleSidebar").classList.remove("mobile-open");
+  }
+}
+
+function toggleBibleSidebar() {
+  var sb = document.getElementById("bibleSidebar");
+  if (sb) sb.classList.toggle("mobile-open");
+}
+
+async function loadBibleChapter() {
+  if (!bibleState.book) return;
+  var book = bibleState.book;
+  var ch = bibleState.chapter;
+  var cacheKey = book.n + "." + ch;
+
+  // Show toolbar items
+  document.getElementById("bibleChapterNav").style.display = "flex";
+  document.getElementById("bibleChapterLabel").textContent = "Ch. " + ch;
+  document.getElementById("bibleToolbarTitle").textContent = esc(book.n) + " — Chapter " + ch;
+  document.getElementById("btnNotes").style.display = "block";
+  document.getElementById("btnCompare").style.display = "block";
+
+  // Close compare panel on chapter change
+  document.getElementById("bibleComparePanel").classList.remove("open");
+  document.getElementById("compareVersionsGrid").innerHTML = "";
+
+  // Check for geo link
+  checkBibleGeoLink(book.n);
+
+  var textEl = document.getElementById("bibleText");
+  if (!textEl) return;
+
+  if (bibleCache[cacheKey]) {
+    renderBibleChapter(bibleCache[cacheKey]);
+    return;
+  }
+
+  textEl.innerHTML = "<div style='text-align:center;padding:3rem;color:var(--stone)'><div class='typing-indicator' style='justify-content:center;margin-bottom:1rem'><span></span><span></span><span></span></div>Loading " + esc(book.n) + " Chapter " + ch + "...</div>";
+
+  try {
+    var bookNameForAPI = book.n.replace(/ /g, "+");
+    var url = "https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/" + encodeURIComponent(book.n) + ".json";
+    var resp = await fetch(url);
+    if (!resp.ok) throw new Error("Could not load " + book.n);
+    var data = await resp.json();
+    // Cache all chapters for this book
+    if (data.chapters) {
+      data.chapters.forEach(function(chObj, idx) {
+        bibleCache[book.n + "." + (idx + 1)] = chObj.verses || chObj;
+      });
+    } else if (Array.isArray(data)) {
+      data.forEach(function(chObj, idx) {
+        bibleCache[book.n + "." + (idx + 1)] = chObj.verses || chObj;
+      });
+    }
+    if (bibleCache[cacheKey]) {
+      renderBibleChapter(bibleCache[cacheKey]);
+    } else {
+      throw new Error("Chapter not found in data");
+    }
+  } catch(err) {
+    textEl.innerHTML = "<div style='text-align:center;padding:3rem'><p style='color:var(--crimson-light);margin-bottom:1rem'>Could not load this chapter right now.</p><button class='btn-ghost' onclick='loadBibleChapter()'>Try Again</button></div>";
+  }
+}
+
+function renderBibleChapter(verses) {
+  var book = bibleState.book;
+  var ch = bibleState.chapter;
+  var chKey = book.n + "." + ch;
+  var html = "<div class='bible-chapter-title'>" + esc(book.n) + " " + ch + "</div>";
+  html += "<div class='bible-book-subtitle'>" + (book.t === "OT" ? "Old Testament" : "New Testament") + " &mdash; King James Bible</div>";
+
+  var notesMap = {};
+  bibleNotes.forEach(function(n){ if(n.book === book.n && n.chapter === ch) notesMap[n.verse] = true; });
+
+  verses.forEach(function(v, idx) {
+    var vNum = idx + 1;
+    var vText = typeof v === "string" ? v : (v.text || v.verse || "");
+    var hlKey = chKey + "." + vNum;
+    var highlighted = bibleState.highlights[hlKey] ? " highlighted" : "";
+    var hasNote = notesMap[vNum] ? " has-note" : "";
+    html += "<div class='bible-verse-wrap" + highlighted + hasNote + "' data-vnum='" + vNum + "' data-vtext='" + esc(vText).replace(/'/g,"&#39;") + "' onclick='selectVerse(this,event)'>" +
+      "<span class='bible-verse-num'>" + vNum + "</span>" +
+      "<span class='bible-verse-text'>" + esc(vText) + "</span>" +
+      "<span class='bible-verse-note-icon' title='" + (hasNote ? "Has note" : "Add note") + "'>&#128221;</span>" +
+      "</div>";
+  });
+
+  var textEl = document.getElementById("bibleText");
+  if (textEl) { textEl.innerHTML = html; textEl.scrollTop = 0; }
+  bibleState.selectedVerse = null;
+  document.getElementById("verseActionPopup").classList.remove("open");
+}
+
+function changeChapter(delta) {
+  if (!bibleState.book) return;
+  var newCh = bibleState.chapter + delta;
+  if (newCh < 1 || newCh > bibleState.book.c) return;
+  bibleState.chapter = newCh;
+  loadBibleChapter();
+  saveReadingPos();
+}
+
+function saveReadingPos() {
+  if (!bibleState.book) return;
+  var pos = { book: bibleState.book.n, chapter: bibleState.chapter };
+  try { localStorage.setItem("tlw_bible_pos", JSON.stringify(pos)); } catch(e) {}
+}
+
+function goToRandomVerse() {
+  var rBook = BIBLE_BOOKS[Math.floor(Math.random() * BIBLE_BOOKS.length)];
+  var rCh = Math.floor(Math.random() * rBook.c) + 1;
+  bibleState.book = rBook;
+  bibleState.chapter = rCh;
+  buildBibleBookList(currentFilterTest);
+  loadBibleChapter();
+}
+
+// Verse action popup
+var activeVerseEl = null;
+
+function selectVerse(el, e) {
+  e.stopPropagation();
+  document.querySelectorAll(".bible-verse-wrap.selected").forEach(function(v){ v.classList.remove("selected"); });
+  el.classList.add("selected");
+  activeVerseEl = el;
+  bibleState.selectedVerse = { num: parseInt(el.dataset.vnum), text: el.dataset.vtext };
+  var popup = document.getElementById("verseActionPopup");
+  var rect = el.getBoundingClientRect();
+  var top = rect.bottom + window.scrollY + 4;
+  var left = Math.min(rect.left, window.innerWidth - 210);
+  popup.style.top = top + "px";
+  popup.style.left = left + "px";
+  popup.classList.add("open");
+}
+document.addEventListener("click", function(e) {
+  var popup = document.getElementById("verseActionPopup");
+  if (popup && !popup.contains(e.target) && !e.target.closest(".bible-verse-wrap")) {
+    popup.classList.remove("open");
+    if (activeVerseEl) { activeVerseEl.classList.remove("selected"); activeVerseEl = null; }
+  }
+});
+
+function copyVerse() {
+  if (!bibleState.selectedVerse || !bibleState.book) return;
+  var ref = bibleState.book.n + " " + bibleState.chapter + ":" + bibleState.selectedVerse.num;
+  var text = "“" + bibleState.selectedVerse.text + "” — " + ref + " (KJV)";
+  navigator.clipboard.writeText(text).then(function(){
+    document.getElementById("verseActionPopup").classList.remove("open");
+  }).catch(function(){
+    var ta = document.createElement("textarea"); ta.value = text;
+    document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+    document.getElementById("verseActionPopup").classList.remove("open");
+  });
+}
+
+function highlightVerse() {
+  if (!activeVerseEl || !bibleState.book) return;
+  var key = bibleState.book.n + "." + bibleState.chapter + "." + bibleState.selectedVerse.num;
+  if (bibleState.highlights[key]) {
+    delete bibleState.highlights[key];
+    activeVerseEl.classList.remove("highlighted");
+  } else {
+    bibleState.highlights[key] = true;
+    activeVerseEl.classList.add("highlighted");
+  }
+  try { localStorage.setItem("tlw_highlights", JSON.stringify(bibleState.highlights)); } catch(e) {}
+  document.getElementById("verseActionPopup").classList.remove("open");
+}
+
+function addNoteToVerse() {
+  if (!bibleState.selectedVerse || !bibleState.book) return;
+  var ref = bibleState.book.n + " " + bibleState.chapter + ":" + bibleState.selectedVerse.num;
+  bibleState.noteTarget = { book: bibleState.book.n, chapter: bibleState.chapter, verse: bibleState.selectedVerse.num, ref: ref };
+  var form = document.getElementById("noteAddForm");
+  var refEl = document.getElementById("noteAddRef");
+  var ta = document.getElementById("noteTextarea");
+  if (form) form.style.display = "block";
+  if (refEl) refEl.textContent = "Note for " + ref;
+  if (ta) { ta.value = ""; ta.focus(); }
+  // Open notes panel
+  document.getElementById("bibleNotesPanel").classList.add("open");
+  document.getElementById("verseActionPopup").classList.remove("open");
+}
+
+function saveNote() {
+  var ta = document.getElementById("noteTextarea");
+  if (!ta || !ta.value.trim() || !bibleState.noteTarget) return;
+  var note = {
+    id: Date.now(),
+    book: bibleState.noteTarget.book,
+    chapter: bibleState.noteTarget.chapter,
+    verse: bibleState.noteTarget.verse,
+    ref: bibleState.noteTarget.ref,
+    text: ta.value.trim(),
+    date: new Date().toLocaleDateString()
+  };
+  bibleNotes.unshift(note);
+  saveNotesToDB();
+  renderNotesList();
+  ta.value = "";
+  document.getElementById("noteAddForm").style.display = "none";
+  // Mark verse as having note
+  var vwraps = document.querySelectorAll(".bible-verse-wrap");
+  vwraps.forEach(function(w){ if (parseInt(w.dataset.vnum) === note.verse) w.classList.add("has-note"); });
+}
+
+function deleteNote(id) {
+  bibleNotes = bibleNotes.filter(function(n){ return n.id !== id; });
+  saveNotesToDB();
+  renderNotesList();
+}
+
+function renderNotesList() {
+  var list = document.getElementById("notesList");
+  if (!list) return;
+  if (!bibleNotes.length) {
+    list.innerHTML = "<div style='font-size:0.85rem;color:var(--stone);font-style:italic;text-align:center;padding:2rem'>No notes yet. Click any verse and choose Add Note to begin.</div>";
+    return;
+  }
+  list.innerHTML = bibleNotes.map(function(n) {
+    return "<div class='note-item'>" +
+      "<button class='note-del' onclick='deleteNote(" + n.id + ")' title='Delete'>&#10005;</button>" +
+      "<div class='note-ref'>" + esc(n.ref) + "</div>" +
+      "<div class='note-text'>" + esc(n.text) + "</div>" +
+      "<div class='note-date'>" + esc(n.date) + "</div>" +
+      "</div>";
+  }).join("");
+}
+
+function toggleNotesPanel() {
+  document.getElementById("bibleNotesPanel").classList.toggle("open");
+  renderNotesList();
+}
+function openNotesPanelFromMenu() {
+  showPage("bible");
+  setTimeout(function(){ document.getElementById("bibleNotesPanel").classList.add("open"); renderNotesList(); }, 300);
+}
+
+// Version comparison
+async function compareVerse() {
+  if (!bibleState.selectedVerse || !bibleState.book) return;
+  document.getElementById("verseActionPopup").classList.remove("open");
+  document.getElementById("bibleComparePanel").classList.add("open");
+  var grid = document.getElementById("compareVersionsGrid");
+  var ref = bibleState.book.n + " " + bibleState.chapter + ":" + bibleState.selectedVerse.num;
+  grid.innerHTML = "<div class='compare-loading'>Loading version comparison for " + esc(ref) + "...</div>";
+  var kjvCard = "<div class='compare-version-card'><div class='compare-version-name'>KJV — King James Version</div><div class='compare-version-text'>" + esc(bibleState.selectedVerse.text) + "</div></div>";
+
+  if (!BIBLE_API_KEY || BIBLE_API_KEY.length < 5) {
+    grid.innerHTML = kjvCard + "<div class='compare-version-card'><div class='compare-version-name'>Version Comparison</div><div class='compare-version-text' style='font-style:normal;font-size:0.82rem;color:var(--stone)'>Add your free API.Bible key to the BIBLE_API_KEY variable in the code to enable comparison with ESV, NLT, NET and other translations. Get a free key at scripture.api.bible</div></div>";
+    return;
+  }
+
+  var results = [kjvCard];
+  var refEncoded = encodeURIComponent(ref);
+  await Promise.all(COMPARE_VERSIONS.map(async function(v) {
+    try {
+      var resp = await fetch("https://api.scripture.api.bible/v1/bibles/" + v.id + "/search?query=" + refEncoded + "&limit=1", {
+        headers: { "api-key": BIBLE_API_KEY }
+      });
+      var data = await resp.json();
+      var txt = data.data && data.data.verses && data.data.verses[0] ? data.data.verses[0].text : "Not available";
+      results.push("<div class='compare-version-card'><div class='compare-version-name'>" + esc(v.name) + " &mdash; " + esc(v.label) + "</div><div class='compare-version-text'>" + esc(txt.replace(/<[^>]+>/g,"")) + "</div></div>");
+    } catch(e) {
+      results.push("<div class='compare-version-card'><div class='compare-version-name'>" + esc(v.name) + "</div><div class='compare-version-text' style='color:var(--stone)'>Could not load this version.</div></div>");
+    }
+  }));
+  grid.innerHTML = results.join("");
+}
+
+function toggleComparePanel() {
+  document.getElementById("bibleComparePanel").classList.toggle("open");
+}
+
+function askAboutVerse() {
+  if (!bibleState.selectedVerse || !bibleState.book) return;
+  var ref = bibleState.book.n + " " + bibleState.chapter + ":" + bibleState.selectedVerse.num;
+  document.getElementById("verseActionPopup").classList.remove("open");
+  showPage("chat");
+  setTimeout(function(){ document.getElementById("chatInput").value = "Explain " + ref + " from the KJV: “" + bibleState.selectedVerse.text + "”"; }, 300);
+}
+
+// Geo map linking
+var currentChapterGeoLocation = null;
+
+function checkBibleGeoLink(bookName) {
+  var banner = document.getElementById("bibleMapBanner");
+  var bannerText = document.getElementById("bibleMapBannerText");
+  if (!banner || !bannerText) return;
+  var locs = BIBLE_GEO_MAP[bookName];
+  if (!locs || !locs.length) { banner.classList.remove("show"); currentChapterGeoLocation = null; return; }
+  // Find which location exists in our GEO_LOCATIONS
+  var found = null;
+  locs.some(function(locName) {
+    var match = GEO_LOCATIONS.find(function(g){ return g.name === locName; });
+    if (match) { found = match; return true; }
+    return false;
+  });
+  if (found) {
+    currentChapterGeoLocation = found;
+    bannerText.innerHTML = "&#128205; <strong>" + esc(bookName) + "</strong> mentions <strong>" + esc(found.name) + "</strong> &mdash; a location on our Biblical Maps page";
+    banner.classList.add("show");
+  } else {
+    banner.classList.remove("show");
+    currentChapterGeoLocation = null;
+  }
+}
+
+function goToChapterMap() {
+  if (!currentChapterGeoLocation) return;
+  var idx = GEO_LOCATIONS.indexOf(currentChapterGeoLocation);
+  if (idx === -1) return;
+  showPage("geo");
+  setTimeout(function(){ openGeoDetail(idx); }, 300);
+}
+
 renderBooks(OT);
+initSupabase(); // inline client — no SDK dependency
 </script>
 
 <div id="contactPopup" style="display:none" class="contact-popup">
